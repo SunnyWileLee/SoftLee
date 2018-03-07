@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoBid.Console", "AutoBid.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoBid.Update", "AutoBid.Update\AutoBid.Update.csproj", "{B9FE8ECD-C374-4E13-ABF9-03E28B115FC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoBid.Cloud", "AutoBid.Cloud\AutoBid.Cloud.csproj", "{F7976671-21A7-46B0-BD5B-B552165079C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B9FE8ECD-C374-4E13-ABF9-03E28B115FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9FE8ECD-C374-4E13-ABF9-03E28B115FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9FE8ECD-C374-4E13-ABF9-03E28B115FC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7976671-21A7-46B0-BD5B-B552165079C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7976671-21A7-46B0-BD5B-B552165079C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7976671-21A7-46B0-BD5B-B552165079C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7976671-21A7-46B0-BD5B-B552165079C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
