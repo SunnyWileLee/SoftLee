@@ -10,7 +10,7 @@ namespace AutoBid.Client.Utilities
 {
     class ApiHttpExecutor : BaseHttpExecutor
     {
-        public const string ApiDomian = "http://localhost:4345/";
+        public const string ApiDomian = "http://115.159.109.158:5456/";
 
         protected override void WrapperGetRequest(HttpWebRequest request)
         {
