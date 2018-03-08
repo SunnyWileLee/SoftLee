@@ -16,6 +16,8 @@ namespace AutoBid.Cloud
             config.MapHttpAttributeRoutes();
             config.MessageHandlers.Add(new BidderIdentityMessageHandler());
 
+            config.Filters.Add(new ParasCheckAttribute());
+
             var builder = new ContainerBuilder();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())

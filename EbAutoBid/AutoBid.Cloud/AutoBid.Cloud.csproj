@@ -111,6 +111,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\Price\IPriceQueryService.cs" />
+    <Compile Include="Applications\Price\IPriceService.cs" />
+    <Compile Include="Applications\Price\PriceQueryService.cs" />
+    <Compile Include="Applications\Price\PriceService.cs" />
     <Compile Include="Applications\User\IUserQueryService.cs" />
     <Compile Include="Applications\User\IUserService.cs" />
     <Compile Include="Applications\User\UserQueryService.cs" />
@@ -120,9 +124,11 @@
     <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Frameworks\BidderAuthorizeAttribute.cs" />
+    <Compile Include="Frameworks\BidderContext.cs" />
     <Compile Include="Frameworks\BidderIdentity.cs" />
     <Compile Include="Frameworks\BidderIdentityMessageHandler.cs" />
     <Compile Include="Frameworks\BidderPrincipal.cs" />
+    <Compile Include="Frameworks\ParasCheckAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -141,6 +147,8 @@
     <Compile Include="Repositories\DbContextProvider.cs" />
     <Compile Include="Repositories\IDbContextProvider.cs" />
     <Compile Include="Repositories\Price\BidPriceEntity.cs" />
+    <Compile Include="Repositories\Price\BidPriceQueryRepository.cs" />
+    <Compile Include="Repositories\Price\BidPriceRepository.cs" />
     <Compile Include="Repositories\Price\IBidPriceQueryRepository.cs" />
     <Compile Include="Repositories\Price\IBidPriceRepository.cs" />
     <Compile Include="Repositories\User\IUserQueryRepository.cs" />
@@ -160,8 +168,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Applications\Price\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Client\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
