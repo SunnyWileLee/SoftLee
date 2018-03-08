@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Cloud", "DataKeeper.Cloud\DataKeeper.Cloud.csproj", "{5413AB35-E3FE-4646-9FE7-37916822922D}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Crm.Customer", "DataKeeper.Crm.Customer\DataKeeper.Crm.Customer.csproj", "{BE9295D1-93F7-4336-A30A-F8A864141678}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Oms.Order", "DataKeeper.Oms.Order\DataKeeper.Oms.Order.csproj", "{F7A55D15-6ADC-44F8-A940-47034451437E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Framework.Webapi", "DataKeeper.Framework.Webapi\DataKeeper.Framework.Webapi.csproj", "{A368403A-8A0E-4861-8CCC-10B346A4E385}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{F7A55D15-6ADC-44F8-A940-47034451437E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7A55D15-6ADC-44F8-A940-47034451437E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7A55D15-6ADC-44F8-A940-47034451437E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A368403A-8A0E-4861-8CCC-10B346A4E385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A368403A-8A0E-4861-8CCC-10B346A4E385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A368403A-8A0E-4861-8CCC-10B346A4E385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A368403A-8A0E-4861-8CCC-10B346A4E385}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

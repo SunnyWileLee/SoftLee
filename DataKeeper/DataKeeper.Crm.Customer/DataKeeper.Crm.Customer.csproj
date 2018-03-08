@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,18 +51,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\CustomerService.cs" />
+    <Compile Include="Applications\ICustomerPropertyService.cs" />
     <Compile Include="Applications\ICustomerQueryService.cs" />
     <Compile Include="Applications\ICustomerService.cs" />
     <Compile Include="Entities\CustomerEntity.cs" />
     <Compile Include="Entities\CustomerPropertyEntity.cs" />
     <Compile Include="Entities\CustomerPropertyValueEntity.cs" />
+    <Compile Include="Models\CustomerPageQueryParas.cs" />
+    <Compile Include="Models\CustomerPropertyModel.cs" />
+    <Compile Include="Models\CustomerQueryParas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CustomerContext.cs" />
+    <Compile Include="Repositories\CustomerContextProvider.cs" />
+    <Compile Include="Repositories\ICustomerContextProvider.cs" />
+    <Compile Include="Repositories\ICustomerQueryRepository.cs" />
+    <Compile Include="Repositories\ICustomerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
-    <Folder Include="Models\" />
-    <Folder Include="Repositories\" />
     <Folder Include="Sdks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataKeeper.Framework\DataKeeper.Framework.csproj">
+      <Project>{464a5e96-6d83-46dd-a118-becccfd74366}</Project>
+      <Name>DataKeeper.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
