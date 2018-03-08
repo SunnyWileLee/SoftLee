@@ -1,6 +1,8 @@
 ﻿using AutoBid.Cloud.Frameworks;
+using AutoBid.Cloud.Models;
 using Autofac;
 using Autofac.Integration.WebApi;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,11 @@ namespace AutoBid.Cloud
             config.MessageHandlers.Add(new BidderIdentityMessageHandler());
 
             config.Filters.Add(new ParasCheckAttribute());
+
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile<AutoBidMapper>();//添加一个配置文件
+            });
 
             var builder = new ContainerBuilder();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());

@@ -15,7 +15,14 @@ namespace AutoBid.Cloud.Controllers
         private readonly IUserQueryService _userQueryService;
         private readonly IUserService _userService;
 
-        [HttpGet, BidderAuthorize]
+        public UserController(IUserQueryService userQueryService, 
+                              IUserService userService)
+        {
+            _userQueryService = userQueryService;
+            _userService = userService;
+        }
+
+        [HttpGet]
         public List<UserModel> GetUsers()
         {
             return _userQueryService.GetUser();
