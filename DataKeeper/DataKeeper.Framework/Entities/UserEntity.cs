@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Entities
 {
-    public abstract class PropertyValueEntity : UserEntity
+    public abstract class UserEntity : BaseEntity
     {
-        public virtual Guid PropertyId { get; set; }
-        public virtual string Value { get; set; }
+        public virtual Guid UserId { get; set; }
     }
 }

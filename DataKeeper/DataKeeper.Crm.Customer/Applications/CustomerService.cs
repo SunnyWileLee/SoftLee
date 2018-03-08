@@ -14,26 +14,6 @@ namespace DataKeeper.Crm.Customer.Applications
 {
     class CustomerService : ICustomerService
     {
-        private readonly ICustomerContextProvider _customerContextProvider;
-        private readonly IPropertyRepositoryProvider _propertyRepositoryProvider;
-
-        public CustomerService(ICustomerContextProvider customerContextProvider, 
-                               IPropertyRepositoryProvider propertyRepositoryProvider)
-        {
-            _customerContextProvider = customerContextProvider;
-            _propertyRepositoryProvider = propertyRepositoryProvider;
-        }
-
-        public Guid Add(CustomerPropertyModel model)
-        {
-            var property = Mapper.Map<CustomerPropertyEntity>(model);
-            var context = new AddPropertyContext<CustomerPropertyEntity>
-            {
-                Property = property,
-                ContextProvider = _customerContextProvider
-            };
-            var repository = _propertyRepositoryProvider.Provide();
-            return repository.Add(context);
-        }
+        
     }
 }

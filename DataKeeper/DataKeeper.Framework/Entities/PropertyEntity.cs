@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Entities
 {
-    public abstract class PropertyEntity : BaseEntity
+    public abstract class PropertyEntity : UserEntity
     {
         public virtual string Name { get; set; }
     }
