@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Repositories
 {
-    public interface IPropertyRepositoryProvider
+    interface IPropertyQueryRepositoryProvider
     {
-        IPropertyRepository Provide();
-        IPropertyRepository Provide(Func<IPropertyRepository, bool> selector);
+        IPropertyQueryRepository Provide();
+        IPropertyQueryRepository Provide(Func<IPropertyQueryRepository, bool> selector);
     }
 }

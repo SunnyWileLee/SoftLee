@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Crm.Customer.Repositories
 {
-    class CustomerContextProvider : IDbContextProvider
+    class CustomerContextProvider : ICustomerContextProvider
     {
         public DbContext Provide()
         {

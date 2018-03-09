@@ -8,9 +8,21 @@ namespace DataKeeper.Framework.Repositories
 {
     public class PropertyRepositoryProvider : IPropertyRepositoryProvider
     {
+        private readonly IPropertyRepository[] _propertyRepositories;
+
+        public PropertyRepositoryProvider(IPropertyRepository[] propertyRepositories)
+        {
+            _propertyRepositories = propertyRepositories;
+        }
+
         public virtual IPropertyRepository Provide()
         {
-            return new PropertyRepository();
+            return Provide(s => true);
+        }
+
+        public virtual IPropertyRepository Provide(Func<IPropertyRepository, bool> selector)
+        {
+            return _propertyRepositories.First(selector);
         }
     }
 }

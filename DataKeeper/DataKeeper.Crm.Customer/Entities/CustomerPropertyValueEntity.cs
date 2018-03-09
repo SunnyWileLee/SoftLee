@@ -11,6 +11,8 @@ namespace DataKeeper.Crm.Customer.Entities
     [Table("CustomerPropertyValue")]
     class CustomerPropertyValueEntity : PropertyValueEntity
     {
+        public const string InstanceKey = "CustomerId";
+
         public Guid CustomerId { get; set; }
     }
 }

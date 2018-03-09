@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DataKeeper.Crm.Customer.Entities
 {
     [Table("Customer")]
-    class CustomerEntity : BaseEntity
+    class CustomerEntity : UserEntity
     {
         public string Name { get; set; }
         public string Phone { get; set; }
