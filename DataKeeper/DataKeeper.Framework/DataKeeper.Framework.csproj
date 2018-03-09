@@ -48,9 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\AddPropertyContext.cs" />
+    <Compile Include="Domain\GroupPropertyValueContext.cs" />
     <Compile Include="Domain\KeeperIdentity.cs" />
     <Compile Include="Domain\KeeperPrincipal.cs" />
     <Compile Include="Domain\QueryPropertyContext.cs" />
+    <Compile Include="Domain\QueryPropertyValueContext.cs" />
     <Compile Include="Domain\UserContext.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\PropertyEntity.cs" />
@@ -67,10 +69,11 @@
     <Compile Include="Repositories\IPropertyQueryRepository.cs" />
     <Compile Include="Repositories\IPropertyRepository.cs" />
     <Compile Include="Repositories\IPropertyRepositoryProvider.cs" />
-    <Compile Include="Repositories\IPropertyValueRepository.cs" />
+    <Compile Include="Repositories\IPropertyValueQueryRepository.cs" />
     <Compile Include="Repositories\PropertyQueryRepository.cs" />
     <Compile Include="Repositories\PropertyRepository.cs" />
     <Compile Include="Repositories\PropertyRepositoryProvider.cs" />
+    <Compile Include="Repositories\PropertyValueQueryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
