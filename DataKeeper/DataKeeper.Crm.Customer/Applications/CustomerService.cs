@@ -18,6 +18,15 @@ namespace DataKeeper.Crm.Customer.Applications
         private readonly IPropertyValueRepositoryProvider _propertyValueRepositoryProvider;
         private readonly ICustomerContextProvider _customerContextProvider;
 
+        public CustomerService(ICustomerRepository customerRepository, 
+                               IPropertyValueRepositoryProvider propertyValueRepositoryProvider, 
+                               ICustomerContextProvider customerContextProvider)
+        {
+            _customerRepository = customerRepository;
+            _propertyValueRepositoryProvider = propertyValueRepositoryProvider;
+            _customerContextProvider = customerContextProvider;
+        }
+
         public Guid Add(CustomerModel model)
         {
             var userId = UserContext.Current.UserId;

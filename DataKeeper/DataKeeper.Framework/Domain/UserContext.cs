@@ -15,7 +15,7 @@ namespace DataKeeper.Framework.Domain
         {
             get
             {
-                var principal = Thread.CurrentPrincipal as KeeperPrincipal;
+                var principal = Thread.CurrentPrincipal as DataKeeperPrincipal;
                 return new UserContext
                 {
                     UserId = principal.UserId

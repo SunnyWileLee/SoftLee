@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain
 {
-    class KeeperIdentity : IIdentity
+    class DataKeeperIdentity : IIdentity
     {
         public string Name => UserId.ToString();
 

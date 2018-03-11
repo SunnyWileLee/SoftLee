@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain
 {
-    public class KeeperPrincipal : IPrincipal
+    public class DataKeeperPrincipal : IPrincipal
     {
-        private KeeperIdentity _identity;
+        private DataKeeperIdentity _identity;
 
         public IIdentity Identity
         {
@@ -17,7 +17,7 @@ namespace DataKeeper.Framework.Domain
             {
                 if (_identity == null)
                 {
-                    _identity = new KeeperIdentity { UserId = this.UserId };
+                    _identity = new DataKeeperIdentity { UserId = this.UserId };
                 }
                 return _identity;
             }

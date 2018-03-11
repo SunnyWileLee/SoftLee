@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -39,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,8 +53,8 @@
   <ItemGroup>
     <Compile Include="Domain\AddPropertyContext.cs" />
     <Compile Include="Domain\GroupPropertyValueContext.cs" />
-    <Compile Include="Domain\KeeperIdentity.cs" />
-    <Compile Include="Domain\KeeperPrincipal.cs" />
+    <Compile Include="Domain\DataKeeperIdentity.cs" />
+    <Compile Include="Domain\DataKeeperPrincipal.cs" />
     <Compile Include="Domain\QueryPropertyContext.cs" />
     <Compile Include="Domain\QueryPropertyValueContext.cs" />
     <Compile Include="Domain\SetPropertyValueContext.cs" />
@@ -59,7 +63,11 @@
     <Compile Include="Entities\PropertyEntity.cs" />
     <Compile Include="Entities\PropertyValueEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />
+    <Compile Include="IAutofacFramework.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\IMapperProfile.cs" />
+    <Compile Include="Models\IMapperProfileProvider.cs" />
+    <Compile Include="Models\MapperProfileProvider.cs" />
     <Compile Include="Models\PageCollection.cs" />
     <Compile Include="Models\PageQueryParas.cs" />
     <Compile Include="Models\PropertyModel.cs" />

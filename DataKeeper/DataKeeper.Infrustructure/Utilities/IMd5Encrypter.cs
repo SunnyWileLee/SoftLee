@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataKeeper.Infrustructure
+namespace DataKeeper.Infrustructure.Utilities
 {
-    public class Class1
+    public interface IMd5Encrypter
     {
+        string Encrypt(string input);
     }
 }
