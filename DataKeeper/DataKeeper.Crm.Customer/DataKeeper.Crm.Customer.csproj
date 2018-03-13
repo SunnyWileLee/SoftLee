@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Applications\CustomerPropertyService.cs" />
+    <Compile Include="Applications\CustomerQueryService.cs" />
     <Compile Include="Applications\CustomerService.cs" />
     <Compile Include="Applications\ICustomerPropertyService.cs" />
     <Compile Include="Applications\ICustomerQueryService.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Entities\CustomerPropertyEntity.cs" />
     <Compile Include="Entities\CustomerPropertyValueEntity.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\CustomerNaiveModel.cs" />
     <Compile Include="Models\CustomerPageQueryParas.cs" />
     <Compile Include="Models\CustomerPropertyModel.cs" />
     <Compile Include="Models\CustomerPropertyValueModel.cs" />
