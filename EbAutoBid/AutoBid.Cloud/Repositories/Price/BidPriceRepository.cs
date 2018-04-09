@@ -21,6 +21,8 @@ namespace AutoBid.Cloud.Repositories.Price
                 var entity = context.BidPrices.FirstOrDefault(s => s.UserId == price.UserId && s.Sn == price.Sn && s.IdResoTemp == price.IdResoTemp);
                 if (entity == null)
                 {
+                    price.Id = Guid.NewGuid();
+                    price.CreateTime = DateTime.Now;
                     context.BidPrices.Add(price);
                 }
                 else
