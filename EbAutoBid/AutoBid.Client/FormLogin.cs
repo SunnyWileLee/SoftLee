@@ -99,14 +99,22 @@ namespace AutoBid.Client
                 CookieContainer cookies = new CookieContainer();
                 for (int i = 0; i < cs.Length; i++)
                 {
-                    var array = cs[i].Split('=');
-                    string name = array[0].Trim();
-                    string value = array[1];
-                    Cookie co = new Cookie();
-                    co.Name = name;
-                    co.Value = value;
-                    co.Domain = uri.Host;
-                    cookies.Add(co);
+                    try
+                    {
+                        var array = cs[i].Split('=');
+                        string name = array[0].Trim();
+                        string value = array[1];
+                        Cookie co = new Cookie();
+                        co.Name = name;
+                        co.Value = value;
+                        co.Domain = uri.Host;
+                        cookies.Add(co);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    
                 }
                 CookieHelper.Cookies = cookies;
             }
