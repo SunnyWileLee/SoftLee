@@ -76,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
-    <Folder Include="Sdks\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataKeeper.Framework\DataKeeper.Framework.csproj">
