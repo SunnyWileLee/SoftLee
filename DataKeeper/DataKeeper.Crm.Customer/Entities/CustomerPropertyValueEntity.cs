@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DataKeeper.Crm.Customer.Entities
 {
     [Table("CustomerPropertyValue")]
-    class CustomerPropertyValueEntity : PropertyValueEntity
+    public class CustomerPropertyValueEntity : PropertyValueEntity
     {
         public const string InstanceKey = "CustomerId";
 

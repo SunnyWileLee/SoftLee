@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DataKeeper.Crm.Customer.Entities
 {
     [Table("CustomerProperty")]
-    class CustomerPropertyEntity : PropertyEntity
+    public class CustomerPropertyEntity : PropertyEntity
     {
 
     }

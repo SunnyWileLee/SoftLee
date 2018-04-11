@@ -9,9 +9,9 @@ using DataKeeper.Framework.Models;
 
 namespace DataKeeper.Framework.Repositories
 {
-    public class EntityPageQueryRepository : IEntityPageQueryRepository
+    public class EntityQueryRepository : IEntityQueryRepository
     {
-        public virtual PageCollection<TEntity> Page<TEntity>(EntityPageQueryContext<TEntity> context) where TEntity : UserEntity
+        public virtual PageCollection<TEntity> Page<TEntity>(QueryEntityPageContext<TEntity> context) where TEntity : UserEntity
         {
             using (var db = context.ContextProvider.Provide())
             {

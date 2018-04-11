@@ -10,11 +10,10 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain
 {
-    public class EntityPageQueryContext<TEntity> where TEntity : BaseEntity
+    public class QueryEntityPageContext<TEntity> : QueryEntityContext<TEntity>
+        where TEntity : UserEntity
     {
-        public Guid UserId { get; set; }
-        public Expression<Func<TEntity, bool>> Predicate;
-        public IDbContextProvider ContextProvider { get; set; }
+       
         public PageQueryParas PageQueryParas { get; set; }
     }
 }

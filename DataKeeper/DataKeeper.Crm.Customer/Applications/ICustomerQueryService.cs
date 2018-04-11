@@ -1,4 +1,6 @@
-﻿using DataKeeper.Crm.Customer.Models;
+﻿using DataKeeper.Crm.Customer.Entities;
+using DataKeeper.Crm.Customer.Models;
+using DataKeeper.Framework.Applications;
 using DataKeeper.Framework.Models;
 using System;
 using System.Collections.Generic;
@@ -8,9 +10,8 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Crm.Customer.Applications
 {
-    public interface ICustomerQueryService
+    public interface ICustomerQueryService : IEntityQueryService<CustomerEntity>
     {
-        PageCollection<CustomerModel> Page(CustomerPageQueryParas customerPageQueryParas);
-        List<CustomerNaiveModel> Query(CustomerQueryParas customerQueryParas);
+
     }
 }

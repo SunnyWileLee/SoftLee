@@ -6,28 +6,31 @@ using System.Threading.Tasks;
 using DataKeeper.Crm.Customer.Entities;
 using DataKeeper.Crm.Customer.Models;
 using DataKeeper.Crm.Customer.Repositories;
+using DataKeeper.Framework.Applications;
 using DataKeeper.Framework.Domain;
 using DataKeeper.Framework.Models;
 using DataKeeper.Framework.Repositories;
 
 namespace DataKeeper.Crm.Customer.Applications
 {
-    class CustomerQueryService : ICustomerQueryService
+    class CustomerQueryService : EntityQueryService<CustomerEntity>, ICustomerQueryService
     {
-        private readonly IEntityPageQueryRepositoryProvider _entityPageQueryRepositoryProvider;
-        private readonly ICustomerContextProvider _customerContextProvider;
-
-        public PageCollection<CustomerModel> Page(CustomerPageQueryParas customerPageQueryParas)
+        public CustomerQueryService(IEntityQueryRepositoryProvider entityPageQueryRepositoryProvider,
+                                   ICustomerContextProvider contextProvider)
+            : base(entityPageQueryRepositoryProvider, contextProvider)
         {
-            var entityPageQueryRepository = _entityPageQueryRepositoryProvider.Provide();
-            var customers = entityPageQueryRepository.Page<CustomerEntity>(new EntityPageQueryContext<CustomerEntity>
+
+        }
+
+        protected override QueryEntityPageContext<CustomerEntity> CreatePageContext(PageQueryParas pageQueryParas)
+        {
+            var context = base.CreatePageContext(pageQueryParas);
+            var paras = pageQueryParas as CustomerPageQueryParas;
+            if (paras != null)
             {
-                ContextProvider = _customerContextProvider,
-                PageQueryParas = customerPageQueryParas,
-                Predicate = s => s.Name.Contains(customerPageQueryParas.Keyword) || s.Phone.Contains(customerPageQueryParas.Keyword),
-                UserId = UserContext.Current.UserId
-            });
-            var
+                context.Predicate = s => s.Name.Contains(paras.Keyword) || s.Phone.Contains(paras.Keyword);
+            }
+            return context;
         }
 
         public List<CustomerNaiveModel> Query(CustomerQueryParas customerQueryParas)

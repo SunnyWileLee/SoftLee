@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Repositories
 {
-    public interface IEntityPageQueryRepository
+    public interface IEntityQueryRepository
     {
-        PageCollection<TEntity> Page<TEntity>(EntityPageQueryContext<TEntity> context) where TEntity : UserEntity;
+        PageCollection<TEntity> Page<TEntity>(QueryEntityPageContext<TEntity> context) where TEntity : UserEntity;
+        List<TEntity> GetList<TEntity>(QueryEntityContext<TEntity> context) where TEntity : UserEntity;
     }
 }
