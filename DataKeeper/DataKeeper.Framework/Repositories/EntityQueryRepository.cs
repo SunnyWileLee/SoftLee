@@ -11,6 +11,17 @@ namespace DataKeeper.Framework.Repositories
 {
     public class EntityQueryRepository : IEntityQueryRepository
     {
+        public virtual List<TEntity> Query<TEntity>(QueryEntityContext<TEntity> context) where TEntity : UserEntity
+        {
+            using (var db = context.ContextProvider.Provide())
+            {
+                var entities = db.Set<TEntity>()
+                                 .Where(s => s.UserId == context.UserId)
+                                 .Where(context.Predicate);
+                return entities.ToList();
+            }
+        }
+
         public virtual PageCollection<TEntity> Page<TEntity>(QueryEntityPageContext<TEntity> context) where TEntity : UserEntity
         {
             using (var db = context.ContextProvider.Provide())

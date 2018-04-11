@@ -12,6 +12,6 @@ namespace DataKeeper.Framework.Repositories
     public interface IEntityQueryRepository
     {
         PageCollection<TEntity> Page<TEntity>(QueryEntityPageContext<TEntity> context) where TEntity : UserEntity;
-        List<TEntity> GetList<TEntity>(QueryEntityContext<TEntity> context) where TEntity : UserEntity;
+        List<TEntity> Query<TEntity>(QueryEntityContext<TEntity> context) where TEntity : UserEntity;
     }
 }

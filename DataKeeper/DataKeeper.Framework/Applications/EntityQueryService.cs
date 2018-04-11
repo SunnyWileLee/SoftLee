@@ -14,13 +14,13 @@ namespace DataKeeper.Framework.Applications
     public abstract class EntityQueryService<TEntity> : IEntityQueryService<TEntity>
         where TEntity : UserEntity
     {
-        private readonly IEntityQueryRepositoryProvider _entityPageQueryRepositoryProvider;
+        private readonly IEntityQueryRepositoryProvider _entityQueryRepositoryProvider;
         private readonly IDbContextProvider _contextProvider;
 
-        protected EntityQueryService(IEntityQueryRepositoryProvider entityPageQueryRepositoryProvider,
+        protected EntityQueryService(IEntityQueryRepositoryProvider entityQueryRepositoryProvider,
                                      IDbContextProvider contextProvider)
         {
-            _entityPageQueryRepositoryProvider = entityPageQueryRepositoryProvider;
+            _entityQueryRepositoryProvider = entityQueryRepositoryProvider;
             _contextProvider = contextProvider;
         }
 
@@ -28,7 +28,7 @@ namespace DataKeeper.Framework.Applications
         {
             get
             {
-                return _entityPageQueryRepositoryProvider;
+                return _entityQueryRepositoryProvider;
             }
         }
 
@@ -42,9 +42,9 @@ namespace DataKeeper.Framework.Applications
 
         public virtual PageCollection<TModel> Page<TModel>(PageQueryParas pageQueryParas)
         {
-            var entityPageQueryRepository = _entityPageQueryRepositoryProvider.Provide();
-            var context = CreatePageContext(pageQueryParas);
-            var entities = entityPageQueryRepository.Page(context);
+            var entityQueryRepository = _entityQueryRepositoryProvider.Provide();
+            var context = CreatePageQueryContext(pageQueryParas);
+            var entities = entityQueryRepository.Page(context);
             var models = Mapper.Map<List<TModel>>(entities.List);
             return new PageCollection<TModel>
             {
@@ -55,7 +55,7 @@ namespace DataKeeper.Framework.Applications
             };
         }
 
-        protected virtual QueryEntityPageContext<TEntity> CreatePageContext(PageQueryParas pageQueryParas)
+        protected virtual QueryEntityPageContext<TEntity> CreatePageQueryContext(PageQueryParas pageQueryParas)
         {
             return new QueryEntityPageContext<TEntity>
             {
@@ -68,7 +68,21 @@ namespace DataKeeper.Framework.Applications
 
         public virtual List<TModel> Query<TModel>(QueryParas queryParas)
         {
-            throw new NotImplementedException();
+            var entityQueryRepository = _entityQueryRepositoryProvider.Provide();
+            var context = CreateQueryContext(queryParas);
+            var entities = entityQueryRepository.Query(context);
+            var models = Mapper.Map<List<TModel>>(entities);
+            return models;
+        }
+
+        protected virtual QueryEntityContext<TEntity> CreateQueryContext(QueryParas pageQueryParas)
+        {
+            return new QueryEntityContext<TEntity>
+            {
+                ContextProvider = _contextProvider,
+                UserId = UserContext.Current.UserId,
+                Predicate = s => true
+            };
         }
     }
 }

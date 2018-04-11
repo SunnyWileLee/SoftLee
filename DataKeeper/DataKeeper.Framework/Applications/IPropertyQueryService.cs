@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Applications
 {
-    public interface IEntityService
+    public interface IPropertyQueryService
     {
+
     }
 }

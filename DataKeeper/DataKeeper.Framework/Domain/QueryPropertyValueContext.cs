@@ -1,4 +1,5 @@
-﻿using DataKeeper.Framework.Repositories;
+﻿using DataKeeper.Framework.Entities;
+using DataKeeper.Framework.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,10 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain
 {
-    public class QueryPropertyValueContext<TPropertyValue>
+    public class QueryPropertyValueContext<TPropertyValue> : AccessDbContext
+        where TPropertyValue:PropertyValueEntity
     {
-        public Guid UserId { get; set; }
-        public Guid Key { get; set; }
-        public IDbContextProvider ContextProvider { get; set; }
+        public Guid Key { get; set; }       
         public string KeyProperty { get; set; }
 
         public Expression<Func<TPropertyValue, bool>> CreatePredicate()

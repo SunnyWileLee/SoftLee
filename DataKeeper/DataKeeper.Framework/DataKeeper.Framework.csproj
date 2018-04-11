@@ -51,9 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\EntityAddService.cs" />
     <Compile Include="Applications\EntityQueryService.cs" />
     <Compile Include="Applications\IEntityQueryService.cs" />
-    <Compile Include="Applications\IEntityService.cs" />
+    <Compile Include="Applications\IEntityAddService.cs" />
+    <Compile Include="Applications\IPropertyQueryService.cs" />
+    <Compile Include="Domain\AccessDbContext.cs" />
+    <Compile Include="Domain\AddEntityContext.cs" />
     <Compile Include="Domain\AddPropertyContext.cs" />
     <Compile Include="Domain\QueryEntityContext.cs" />
     <Compile Include="Domain\QueryEntityPageContext.cs" />
@@ -72,16 +76,21 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\IMapperProfile.cs" />
     <Compile Include="Models\IMapperProfileProvider.cs" />
+    <Compile Include="Models\MapperProfile.cs" />
     <Compile Include="Models\MapperProfileProvider.cs" />
     <Compile Include="Models\PageCollection.cs" />
     <Compile Include="Models\PageQueryParas.cs" />
     <Compile Include="Models\PropertyModel.cs" />
+    <Compile Include="Models\PropertyOwner.cs" />
     <Compile Include="Models\PropertyValueModel.cs" />
     <Compile Include="Models\QueryParas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EntityAddRepository.cs" />
     <Compile Include="Repositories\EntityQueryRepository.cs" />
     <Compile Include="Repositories\EntityQueryRepositoryProvider.cs" />
     <Compile Include="Repositories\IDbContextProvider.cs" />
+    <Compile Include="Repositories\IEntityAddRepository.cs" />
+    <Compile Include="Repositories\IEntityAddRepositoryProvider.cs" />
     <Compile Include="Repositories\IEntityQueryRepository.cs" />
     <Compile Include="Repositories\IEntityQueryRepositoryProvider.cs" />
     <Compile Include="Repositories\IPropertyQueryRepository.cs" />

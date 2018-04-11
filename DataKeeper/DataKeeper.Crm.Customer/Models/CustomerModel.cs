@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Crm.Customer.Models
 {
-    public class CustomerModel : BaseModel
+    public class CustomerModel : PropertyOwner
     {
         [Required]
         public string Name { get; set; }
         [Required]
         public string Phone { get; set; }
-
-        public List<CustomerPropertyValueModel> Properties { get; set; }
     }
 }

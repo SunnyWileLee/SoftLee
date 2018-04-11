@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain
 {
-    public class QueryEntityContext<TEntity> where TEntity : UserEntity
+    public class QueryEntityContext<TEntity> : AccessDbContext
+        where TEntity : UserEntity
     {
-        public Guid UserId { get; set; }
         public Expression<Func<TEntity, bool>> Predicate;
-        public IDbContextProvider ContextProvider { get; set; }
     }
 }

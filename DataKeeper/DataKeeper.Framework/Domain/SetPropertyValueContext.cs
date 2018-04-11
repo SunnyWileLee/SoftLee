@@ -9,12 +9,11 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain
 {
-    public class SetPropertyValueContext<TPropertyValue> where TPropertyValue : PropertyValueEntity
+    public class SetPropertyValueContext<TPropertyValue> : AccessDbContext
+        where TPropertyValue : PropertyValueEntity
     {
-        public Guid UserId { get; set; }
         public Guid InstanceId { get; set; }
         public string KeyProperty { get; set; }
-        public IDbContextProvider ContextProvider { get; set; }
         public IEnumerable<TPropertyValue> PropertyValues { get; set; }
 
         public Expression<Func<TPropertyValue, bool>> CreatePredicate()

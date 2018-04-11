@@ -1,4 +1,5 @@
-﻿using DataKeeper.Framework.Repositories;
+﻿using DataKeeper.Framework.Entities;
+using DataKeeper.Framework.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,13 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain
 {
-    public class GroupPropertyValueContext<TPropertyValue>
+    public class GroupPropertyValueContext<TPropertyValue> : AccessDbContext
+        where TPropertyValue:PropertyValueEntity
     {
         private static MethodInfo containsMethod;
         private static object containsMethodLock = new object { };
 
-        public Guid UserId { get; set; }
-        public IEnumerable<Guid> Keys { get; set; }
-        public IDbContextProvider ContextProvider { get; set; }
+        public IEnumerable<Guid> Keys { get; set; } 
         public string KeyProperty { get; set; }
 
         public Expression<Func<TPropertyValue, bool>> CreatePredicate()
@@ -38,7 +38,6 @@ namespace DataKeeper.Framework.Domain
 
         public Expression<Func<TPropertyValue, Guid>> GroupKey()
         {
-
             var type = typeof(TPropertyValue);
             var parameter = Expression.Parameter(type, "value");
             var key = Expression.Property(parameter, KeyProperty);

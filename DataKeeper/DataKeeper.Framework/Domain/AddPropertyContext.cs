@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain
 {
-    public class AddPropertyContext<TProperty> where TProperty : PropertyEntity
+    public class AddPropertyContext<TProperty> : AccessDbContext
+        where TProperty : PropertyEntity
     {
         public TProperty Property { get; set; }
-        public IDbContextProvider ContextProvider { get; set; }
     }
 }

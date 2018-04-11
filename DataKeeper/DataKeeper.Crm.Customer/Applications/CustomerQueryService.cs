@@ -22,9 +22,9 @@ namespace DataKeeper.Crm.Customer.Applications
 
         }
 
-        protected override QueryEntityPageContext<CustomerEntity> CreatePageContext(PageQueryParas pageQueryParas)
+        protected override QueryEntityPageContext<CustomerEntity> CreatePageQueryContext(PageQueryParas pageQueryParas)
         {
-            var context = base.CreatePageContext(pageQueryParas);
+            var context = base.CreatePageQueryContext(pageQueryParas);
             var paras = pageQueryParas as CustomerPageQueryParas;
             if (paras != null)
             {
@@ -33,9 +33,15 @@ namespace DataKeeper.Crm.Customer.Applications
             return context;
         }
 
-        public List<CustomerNaiveModel> Query(CustomerQueryParas customerQueryParas)
+        protected override QueryEntityContext<CustomerEntity> CreateQueryContext(QueryParas queryParas)
         {
-            throw new NotImplementedException();
+            var context = base.CreateQueryContext(queryParas);
+            var paras = queryParas as CustomerQueryParas;
+            if (paras != null)
+            {
+                context.Predicate = s => s.Phone.Contains(paras.Keyword) || s.Name.Contains(paras.Keyword);
+            }
+            return context;
         }
     }
 }
