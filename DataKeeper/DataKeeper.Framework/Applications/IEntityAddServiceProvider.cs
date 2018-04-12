@@ -1,5 +1,4 @@
 ﻿using DataKeeper.Framework.Entities;
-using DataKeeper.Framework.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Applications
 {
-    public interface IEntityAddService<TEntity> where TEntity : UserEntity
+    public interface IEntityAddServiceProvider
     {
-        Guid Add<TModel>(TModel model) where TModel : PropertyOwnerModel;
+        IEntityAddService<TEntity> Provide<TEntity, TPropertyValueEntity>() where TEntity : UserEntity;
     }
 }

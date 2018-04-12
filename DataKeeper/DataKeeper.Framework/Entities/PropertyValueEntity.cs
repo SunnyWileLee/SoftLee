@@ -10,5 +10,7 @@ namespace DataKeeper.Framework.Entities
     {
         public virtual Guid PropertyId { get; set; }
         public virtual string Value { get; set; }
+
+        public abstract void SetInstance(Guid id);
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Models
 {
-    public abstract class PropertyOwner: BaseModel
+    public abstract class PropertyOwnerModel: BaseModel
     {
         public virtual List<PropertyValueModel> Properties { get; set; }
     }

@@ -10,6 +10,5 @@ namespace DataKeeper.Crm.Customer.Applications
     public interface ICustomerService
     {
         Guid Add(CustomerModel model);
-
     }
 }

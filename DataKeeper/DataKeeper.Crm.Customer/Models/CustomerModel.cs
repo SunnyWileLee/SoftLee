@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Crm.Customer.Models
 {
-    public class CustomerModel : PropertyOwner
+    public class CustomerModel : PropertyOwnerModel
     {
         [Required]
         public string Name { get; set; }

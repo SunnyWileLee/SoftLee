@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Repositories
 {
-    public interface IEntityAddRepository
+    public interface IEntityAddRepository : IBaseRepository
     {
         Guid Add<TEntity>(AddEntityContext<TEntity> context) where TEntity : UserEntity;
     }

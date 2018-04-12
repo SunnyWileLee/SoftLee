@@ -1,4 +1,5 @@
-﻿using DataKeeper.Framework.Entities;
+﻿using DataKeeper.Framework.Domain;
+using DataKeeper.Framework.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,10 +10,14 @@ using System.Threading.Tasks;
 namespace DataKeeper.Crm.Customer.Entities
 {
     [Table("CustomerPropertyValue")]
+    [PropertyValue("CustomerId")]
     public class CustomerPropertyValueEntity : PropertyValueEntity
     {
-        public const string InstanceKey = "CustomerId";
-
         public Guid CustomerId { get; set; }
+
+        public override void SetInstance(Guid id)
+        {
+            CustomerId = id;
+        }
     }
 }

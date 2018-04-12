@@ -1,5 +1,4 @@
 ﻿using DataKeeper.Framework.Entities;
-using DataKeeper.Framework.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain
 {
-    public class AddEntityContext<TEntity> : AccessDbContext
+    public class AddPropertyOwnerContext<TEntity, TPropertyValueEntity> : AddEntityContext<TEntity>
         where TEntity : UserEntity
+        where TPropertyValueEntity : PropertyValueEntity
     {
-        public TEntity Entity { get; set; }
+        public IEnumerable<TPropertyValueEntity> Values { get; set; }
     }
 }

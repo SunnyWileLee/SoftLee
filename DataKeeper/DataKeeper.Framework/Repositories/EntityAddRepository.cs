@@ -8,10 +8,15 @@ using DataKeeper.Framework.Entities;
 
 namespace DataKeeper.Framework.Repositories
 {
-    class EntityAddRepository : IEntityAddRepository
+    class EntityAddRepository : BaseRepository, IEntityAddRepository
     {
         public Guid Add<TEntity>(AddEntityContext<TEntity> context) where TEntity : UserEntity
         {
+            var args = new RepositoryEventArgs
+            {
+                AccessDbContext = context
+            };
+            base.OnBefore(args);
             using (var db = context.ContextProvider.Provide())
             {
                 var entities = db.Set<TEntity>();
@@ -19,7 +24,18 @@ namespace DataKeeper.Framework.Repositories
                 entity.UserId = context.UserId;
                 entities.Add(entity);
                 var count = db.SaveChanges();
-                return count > 0 ? entity.Id : Guid.Empty;
+                base.OnComplete(args);
+                var success = count > 0;
+                if (success)
+                {
+                    args.NewId = entity.Id;
+                    OnSuccess(args);
+                }
+                else
+                {
+                    OnFail(args);
+                }
+                return success ? entity.Id : Guid.Empty;
             }
         }
     }
