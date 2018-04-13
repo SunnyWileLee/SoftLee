@@ -13,24 +13,24 @@ namespace DataKeeper.Framework.Repositories
         public event RepositoryHandler CompleteEvent;
         public event RepositoryHandler BeforeEvent;
 
-        protected virtual void OnSuccess(RepositoryEventArgs e)
+        protected virtual void OnSuccess(RepositoryEventArgs args)
         {
-            SuccessEvent?.Invoke(this, e);
+            SuccessEvent?.Invoke(this, args);
         }
 
-        protected virtual void OnFail(RepositoryEventArgs e)
+        protected virtual void OnFail(RepositoryEventArgs args)
         {
-            FailEvent?.Invoke(this, e);
+            FailEvent?.Invoke(this, args);
         }
 
-        protected virtual void OnComplete(RepositoryEventArgs e)
+        protected virtual void OnComplete(RepositoryEventArgs args)
         {
-            CompleteEvent?.Invoke(this, e);
+            CompleteEvent?.Invoke(this, args);
         }
 
-        protected virtual void OnBefore(RepositoryEventArgs e)
+        protected virtual void OnBefore(RepositoryEventArgs args)
         {
-            BeforeEvent?.Invoke(this, e);
+            BeforeEvent?.Invoke(this, args);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
+using DataKeeper.Framework.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace DataKeeper.Framework.Webapi
             builder.RegisterAssemblyTypes(assemblies.ToArray()).AsImplementedInterfaces();
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            ObjectContainers.Current = container;
         }
     }
 }

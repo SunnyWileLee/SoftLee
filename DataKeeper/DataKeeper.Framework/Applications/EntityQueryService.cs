@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using DataKeeper.Framework.Domain;
+using DataKeeper.Framework.Domain.Entities;
 using DataKeeper.Framework.Entities;
 using DataKeeper.Framework.Models;
 using DataKeeper.Framework.Repositories;
+using DataKeeper.Framework.Repositories.Entities;
 
 namespace DataKeeper.Framework.Applications
 {

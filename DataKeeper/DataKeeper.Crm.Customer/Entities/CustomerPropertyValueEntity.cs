@@ -1,4 +1,5 @@
 ﻿using DataKeeper.Framework.Domain;
+using DataKeeper.Framework.Domain.Properties;
 using DataKeeper.Framework.Entities;
 using System;
 using System.Collections.Generic;

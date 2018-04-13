@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.7.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.7.0\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -58,24 +61,30 @@
     <Compile Include="Applications\IEntityQueryService.cs" />
     <Compile Include="Applications\IEntityAddService.cs" />
     <Compile Include="Applications\IPropertyQueryService.cs" />
+    <Compile Include="Applications\IPropertyQueryServiceProvider.cs" />
+    <Compile Include="Applications\IPropertyService.cs" />
+    <Compile Include="Applications\PropertyQueryService.cs" />
+    <Compile Include="Applications\PropertyQueryServiceProvider.cs" />
+    <Compile Include="Applications\PropertyService.cs" />
     <Compile Include="Domain\AccessDbContext.cs" />
-    <Compile Include="Domain\AddEntityContext.cs" />
-    <Compile Include="Domain\AddPropertyContext.cs" />
-    <Compile Include="Domain\AddPropertyOwnerContext.cs" />
+    <Compile Include="Domain\Entities\AddEntityContext.cs" />
+    <Compile Include="Domain\Properties\AddPropertyContext.cs" />
+    <Compile Include="Domain\Properties\AddPropertyOwnerContext.cs" />
     <Compile Include="Domain\IPropertyValueKeyProvider.cs" />
     <Compile Include="Domain\IPropertyValueKeyProviderSelector.cs" />
-    <Compile Include="Domain\PropertyValueAttribute.cs" />
-    <Compile Include="Domain\CachedPropertyValueKeyProvider.cs" />
-    <Compile Include="Domain\PropertyValueKeyProvider.cs" />
-    <Compile Include="Domain\PropertyValueKeyProviderSelector.cs" />
-    <Compile Include="Domain\QueryEntityContext.cs" />
-    <Compile Include="Domain\QueryEntityPageContext.cs" />
+    <Compile Include="Domain\ObjectContainers.cs" />
+    <Compile Include="Domain\Properties\PropertyValueAttribute.cs" />
+    <Compile Include="Domain\Properties\CachedPropertyValueKeyProvider.cs" />
+    <Compile Include="Domain\Properties\PropertyValueKeyProvider.cs" />
+    <Compile Include="Domain\Properties\PropertyValueKeyProviderSelector.cs" />
+    <Compile Include="Domain\Entities\QueryEntityContext.cs" />
+    <Compile Include="Domain\Entities\QueryEntityPageContext.cs" />
     <Compile Include="Domain\GroupPropertyValueContext.cs" />
     <Compile Include="Domain\DataKeeperIdentity.cs" />
     <Compile Include="Domain\DataKeeperPrincipal.cs" />
-    <Compile Include="Domain\QueryPropertyContext.cs" />
-    <Compile Include="Domain\QueryPropertyValueContext.cs" />
-    <Compile Include="Domain\SetPropertyValueContext.cs" />
+    <Compile Include="Domain\Properties\QueryPropertyContext.cs" />
+    <Compile Include="Domain\Properties\QueryPropertyValueContext.cs" />
+    <Compile Include="Domain\Properties\SetPropertyValueContext.cs" />
     <Compile Include="Domain\UserContext.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\PropertyEntity.cs" />
@@ -95,31 +104,33 @@
     <Compile Include="Models\QueryParas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
-    <Compile Include="Repositories\EntityAddRepository.cs" />
-    <Compile Include="Repositories\EntityQueryRepository.cs" />
-    <Compile Include="Repositories\EntityQueryRepositoryProvider.cs" />
+    <Compile Include="Repositories\Entities\EntityAddRepository.cs" />
+    <Compile Include="Repositories\Entities\EntityAddRepositoryProvider.cs" />
+    <Compile Include="Repositories\Entities\EntityQueryRepository.cs" />
+    <Compile Include="Repositories\Entities\EntityQueryRepositoryProvider.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
     <Compile Include="Repositories\IDbContextProvider.cs" />
-    <Compile Include="Repositories\IEntityAddRepository.cs" />
-    <Compile Include="Repositories\IEntityAddRepositoryProvider.cs" />
-    <Compile Include="Repositories\IEntityQueryRepository.cs" />
-    <Compile Include="Repositories\IEntityQueryRepositoryProvider.cs" />
-    <Compile Include="Repositories\IPropertyQueryRepository.cs" />
-    <Compile Include="Repositories\IPropertyQueryRepositoryProvider.cs" />
-    <Compile Include="Repositories\IPropertyRepository.cs" />
-    <Compile Include="Repositories\IPropertyRepositoryProvider.cs" />
-    <Compile Include="Repositories\IPropertyValueQueryRepository.cs" />
-    <Compile Include="Repositories\IPropertyValueQueryRepositoryProvider.cs" />
-    <Compile Include="Repositories\IPropertyValueRepository.cs" />
-    <Compile Include="Repositories\IPropertyValueRepositoryProvider.cs" />
-    <Compile Include="Repositories\PropertyQueryRepository.cs" />
-    <Compile Include="Repositories\PropertyQueryRepositoryProvider.cs" />
-    <Compile Include="Repositories\PropertyRepository.cs" />
-    <Compile Include="Repositories\PropertyRepositoryProvider.cs" />
-    <Compile Include="Repositories\PropertyValueQueryRepository.cs" />
-    <Compile Include="Repositories\PropertyValueQueryRepositoryProvider.cs" />
-    <Compile Include="Repositories\PropertyValueRepository.cs" />
-    <Compile Include="Repositories\PropertyValueRepositoryProvider.cs" />
+    <Compile Include="Repositories\Entities\IEntityAddRepository.cs" />
+    <Compile Include="Repositories\Entities\IEntityAddRepositoryProvider.cs" />
+    <Compile Include="Repositories\Entities\IEntityQueryRepository.cs" />
+    <Compile Include="Repositories\Entities\IEntityQueryRepositoryProvider.cs" />
+    <Compile Include="Repositories\Properties\IPropertyDeleteRepository.cs" />
+    <Compile Include="Repositories\Properties\IPropertyQueryRepository.cs" />
+    <Compile Include="Repositories\Properties\IPropertyQueryRepositoryProvider.cs" />
+    <Compile Include="Repositories\Properties\IPropertyAddRepository.cs" />
+    <Compile Include="Repositories\Properties\IPropertyAddRepositoryProvider.cs" />
+    <Compile Include="Repositories\Properties\IPropertyValueQueryRepository.cs" />
+    <Compile Include="Repositories\Properties\IPropertyValueQueryRepositoryProvider.cs" />
+    <Compile Include="Repositories\Properties\IPropertyValueRepository.cs" />
+    <Compile Include="Repositories\Properties\IPropertyValueRepositoryProvider.cs" />
+    <Compile Include="Repositories\Properties\PropertyQueryRepository.cs" />
+    <Compile Include="Repositories\Properties\PropertyQueryRepositoryProvider.cs" />
+    <Compile Include="Repositories\Properties\PropertyAddRepository.cs" />
+    <Compile Include="Repositories\Properties\PropertyAddRepositoryProvider.cs" />
+    <Compile Include="Repositories\Properties\PropertyValueQueryRepository.cs" />
+    <Compile Include="Repositories\Properties\PropertyValueQueryRepositoryProvider.cs" />
+    <Compile Include="Repositories\Properties\PropertyValueRepository.cs" />
+    <Compile Include="Repositories\Properties\PropertyValueRepositoryProvider.cs" />
     <Compile Include="Repositories\RepositoryHandler.cs" />
   </ItemGroup>
   <ItemGroup>

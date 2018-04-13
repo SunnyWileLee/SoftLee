@@ -9,6 +9,8 @@ namespace DataKeeper.Framework.Applications
 {
     public interface IEntityAddServiceProvider
     {
-        IEntityAddService<TEntity> Provide<TEntity, TPropertyValueEntity>() where TEntity : UserEntity;
+        IEntityAddService<TEntity, TPropertyValueEntity> Provide<TEntity, TPropertyValueEntity>()
+            where TEntity : UserEntity
+            where TPropertyValueEntity : PropertyValueEntity;
     }
 }

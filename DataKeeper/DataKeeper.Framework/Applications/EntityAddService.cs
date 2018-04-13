@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using DataKeeper.Framework.Domain;
+using DataKeeper.Framework.Domain.Properties;
 using DataKeeper.Framework.Entities;
 using DataKeeper.Framework.Models;
 using DataKeeper.Framework.Repositories;
+using DataKeeper.Framework.Repositories.Entities;
+using DataKeeper.Framework.Repositories.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Applications
 {
-    class EntityAddService<TEntity, TPropertyValueEntity> : IEntityAddService<TEntity>
+    class EntityAddService<TEntity, TPropertyValueEntity> : IEntityAddService<TEntity, TPropertyValueEntity>
         where TEntity : UserEntity
         where TPropertyValueEntity : PropertyValueEntity
     {

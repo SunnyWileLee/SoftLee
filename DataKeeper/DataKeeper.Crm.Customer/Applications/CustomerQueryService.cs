@@ -8,8 +8,10 @@ using DataKeeper.Crm.Customer.Models;
 using DataKeeper.Crm.Customer.Repositories;
 using DataKeeper.Framework.Applications;
 using DataKeeper.Framework.Domain;
+using DataKeeper.Framework.Domain.Entities;
 using DataKeeper.Framework.Models;
 using DataKeeper.Framework.Repositories;
+using DataKeeper.Framework.Repositories.Entities;
 
 namespace DataKeeper.Crm.Customer.Applications
 {
