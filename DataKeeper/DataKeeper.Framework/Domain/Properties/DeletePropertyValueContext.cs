@@ -1,5 +1,4 @@
 ﻿using DataKeeper.Framework.Entities;
-using DataKeeper.Framework.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain.Properties
 {
-    public class SetPropertyValueContext<TPropertyValueEntity> : AccessDbContext
+    public class DeletePropertyValueContext<TPropertyValueEntity> : AccessDbContext
         where TPropertyValueEntity : PropertyValueEntity
     {
         public Guid InstanceId { get; set; }
         public string KeyProperty { get; set; }
-        public IEnumerable<TPropertyValueEntity> PropertyValues { get; set; }
 
         public Expression<Func<TPropertyValueEntity, bool>> CreatePredicate()
         {

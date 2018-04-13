@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Repositories.Properties
 {
-    public interface IPropertyValueRepositoryProvider
+    public interface IPropertyDeleteRepositoryProvider
     {
-        IPropertyValueRepository Provide(Func<IPropertyValueRepository, bool> selector);
-        IPropertyValueRepository Provide();
+        IPropertyDeleteRepository Provide();
+        IPropertyDeleteRepository Provide(Func<IPropertyDeleteRepository, bool> selector);
     }
 }

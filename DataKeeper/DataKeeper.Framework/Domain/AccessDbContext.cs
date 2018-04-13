@@ -11,5 +11,6 @@ namespace DataKeeper.Framework.Domain
     {
         public virtual Guid UserId { get; set; }
         public virtual IDbContextProvider ContextProvider { get; set; }
+        public bool IsCancel { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Repositories.Properties
 {
-    public interface IPropertyValueRepository
+    public interface IPropertyValueSetRepository
     {
         void SetValues<TPropertyValue>(SetPropertyValueContext<TPropertyValue> context) where TPropertyValue : PropertyValueEntity;
     }

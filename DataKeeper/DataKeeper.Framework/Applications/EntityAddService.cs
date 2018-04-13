@@ -20,12 +20,12 @@ namespace DataKeeper.Framework.Applications
     {
         private readonly IEntityAddRepositoryProvider _entityAddRepositoryProvider;
         private readonly IDbContextProvider _contextProvider;
-        private readonly IPropertyValueRepositoryProvider _propertyValueRepositoryProvider;
+        private readonly IPropertyValueSetRepositoryProvider _propertyValueRepositoryProvider;
         private readonly IPropertyValueKeyProviderSelector _propertyValueKeyProviderSelector;
 
         public EntityAddService(IEntityAddRepositoryProvider entityAddRepositoryProvider, 
                                 IDbContextProvider contextProvider, 
-                                IPropertyValueRepositoryProvider propertyValueRepositoryProvider, 
+                                IPropertyValueSetRepositoryProvider propertyValueRepositoryProvider, 
                                 IPropertyValueKeyProviderSelector propertyValueKeyProviderSelector)
         {
             _entityAddRepositoryProvider = entityAddRepositoryProvider;
@@ -53,7 +53,7 @@ namespace DataKeeper.Framework.Applications
 
         private void AddEntity_SuccessEvent(object sender, RepositoryEventArgs args)
         {
-            if (args.NewId == Guid.Empty)
+            if (args.NewEntityId == Guid.Empty)
             {
                 throw new ArgumentNullException("AddEntity_SuccessEvent=>EntityId");
             }
@@ -62,12 +62,12 @@ namespace DataKeeper.Framework.Applications
             values.ForEach(value =>
             {
                 value.UserId = context.UserId;
-                value.SetInstance(args.NewId);
+                value.SetInstance(args.NewEntityId);
             });
             var valueContext = new SetPropertyValueContext<TPropertyValueEntity>
             {
                 ContextProvider = _contextProvider,
-                InstanceId = args.NewId,
+                InstanceId = args.NewEntityId,
                 KeyProperty = _propertyValueKeyProviderSelector.Select().Provide<TPropertyValueEntity>(),
                 UserId = context.UserId,
                 PropertyValues = values

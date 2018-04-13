@@ -9,7 +9,7 @@ using DataKeeper.Framework.Entities;
 
 namespace DataKeeper.Framework.Repositories.Properties
 {
-    public class PropertyValueRepository : IPropertyValueRepository
+    public class PropertyValueSetRepository : IPropertyValueSetRepository
     {
         public virtual void SetValues<TPropertyValue>(SetPropertyValueContext<TPropertyValue> context) where TPropertyValue : PropertyValueEntity
         {

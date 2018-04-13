@@ -1,4 +1,5 @@
 ﻿using DataKeeper.Framework.Domain;
+using DataKeeper.Framework.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,11 @@ namespace DataKeeper.Framework.Repositories
     public class RepositoryEventArgs : EventArgs
     {
         public AccessDbContext AccessDbContext { get; set; }
-        public Guid NewId { get; set; }
+        public Guid NewEntityId { get; set; }
+        public Guid EntityId { get; set; }
         public int Count { get; set; }
+
+        public BaseEntity Instance { get; set; }
 
         public Exception Exception { get; set; }
         public string ErrorMessage { get; set; }

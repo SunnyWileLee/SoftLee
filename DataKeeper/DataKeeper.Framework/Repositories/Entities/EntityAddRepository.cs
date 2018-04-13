@@ -29,7 +29,7 @@ namespace DataKeeper.Framework.Repositories.Entities
                 var success = count > 0;
                 if (success)
                 {
-                    args.NewId = entity.Id;
+                    args.NewEntityId = entity.Id;
                     OnSuccess(args);
                 }
                 else

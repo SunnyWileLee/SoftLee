@@ -17,19 +17,22 @@ namespace DataKeeper.Framework.Applications
     class PropertyService<TPropertyEntity> : IPropertyService<TPropertyEntity>
         where TPropertyEntity : PropertyEntity
     {
-        private readonly IPropertyAddRepositoryProvider _propertyAddRepository;
+        private readonly IPropertyAddRepositoryProvider _propertyAddRepositoryProvider;
+        private readonly IPropertyDeleteRepositoryProvider _propertyDeleteRepositoryProvider;
         private readonly IDbContextProvider _contextProvider;
 
-        public PropertyService(IPropertyAddRepositoryProvider propertyAddRepository, 
+        public PropertyService(IPropertyAddRepositoryProvider propertyAddRepositoryProvider,
+                               IPropertyDeleteRepositoryProvider propertyDeleteRepositoryProvider,
                                IDbContextProvider contextProvider)
         {
-            _propertyAddRepository = propertyAddRepository;
+            _propertyAddRepositoryProvider = propertyAddRepositoryProvider;
+            _propertyDeleteRepositoryProvider = propertyDeleteRepositoryProvider;
             _contextProvider = contextProvider;
         }
 
         public Guid Add<TPropertyModel>(TPropertyModel model) where TPropertyModel : PropertyModel
         {
-            var repository = _propertyAddRepository.Provide();
+            var repository = _propertyAddRepositoryProvider.Provide();
             var property = Mapper.Map<TPropertyEntity>(model);
             var context = new AddPropertyContext<TPropertyEntity>
             {
@@ -41,6 +44,19 @@ namespace DataKeeper.Framework.Applications
         }
 
         public void Delete(Guid id)
+        {
+            var context = new DeletePropertyContext<TPropertyEntity>
+            {
+                ContextProvider = _contextProvider,
+                Id = id,
+                UserId = UserContext.Current.UserId
+            };
+            var repository = _propertyDeleteRepositoryProvider.Provide();
+            repository.SuccessEvent += DeleteProperty_SuccessEvent;
+            repository.Delete(context);
+        }
+
+        private void DeleteProperty_SuccessEvent(object sender, RepositoryEventArgs args)
         {
             throw new NotImplementedException();
         }

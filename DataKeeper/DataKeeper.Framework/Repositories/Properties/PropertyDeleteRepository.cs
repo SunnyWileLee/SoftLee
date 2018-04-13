@@ -3,35 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataKeeper.Framework.Domain;
 using DataKeeper.Framework.Domain.Properties;
 using DataKeeper.Framework.Entities;
 
 namespace DataKeeper.Framework.Repositories.Properties
 {
-    public class PropertyAddRepository : BaseRepository, IPropertyAddRepository
+    public class PropertyDeleteRepository : BaseRepository, IPropertyDeleteRepository
     {
-        public virtual Guid Add<TProperty>(AddPropertyContext<TProperty> context) where TProperty : PropertyEntity
+        public void Delete<TPropertyEntity>(DeletePropertyContext<TPropertyEntity> context) where TPropertyEntity : PropertyEntity
         {
-            OnBefore(new RepositoryEventArgs { AccessDbContext = context });
             using (var db = context.ContextProvider.Provide())
             {
-                if (context.Property.Id == Guid.Empty)
+                var property = db.Set<TPropertyEntity>()
+                                 .Where(s => s.UserId == context.UserId)
+                                 .FirstOrDefault(s => s.Id == context.Id);
+                OnBefore(new RepositoryEventArgs { AccessDbContext = context, Instance = property });
+                if (context.IsCancel)
                 {
-                    context.Property.Id = Guid.NewGuid();
+                    return;
                 }
-                db.Set<TProperty>().Add(context.Property);
+                db.Set<TPropertyEntity>().Remove(property);
                 var count = db.SaveChanges();
                 OnComplete(new RepositoryEventArgs { AccessDbContext = context, Count = count });
                 if (count > 0)
                 {
-                    OnSuccess(new RepositoryEventArgs { AccessDbContext = context, NewEntityId = context.Property.Id });
+                    OnSuccess(new RepositoryEventArgs { AccessDbContext = context, EntityId = context.Id });
                 }
                 else
                 {
                     OnSuccess(new RepositoryEventArgs { AccessDbContext = context, ErrorMessage = "添加失败" });
                 }
-                return context.Property.Id;
             }
         }
     }
