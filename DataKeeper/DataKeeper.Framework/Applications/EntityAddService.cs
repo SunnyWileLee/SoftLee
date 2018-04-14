@@ -23,9 +23,9 @@ namespace DataKeeper.Framework.Applications
         private readonly IPropertyValueSetRepositoryProvider _propertyValueRepositoryProvider;
         private readonly IPropertyValueKeyProviderSelector _propertyValueKeyProviderSelector;
 
-        public EntityAddService(IEntityAddRepositoryProvider entityAddRepositoryProvider, 
-                                IDbContextProvider contextProvider, 
-                                IPropertyValueSetRepositoryProvider propertyValueRepositoryProvider, 
+        public EntityAddService(IEntityAddRepositoryProvider entityAddRepositoryProvider,
+                                IDbContextProvider contextProvider,
+                                IPropertyValueSetRepositoryProvider propertyValueRepositoryProvider,
                                 IPropertyValueKeyProviderSelector propertyValueKeyProviderSelector)
         {
             _entityAddRepositoryProvider = entityAddRepositoryProvider;
@@ -58,6 +58,10 @@ namespace DataKeeper.Framework.Applications
                 throw new ArgumentNullException("AddEntity_SuccessEvent=>EntityId");
             }
             var context = args.AccessDbContext as AddPropertyOwnerContext<TEntity, TPropertyValueEntity>;
+            if (context == null)
+            {
+                return;
+            }
             var values = context.Values.ToList();
             values.ForEach(value =>
             {

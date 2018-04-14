@@ -11,12 +11,13 @@ namespace DataKeeper.Framework.Repositories.Properties
 {
     public class PropertyValueSetRepository : IPropertyValueSetRepository
     {
-        public virtual void SetValues<TPropertyValue>(SetPropertyValueContext<TPropertyValue> context) where TPropertyValue : PropertyValueEntity
+        public virtual void SetValues<TPropertyValueEntity>(SetPropertyValueContext<TPropertyValueEntity> context) 
+            where TPropertyValueEntity : PropertyValueEntity
         {
             using (var db = context.ContextProvider.Provide())
             {
                 var predicate = context.CreatePredicate();
-                var values = db.Set<TPropertyValue>()
+                var values = db.Set<TPropertyValueEntity>()
                              .Where(s => s.UserId == context.UserId)
                              .Where(predicate)
                              .ToList();
@@ -27,7 +28,7 @@ namespace DataKeeper.Framework.Repositories.Properties
                                     var current = values.FirstOrDefault(s => s.PropertyId == value.PropertyId);
                                     if (current == null)
                                     {
-                                        db.Set<TPropertyValue>().Add(value);
+                                        db.Set<TPropertyValueEntity>().Add(value);
                                     }
                                     else
                                     {

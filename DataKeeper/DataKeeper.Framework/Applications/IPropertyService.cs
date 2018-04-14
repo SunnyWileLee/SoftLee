@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Applications
 {
-    public interface IPropertyService<TPropertyEntity> 
+    public interface IPropertyService<TPropertyEntity>
         where TPropertyEntity : PropertyEntity
     {
-        Guid Add<TPropertyModel>(TPropertyModel model) where TPropertyModel: PropertyModel;
+        Guid Add<TPropertyModel>(TPropertyModel model) where TPropertyModel : PropertyModel;
         void Update<TPropertyModel>(TPropertyModel model) where TPropertyModel : PropertyModel;
         void Delete(Guid id);
     }

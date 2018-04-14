@@ -9,6 +9,7 @@ using DataKeeper.Framework.Repositories.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,8 @@ namespace DataKeeper.Framework.Applications
         private readonly IPropertyAddRepositoryProvider _propertyAddRepositoryProvider;
         private readonly IPropertyDeleteRepositoryProvider _propertyDeleteRepositoryProvider;
         private readonly IDbContextProvider _contextProvider;
+        private readonly IPropertyValueDeleteRepositoryProvider _propertyValueDeleteRepositoryProvider;
+        private readonly IPropertyValueKeyProviderSelector _propertyValueKeyProviderSelector;
 
         public PropertyService(IPropertyAddRepositoryProvider propertyAddRepositoryProvider,
                                IPropertyDeleteRepositoryProvider propertyDeleteRepositoryProvider,
@@ -58,7 +61,19 @@ namespace DataKeeper.Framework.Applications
 
         private void DeleteProperty_SuccessEvent(object sender, RepositoryEventArgs args)
         {
-            throw new NotImplementedException();
+            var successContext = args.AccessDbContext as DeletePropertyContext<TPropertyEntity>;
+            var description = typeof(TPropertyEntity).GetCustomAttribute<PropertyDescriptionAttribute>();
+            var context = new DeletePropertyValueContext<PropertyValueEntity>
+            {
+                ContextProvider = _contextProvider,
+                InstanceId = successContext.Id,
+                IsCancel = false,
+                KeyProperty = _propertyValueKeyProviderSelector.Select().Provide(description.PropertyValueType),
+                UserId = UserContext.Current.UserId
+            };
+            var repository = _propertyValueDeleteRepositoryProvider.Provide();
+            repository.Delete(context);
+
         }
 
         public void Update<TPropertyModel>(TPropertyModel model) where TPropertyModel : PropertyModel

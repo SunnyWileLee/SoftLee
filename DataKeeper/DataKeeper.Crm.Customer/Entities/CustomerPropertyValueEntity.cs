@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace DataKeeper.Crm.Customer.Entities
 {
     [Table("CustomerPropertyValue")]
-    [PropertyValue("CustomerId")]
+    [PropertyValueDescription("CustomerId")]
     public class CustomerPropertyValueEntity : PropertyValueEntity
     {
         public Guid CustomerId { get; set; }

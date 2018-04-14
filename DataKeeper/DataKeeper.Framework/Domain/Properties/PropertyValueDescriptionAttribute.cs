@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain.Properties
 {
-    public class PropertyValueAttribute : Attribute
+    public class PropertyValueDescriptionAttribute : Attribute
     {
-        public PropertyValueAttribute(string instanceKey)
+        public PropertyValueDescriptionAttribute(string instanceKey)
         {
             InstanceKey = instanceKey;
         }

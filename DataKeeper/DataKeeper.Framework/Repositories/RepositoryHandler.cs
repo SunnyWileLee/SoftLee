@@ -18,6 +18,7 @@ namespace DataKeeper.Framework.Repositories
         public int Count { get; set; }
 
         public BaseEntity Instance { get; set; }
+        public IEnumerable<BaseEntity> Instances { get; set; }
 
         public Exception Exception { get; set; }
         public string ErrorMessage { get; set; }

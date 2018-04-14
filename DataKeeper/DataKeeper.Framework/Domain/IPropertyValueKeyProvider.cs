@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataKeeper.Framework.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace DataKeeper.Framework.Domain
 {
     public interface IPropertyValueKeyProvider
     {
-        string Provide<TPropertyValueEntity>();
+        string Provide<TPropertyValueEntity>() where TPropertyValueEntity : PropertyValueEntity;
+        string Provide(Type type);
     }
 }

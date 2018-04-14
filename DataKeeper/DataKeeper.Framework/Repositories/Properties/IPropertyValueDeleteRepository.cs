@@ -1,5 +1,4 @@
-﻿using DataKeeper.Framework.Domain;
-using DataKeeper.Framework.Domain.Properties;
+﻿using DataKeeper.Framework.Domain.Properties;
 using DataKeeper.Framework.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Repositories.Properties
 {
-    public interface IPropertyValueSetRepository
+    public interface IPropertyValueDeleteRepository : IBaseRepository
     {
-        void SetValues<TPropertyValueEntity>(SetPropertyValueContext<TPropertyValueEntity> context) 
+        void Delete<TPropertyValueEntity>(DeletePropertyValueContext<TPropertyValueEntity> context)
             where TPropertyValueEntity : PropertyValueEntity;
     }
 }

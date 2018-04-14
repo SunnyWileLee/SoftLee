@@ -75,7 +75,9 @@
     <Compile Include="Domain\ObjectContainers.cs" />
     <Compile Include="Domain\Properties\DeletePropertyContext.cs" />
     <Compile Include="Domain\Properties\DeletePropertyValueContext.cs" />
-    <Compile Include="Domain\Properties\PropertyValueAttribute.cs" />
+    <Compile Include="Domain\Properties\PropertyDescriptionAttribute.cs" />
+    <Compile Include="Domain\Properties\PropertyValueContext.cs" />
+    <Compile Include="Domain\Properties\PropertyValueDescriptionAttribute.cs" />
     <Compile Include="Domain\Properties\CachedPropertyValueKeyProvider.cs" />
     <Compile Include="Domain\Properties\PropertyValueKeyProvider.cs" />
     <Compile Include="Domain\Properties\PropertyValueKeyProviderSelector.cs" />
@@ -122,6 +124,8 @@
     <Compile Include="Repositories\Properties\IPropertyQueryRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\IPropertyAddRepository.cs" />
     <Compile Include="Repositories\Properties\IPropertyAddRepositoryProvider.cs" />
+    <Compile Include="Repositories\Properties\IPropertyValueDeleteRepository.cs" />
+    <Compile Include="Repositories\Properties\IPropertyValueDeleteRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\IPropertyValueQueryRepository.cs" />
     <Compile Include="Repositories\Properties\IPropertyValueQueryRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\IPropertyValueSetRepository.cs" />
@@ -132,6 +136,8 @@
     <Compile Include="Repositories\Properties\PropertyQueryRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\PropertyAddRepository.cs" />
     <Compile Include="Repositories\Properties\PropertyAddRepositoryProvider.cs" />
+    <Compile Include="Repositories\Properties\PropertyValueDeleteRepository.cs" />
+    <Compile Include="Repositories\Properties\PropertyValueDeleteRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\PropertyValueQueryRepository.cs" />
     <Compile Include="Repositories\Properties\PropertyValueQueryRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\PropertyValueSetRepository.cs" />

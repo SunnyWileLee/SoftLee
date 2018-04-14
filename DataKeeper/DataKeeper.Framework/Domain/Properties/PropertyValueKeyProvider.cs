@@ -11,7 +11,7 @@ namespace DataKeeper.Framework.Domain.Properties
     {
         protected override string ProvideMethod(Type type)
         {
-            var attr = type.GetCustomAttribute<PropertyValueAttribute>();
+            var attr = type.GetCustomAttribute<PropertyValueDescriptionAttribute>();
             if (attr == null)
             {
 
