@@ -2,23 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Models
 {
-    public class PageQueryParas<TEntity> : QueryParameter<TEntity>
+    public abstract class QueryParameter<TEntity> : IQueryParameter<TEntity>
         where TEntity : UserEntity
     {
-        public int Page { get; set; }
-        public int PageSize { get; set; }
-
-        public int Skip
+        public virtual Expression<Func<TEntity, bool>> CreatePredicate()
         {
-            get
-            {
-                return (Page - 1) * PageSize;
-            }
+            return s => true;
         }
     }
 }

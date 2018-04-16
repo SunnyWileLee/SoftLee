@@ -24,7 +24,7 @@ namespace DataKeeper.Crm.Customer.Applications
 
         }
 
-        protected override QueryEntityPageContext<CustomerEntity> CreatePageQueryContext(PageQueryParas pageQueryParas)
+        protected override QueryEntityPageContext<CustomerEntity> CreatePageQueryContext(PageQueryParas<CustomerEntity> pageQueryParas)
         {
             var context = base.CreatePageQueryContext(pageQueryParas);
             var paras = pageQueryParas as CustomerPageQueryParas;
@@ -35,10 +35,10 @@ namespace DataKeeper.Crm.Customer.Applications
             return context;
         }
 
-        protected override QueryEntityContext<CustomerEntity> CreateQueryContext(QueryParas queryParas)
+        protected override QueryEntityContext<CustomerEntity> CreateQueryContext(QueryParameter queryParas)
         {
             var context = base.CreateQueryContext(queryParas);
-            var paras = queryParas as CustomerQueryParas;
+            var paras = queryParas as CustomerQueryParameter;
             if (paras != null)
             {
                 context.Predicate = s => s.Phone.Contains(paras.Keyword) || s.Name.Contains(paras.Keyword);

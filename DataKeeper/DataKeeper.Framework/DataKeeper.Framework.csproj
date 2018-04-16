@@ -99,6 +99,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\IMapperProfile.cs" />
     <Compile Include="Models\IMapperProfileProvider.cs" />
+    <Compile Include="Models\IQueryParameter.cs" />
     <Compile Include="Models\MapperProfile.cs" />
     <Compile Include="Models\MapperProfileProvider.cs" />
     <Compile Include="Models\PageCollection.cs" />
@@ -106,7 +107,7 @@
     <Compile Include="Models\PropertyModel.cs" />
     <Compile Include="Models\PropertyOwnerModel.cs" />
     <Compile Include="Models\PropertyValueModel.cs" />
-    <Compile Include="Models\QueryParas.cs" />
+    <Compile Include="Models\QueryParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\Entities\EntityAddRepository.cs" />

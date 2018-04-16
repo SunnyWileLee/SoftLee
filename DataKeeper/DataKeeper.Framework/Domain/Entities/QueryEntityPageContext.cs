@@ -13,6 +13,6 @@ namespace DataKeeper.Framework.Domain.Entities
     public class QueryEntityPageContext<TEntity> : QueryEntityContext<TEntity>
         where TEntity : UserEntity
     {       
-        public PageQueryParas PageQueryParas { get; set; }
+        public PageQueryParas<TEntity> PageQueryParas { get; set; }
     }
 }

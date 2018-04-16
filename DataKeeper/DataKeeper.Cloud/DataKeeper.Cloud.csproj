@@ -133,6 +133,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataKeeper.Crm.Customer\DataKeeper.Crm.Customer.csproj">
+      <Project>{BE9295D1-93F7-4336-A30A-F8A864141678}</Project>
+      <Name>DataKeeper.Crm.Customer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataKeeper.Framework.Webapi\DataKeeper.Framework.Webapi.csproj">
       <Project>{a368403a-8a0e-4861-8ccc-10b346a4e385}</Project>
       <Name>DataKeeper.Framework.Webapi</Name>
@@ -149,6 +153,9 @@
       <Project>{7f284815-56cb-4593-a965-94410befe367}</Project>
       <Name>DataKeeper.Ums.User</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

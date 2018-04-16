@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Applications
 {
-    class EntityAddService<TEntity, TPropertyValueEntity> : IEntityAddService<TEntity, TPropertyValueEntity>
+    public class EntityAddService<TEntity, TPropertyValueEntity> : IEntityAddService<TEntity, TPropertyValueEntity>
         where TEntity : UserEntity
         where TPropertyValueEntity : PropertyValueEntity
     {

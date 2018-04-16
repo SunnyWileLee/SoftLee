@@ -13,13 +13,13 @@ using DataKeeper.Framework.Repositories.Entities;
 
 namespace DataKeeper.Framework.Applications
 {
-    public abstract class EntityQueryService<TEntity> : IEntityQueryService<TEntity>
+    public class EntityQueryService<TEntity> : IEntityQueryService<TEntity>
         where TEntity : UserEntity
     {
         private readonly IRepositoryProviderProvider _repositoryProviderProvider;
         private readonly IDbContextProvider _contextProvider;
 
-        protected EntityQueryService(IRepositoryProviderProvider repositoryProviderProvider,
+        public EntityQueryService(IRepositoryProviderProvider repositoryProviderProvider,
                                      IDbContextProvider contextProvider)
         {
             _repositoryProviderProvider = repositoryProviderProvider;
@@ -42,7 +42,7 @@ namespace DataKeeper.Framework.Applications
             }
         }
 
-        public virtual PageCollection<TModel> Page<TModel>(PageQueryParas pageQueryParas)
+        public virtual PageCollection<TModel> Page<TModel>(PageQueryParas<TEntity> pageQueryParas)
         {
             var repository = _repositoryProviderProvider.Provide<IEntityQueryRepository>().Provide();
             var context = CreatePageQueryContext(pageQueryParas);
@@ -57,18 +57,18 @@ namespace DataKeeper.Framework.Applications
             };
         }
 
-        protected virtual QueryEntityPageContext<TEntity> CreatePageQueryContext(PageQueryParas pageQueryParas)
+        protected QueryEntityPageContext<TEntity> CreatePageQueryContext(PageQueryParas<TEntity> pageQueryParas)
         {
             return new QueryEntityPageContext<TEntity>
             {
                 ContextProvider = _contextProvider,
                 PageQueryParas = pageQueryParas,
                 UserId = UserContext.Current.UserId,
-                Predicate = s => true
+                Predicate = pageQueryParas.CreatePredicate()
             };
         }
 
-        public virtual List<TModel> Query<TModel>(QueryParas queryParas)
+        public virtual List<TModel> Query<TModel>(QueryParameter<TEntity> queryParas)
         {
             var repository = _repositoryProviderProvider.Provide<IEntityQueryRepository>().Provide();
             var context = CreateQueryContext(queryParas);
@@ -77,13 +77,13 @@ namespace DataKeeper.Framework.Applications
             return models;
         }
 
-        protected virtual QueryEntityContext<TEntity> CreateQueryContext(QueryParas pageQueryParas)
+        protected QueryEntityContext<TEntity> CreateQueryContext(QueryParameter<TEntity> pageQueryParas)
         {
             return new QueryEntityContext<TEntity>
             {
                 ContextProvider = _contextProvider,
                 UserId = UserContext.Current.UserId,
-                Predicate = s => true
+                Predicate = pageQueryParas.CreatePredicate()
             };
         }
     }
