@@ -11,9 +11,20 @@ namespace DataKeeper.Ums.User.Repositories
 {
     class AccountQueryRepository : IAccountQueryRepository
     {
+        private readonly IUserContextProvider _userContextProvider;
+
+        public AccountQueryRepository(IUserContextProvider userContextProvider)
+        {
+            _userContextProvider = userContextProvider;
+        }
+
         public AccountEntity GetById(Guid id)
         {
-            throw new NotImplementedException();
+            using (var context = _userContextProvider.Provide())
+            {
+                var users = context.Set<AccountEntity>();
+                return users.FirstOrDefault(s => s.Id == id);
+            }
         }
 
         public AccountEntity GetByPhone(string phone)
@@ -21,7 +32,7 @@ namespace DataKeeper.Ums.User.Repositories
             throw new NotImplementedException();
         }
 
-        public PageCollection<AccountEntity> Page(Expression<Func<AccountEntity, bool>> predicate, PageQueryParas paras)
+        public PageCollection<AccountEntity> Page(Expression<Func<AccountEntity, bool>> predicate, PageQueryParameter<AccountEntity> paras)
         {
             throw new NotImplementedException();
         }

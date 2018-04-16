@@ -60,6 +60,8 @@
     <Compile Include="Entities\CustomerEntity.cs" />
     <Compile Include="Entities\CustomerPropertyEntity.cs" />
     <Compile Include="Entities\CustomerPropertyValueEntity.cs" />
+    <Compile Include="IAutofacCrmCustomer.cs" />
+    <Compile Include="Models\CrmCustomerMapperProfile.cs" />
     <Compile Include="Models\CustomerMapperProfile.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\CustomerNaiveModel.cs" />
@@ -70,10 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CustomerContext.cs" />
     <Compile Include="Repositories\CustomerContextProvider.cs" />
-    <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\ICustomerContextProvider.cs" />
-    <Compile Include="Repositories\ICustomerQueryRepository.cs" />
-    <Compile Include="Repositories\ICustomerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />

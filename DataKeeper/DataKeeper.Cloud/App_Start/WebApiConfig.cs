@@ -1,4 +1,5 @@
-﻿using DataKeeper.Framework;
+﻿using DataKeeper.Crm.Customer;
+using DataKeeper.Framework;
 using DataKeeper.Framework.Models;
 using DataKeeper.Framework.Webapi;
 using DataKeeper.Infrustructure;
@@ -34,19 +35,20 @@ namespace DataKeeper.Cloud
                                           {
                                               typeof(IAutofacFramework).Assembly,
                                               typeof(IAutofacInfrustructure).Assembly,
-                                              typeof(IAutofacUser).Assembly
+                                              typeof(IAutofacUmsUser).Assembly,
+                                              typeof(IAutofacCrmCustomer).Assembly
                                           });
 
             AutoMapperConfig.Config(config.DependencyResolver.GetService(typeof(IMapperProfileProvider)) as IMapperProfileProvider);
 
             var accountQueryService = config.DependencyResolver.GetService(typeof(IAccountQueryService)) as IAccountQueryService;
             config.MessageHandlers.Add(new DataKeeperUserMessageHandler
-                                        {
-                                            GetUserIdAction = s =>
-                                            {
-                                                return accountQueryService.GetByToken(s)?.Id ?? Guid.Empty;
-                                            }
-                                        });
+            {
+                GetUserIdAction = s =>
+                {
+                    return accountQueryService.GetByToken(s)?.Id ?? Guid.Empty;
+                }
+            });
         }
     }
 }

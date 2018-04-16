@@ -103,7 +103,7 @@
     <Compile Include="Models\MapperProfile.cs" />
     <Compile Include="Models\MapperProfileProvider.cs" />
     <Compile Include="Models\PageCollection.cs" />
-    <Compile Include="Models\PageQueryParas.cs" />
+    <Compile Include="Models\PageQueryParameter.cs" />
     <Compile Include="Models\PropertyModel.cs" />
     <Compile Include="Models\PropertyOwnerModel.cs" />
     <Compile Include="Models\PropertyValueModel.cs" />

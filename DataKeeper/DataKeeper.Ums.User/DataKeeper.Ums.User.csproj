@@ -57,10 +57,10 @@
     <Compile Include="Applications\IAccountService.cs" />
     <Compile Include="Entities\AccountEntity.cs" />
     <Compile Include="Entities\TokenEntity.cs" />
-    <Compile Include="IAutofacUser.cs" />
+    <Compile Include="IAutofacUmsUser.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AccountPageQueryParas.cs" />
-    <Compile Include="Models\UserMapperProfile.cs" />
+    <Compile Include="Models\UmsUserMapperProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccountQueryRepository.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />

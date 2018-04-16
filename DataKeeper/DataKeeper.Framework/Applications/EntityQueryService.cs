@@ -42,7 +42,7 @@ namespace DataKeeper.Framework.Applications
             }
         }
 
-        public virtual PageCollection<TModel> Page<TModel>(PageQueryParas<TEntity> pageQueryParas)
+        public virtual PageCollection<TModel> Page<TModel>(PageQueryParameter<TEntity> pageQueryParas)
         {
             var repository = _repositoryProviderProvider.Provide<IEntityQueryRepository>().Provide();
             var context = CreatePageQueryContext(pageQueryParas);
@@ -57,7 +57,7 @@ namespace DataKeeper.Framework.Applications
             };
         }
 
-        protected QueryEntityPageContext<TEntity> CreatePageQueryContext(PageQueryParas<TEntity> pageQueryParas)
+        protected QueryEntityPageContext<TEntity> CreatePageQueryContext(PageQueryParameter<TEntity> pageQueryParas)
         {
             return new QueryEntityPageContext<TEntity>
             {

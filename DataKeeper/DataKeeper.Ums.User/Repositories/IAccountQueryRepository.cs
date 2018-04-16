@@ -13,6 +13,6 @@ namespace DataKeeper.Ums.User.Repositories
     {
         AccountEntity GetByPhone(string phone);
         AccountEntity GetById(Guid id);
-        PageCollection<AccountEntity> Page(Expression<Func<AccountEntity, bool>> predicate, PageQueryParas paras);
+        PageCollection<AccountEntity> Page(Expression<Func<AccountEntity, bool>> predicate, PageQueryParameter<AccountEntity> paras);
     }
 }

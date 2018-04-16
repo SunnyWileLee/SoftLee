@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Crm.Customer.Models
 {
-    public class CustomerPageQueryParas : PageQueryParas
+    public class CustomerPageQueryParas : PageQueryParameter<CustomerEntity>
     {
         public string Keyword { get; set; }
     }

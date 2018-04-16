@@ -33,10 +33,24 @@ namespace DataKeeper.Crm.Customer.Applications
             var context = new AddPropertyContext<CustomerPropertyEntity>
             {
                 Property = property,
-                ContextProvider = _customerContextProvider
+                ContextProvider = _customerContextProvider,
+                UserId = UserContext.Current.UserId
             };
             var repository = _repositoryProviderProvider.Provide<IPropertyAddRepository>().Provide();
             return repository.Add(context);
+        }
+
+        public List<CustomerPropertyModel> GetList()
+        {
+            var repository = _repositoryProviderProvider.Provide<IPropertyQueryRepository>().Provide();
+            var context = new QueryPropertyContext<CustomerPropertyEntity>
+            {
+                ContextProvider = _customerContextProvider,
+                Predicate = s => true,
+                UserId = UserContext.Current.UserId
+            };
+            var properties = repository.Query<CustomerPropertyEntity>(context);
+            return Mapper.Map<List<CustomerPropertyModel>>(properties);
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Models
 {
-    public interface IQueryParameter<TEntity> where TEntity : UserEntity
+    public interface IQueryParameter<TEntity> where TEntity : BaseEntity
     {
         Expression<Func<TEntity, bool>> CreatePredicate();
     }

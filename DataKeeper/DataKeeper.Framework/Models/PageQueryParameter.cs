@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Models
 {
-    public class PageQueryParas<TEntity> : QueryParameter<TEntity>
-        where TEntity : UserEntity
+    public class PageQueryParameter<TEntity> : QueryParameter<TEntity>
+        where TEntity : BaseEntity
     {
+        public PageQueryParameter()
+        {
+            Page = 1;
+            PageSize = 20;
+        }
+
         public int Page { get; set; }
         public int PageSize { get; set; }
 
@@ -18,6 +24,14 @@ namespace DataKeeper.Framework.Models
             get
             {
                 return (Page - 1) * PageSize;
+            }
+        }
+
+        public int Take
+        {
+            get
+            {
+                return PageSize;
             }
         }
     }

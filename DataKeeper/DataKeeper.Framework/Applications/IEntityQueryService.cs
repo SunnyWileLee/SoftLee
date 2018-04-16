@@ -11,7 +11,7 @@ namespace DataKeeper.Framework.Applications
     public interface IEntityQueryService<TEntity>
         where TEntity : UserEntity
     {
-        PageCollection<TModel> Page<TModel>(PageQueryParas<TEntity> pageQueryParas);
+        PageCollection<TModel> Page<TModel>(PageQueryParameter<TEntity> pageQueryParas);
         List<TModel> Query<TModel>(QueryParameter<TEntity> queryParas);
     }
 }

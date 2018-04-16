@@ -20,6 +20,7 @@ namespace DataKeeper.Framework.Repositories.Properties
                 {
                     context.Property.Id = Guid.NewGuid();
                 }
+                context.Property.UserId = context.UserId;
                 db.Set<TProperty>().Add(context.Property);
                 var count = db.SaveChanges();
                 OnComplete(new RepositoryEventArgs { AccessDbContext = context, Count = count });
@@ -29,7 +30,7 @@ namespace DataKeeper.Framework.Repositories.Properties
                 }
                 else
                 {
-                    OnSuccess(new RepositoryEventArgs { AccessDbContext = context, ErrorMessage = "添加失败" });
+                    OnFail(new RepositoryEventArgs { AccessDbContext = context, ErrorMessage = "添加失败" });
                 }
                 return context.Property.Id;
             }

@@ -23,27 +23,5 @@ namespace DataKeeper.Crm.Customer.Applications
         {
 
         }
-
-        protected override QueryEntityPageContext<CustomerEntity> CreatePageQueryContext(PageQueryParas<CustomerEntity> pageQueryParas)
-        {
-            var context = base.CreatePageQueryContext(pageQueryParas);
-            var paras = pageQueryParas as CustomerPageQueryParas;
-            if (paras != null)
-            {
-                context.Predicate = s => s.Name.Contains(paras.Keyword) || s.Phone.Contains(paras.Keyword);
-            }
-            return context;
-        }
-
-        protected override QueryEntityContext<CustomerEntity> CreateQueryContext(QueryParameter queryParas)
-        {
-            var context = base.CreateQueryContext(queryParas);
-            var paras = queryParas as CustomerQueryParameter;
-            if (paras != null)
-            {
-                context.Predicate = s => s.Phone.Contains(paras.Keyword) || s.Name.Contains(paras.Keyword);
-            }
-            return context;
-        }
     }
 }

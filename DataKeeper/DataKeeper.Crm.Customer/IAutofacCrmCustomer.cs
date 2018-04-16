@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataKeeper.Ums.User
+namespace DataKeeper.Crm.Customer
 {
-    public interface IAutofacUser
+    public interface IAutofacCrmCustomer
     {
     }
 }

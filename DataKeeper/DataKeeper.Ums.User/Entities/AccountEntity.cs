@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DataKeeper.Ums.User.Entities
 {
     [Table("Account")]
-    class AccountEntity : BaseEntity
+    public class AccountEntity : BaseEntity
     {
         public string Name { get; set; }
         public string Phone { get; set; }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DataKeeper.Framework.Models
 {
     public abstract class QueryParameter<TEntity> : IQueryParameter<TEntity>
-        where TEntity : UserEntity
+        where TEntity : BaseEntity
     {
         public virtual Expression<Func<TEntity, bool>> CreatePredicate()
         {
