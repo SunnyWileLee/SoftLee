@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Repositories.Entities
 {
-    public interface IEntityQueryRepository
+    public interface IEntityQueryRepository : IBaseRepository
     {
         PageCollection<TEntity> Page<TEntity>(QueryEntityPageContext<TEntity> context) where TEntity : UserEntity;
         List<TEntity> Query<TEntity>(QueryEntityContext<TEntity> context) where TEntity : UserEntity;

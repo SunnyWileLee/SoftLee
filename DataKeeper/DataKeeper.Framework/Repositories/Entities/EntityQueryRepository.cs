@@ -10,7 +10,7 @@ using DataKeeper.Framework.Models;
 
 namespace DataKeeper.Framework.Repositories.Entities
 {
-    public class EntityQueryRepository : IEntityQueryRepository
+    public class EntityQueryRepository : BaseRepository, IEntityQueryRepository
     {
         public virtual List<TEntity> Query<TEntity>(QueryEntityContext<TEntity> context) where TEntity : UserEntity
         {

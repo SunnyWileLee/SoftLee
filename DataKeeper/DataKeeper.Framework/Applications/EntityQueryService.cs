@@ -16,21 +16,21 @@ namespace DataKeeper.Framework.Applications
     public abstract class EntityQueryService<TEntity> : IEntityQueryService<TEntity>
         where TEntity : UserEntity
     {
-        private readonly IEntityQueryRepositoryProvider _entityQueryRepositoryProvider;
+        private readonly IRepositoryProviderProvider _repositoryProviderProvider;
         private readonly IDbContextProvider _contextProvider;
 
-        protected EntityQueryService(IEntityQueryRepositoryProvider entityQueryRepositoryProvider,
+        protected EntityQueryService(IRepositoryProviderProvider repositoryProviderProvider,
                                      IDbContextProvider contextProvider)
         {
-            _entityQueryRepositoryProvider = entityQueryRepositoryProvider;
+            _repositoryProviderProvider = repositoryProviderProvider;
             _contextProvider = contextProvider;
         }
 
-        public IEntityQueryRepositoryProvider EntityPageQueryRepositoryProvider
+        public IRepositoryProviderProvider RepositoryProviderProvider
         {
             get
             {
-                return _entityQueryRepositoryProvider;
+                return _repositoryProviderProvider;
             }
         }
 
@@ -44,9 +44,9 @@ namespace DataKeeper.Framework.Applications
 
         public virtual PageCollection<TModel> Page<TModel>(PageQueryParas pageQueryParas)
         {
-            var entityQueryRepository = _entityQueryRepositoryProvider.Provide();
+            var repository = _repositoryProviderProvider.Provide<IEntityQueryRepository>().Provide();
             var context = CreatePageQueryContext(pageQueryParas);
-            var entities = entityQueryRepository.Page(context);
+            var entities = repository.Page(context);
             var models = Mapper.Map<List<TModel>>(entities.List);
             return new PageCollection<TModel>
             {
@@ -70,9 +70,9 @@ namespace DataKeeper.Framework.Applications
 
         public virtual List<TModel> Query<TModel>(QueryParas queryParas)
         {
-            var entityQueryRepository = _entityQueryRepositoryProvider.Provide();
+            var repository = _repositoryProviderProvider.Provide<IEntityQueryRepository>().Provide();
             var context = CreateQueryContext(queryParas);
-            var entities = entityQueryRepository.Query(context);
+            var entities = repository.Query(context);
             var models = Mapper.Map<List<TModel>>(entities);
             return models;
         }
