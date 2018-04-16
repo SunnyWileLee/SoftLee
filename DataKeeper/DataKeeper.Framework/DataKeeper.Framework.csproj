@@ -66,6 +66,7 @@
     <Compile Include="Applications\PropertyDeleteService.cs" />
     <Compile Include="Applications\PropertyQueryService.cs" />
     <Compile Include="Applications\PropertyAddService.cs" />
+    <Compile Include="AutofacRegister.cs" />
     <Compile Include="Domain\AccessDbContext.cs" />
     <Compile Include="Domain\Entities\AddEntityContext.cs" />
     <Compile Include="Domain\Properties\AddPropertyContext.cs" />

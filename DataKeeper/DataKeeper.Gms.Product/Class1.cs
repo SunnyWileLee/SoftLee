@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataKeeper.Framework
+namespace DataKeeper.Gms.Product
 {
-    public interface IAutofacFramework
+    public class Class1
     {
-
     }
 }

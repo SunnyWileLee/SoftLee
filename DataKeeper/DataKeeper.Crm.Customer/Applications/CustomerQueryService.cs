@@ -18,7 +18,7 @@ namespace DataKeeper.Crm.Customer.Applications
     class CustomerQueryService : EntityQueryService<CustomerEntity>, ICustomerQueryService
     {
         public CustomerQueryService(IRepositoryProviderProvider repositoryProviderProvider,
-                                   ICustomerContextProvider contextProvider)
+                                    ICustomerContextProvider contextProvider)
             : base(repositoryProviderProvider, contextProvider)
         {
 

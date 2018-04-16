@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Crm.Supplier", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Ums.Menu", "DataKeeper.Ums.Menu\DataKeeper.Ums.Menu.csproj", "{DDC9024C-3321-4733-A464-40D95AB9A7FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Gms.Product", "DataKeeper.Gms.Product\DataKeeper.Gms.Product.csproj", "{C80422C2-F4B9-43B7-B636-B2A065F67FFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{DDC9024C-3321-4733-A464-40D95AB9A7FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDC9024C-3321-4733-A464-40D95AB9A7FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDC9024C-3321-4733-A464-40D95AB9A7FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C80422C2-F4B9-43B7-B636-B2A065F67FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C80422C2-F4B9-43B7-B636-B2A065F67FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C80422C2-F4B9-43B7-B636-B2A065F67FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80422C2-F4B9-43B7-B636-B2A065F67FFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

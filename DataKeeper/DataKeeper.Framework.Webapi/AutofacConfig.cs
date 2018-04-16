@@ -19,6 +19,7 @@ namespace DataKeeper.Framework.Webapi
             builder.RegisterApiControllers(webapiAssembly);
             builder.RegisterAssemblyTypes(webapiAssembly).AsImplementedInterfaces();
             builder.RegisterAssemblyTypes(assemblies.ToArray()).AsImplementedInterfaces();
+            AutofacRegister.Register(builder);
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             ObjectContainers.Current = container;
