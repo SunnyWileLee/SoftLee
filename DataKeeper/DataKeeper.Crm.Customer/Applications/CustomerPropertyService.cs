@@ -18,13 +18,13 @@ namespace DataKeeper.Crm.Customer.Applications
     class CustomerPropertyService : ICustomerPropertyService
     {
         private readonly ICustomerContextProvider _customerContextProvider;
-        private readonly IPropertyAddRepositoryProvider _propertyRepositoryProvider;
+        private readonly IRepositoryProviderProvider _repositoryProviderProvider;
 
         public CustomerPropertyService(ICustomerContextProvider customerContextProvider,
-                               IPropertyAddRepositoryProvider propertyRepositoryProvider)
+                                       IRepositoryProviderProvider repositoryProviderProvider)
         {
             _customerContextProvider = customerContextProvider;
-            _propertyRepositoryProvider = propertyRepositoryProvider;
+            _repositoryProviderProvider = repositoryProviderProvider;
         }
 
         public Guid Add(CustomerPropertyModel model)
@@ -35,7 +35,7 @@ namespace DataKeeper.Crm.Customer.Applications
                 Property = property,
                 ContextProvider = _customerContextProvider
             };
-            var repository = _propertyRepositoryProvider.Provide();
+            var repository = _repositoryProviderProvider.Provide<IPropertyAddRepository>().Provide();
             return repository.Add(context);
         }
     }

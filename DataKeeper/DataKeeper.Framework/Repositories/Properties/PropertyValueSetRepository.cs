@@ -9,9 +9,9 @@ using DataKeeper.Framework.Entities;
 
 namespace DataKeeper.Framework.Repositories.Properties
 {
-    public class PropertyValueSetRepository : IPropertyValueSetRepository
+    public class PropertyValueSetRepository : BaseRepository, IPropertyValueSetRepository
     {
-        public virtual void SetValues<TPropertyValueEntity>(SetPropertyValueContext<TPropertyValueEntity> context) 
+        public virtual void SetValues<TPropertyValueEntity>(SetPropertyValueContext<TPropertyValueEntity> context)
             where TPropertyValueEntity : PropertyValueEntity
         {
             using (var db = context.ContextProvider.Provide())

@@ -16,19 +16,19 @@ namespace DataKeeper.Framework.Applications
     public class PropertyQueryService<TPropertyEntity> : IPropertyQueryService<TPropertyEntity>
         where TPropertyEntity : PropertyEntity
     {
-        private readonly IPropertyQueryRepositoryProvider _propertyQueryRepositoryProvider;
+        private readonly IRepositoryProviderProvider _repositoryProviderProvider;
         private readonly IDbContextProvider _contextProvider;
 
-        public PropertyQueryService(IPropertyQueryRepositoryProvider propertyQueryRepositoryProvider, 
+        public PropertyQueryService(IRepositoryProviderProvider repositoryProviderProvider,
                                     IDbContextProvider contextProvider)
         {
-            _propertyQueryRepositoryProvider = propertyQueryRepositoryProvider;
+            _repositoryProviderProvider = repositoryProviderProvider;
             _contextProvider = contextProvider;
         }
 
         public TPropertyModel First<TPropertyModel>(Guid id)
         {
-            var repository = _propertyQueryRepositoryProvider.Provide();
+            var repository = _repositoryProviderProvider.Provide<IPropertyQueryRepository>().Provide();
             var context = new QueryPropertyContext<TPropertyEntity>
             {
                 ContextProvider = _contextProvider,
@@ -41,7 +41,7 @@ namespace DataKeeper.Framework.Applications
 
         public List<TPropertyModel> Query<TPropertyModel>()
         {
-            var repository = _propertyQueryRepositoryProvider.Provide();
+            var repository = _repositoryProviderProvider.Provide<IPropertyQueryRepository>().Provide();
             var context = new QueryPropertyContext<TPropertyEntity>
             {
                 ContextProvider = _contextProvider,

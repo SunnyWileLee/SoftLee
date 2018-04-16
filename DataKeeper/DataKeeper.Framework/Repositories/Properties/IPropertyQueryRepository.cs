@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Repositories.Properties
 {
-    public interface IPropertyQueryRepository
+    public interface IPropertyQueryRepository : IBaseRepository
     {
         List<TProperty> Query<TProperty>(QueryPropertyContext<TProperty> context) where TProperty : PropertyEntity;
         TProperty First<TProperty>(QueryPropertyContext<TProperty> context) where TProperty : PropertyEntity;

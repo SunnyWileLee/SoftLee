@@ -55,17 +55,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Applications\EntityAddService.cs" />
-    <Compile Include="Applications\EntityAddServiceProvider.cs" />
     <Compile Include="Applications\EntityQueryService.cs" />
-    <Compile Include="Applications\IEntityAddServiceProvider.cs" />
+    <Compile Include="Applications\GenericServiceProvider.cs" />
     <Compile Include="Applications\IEntityQueryService.cs" />
     <Compile Include="Applications\IEntityAddService.cs" />
+    <Compile Include="Applications\IGenericServiceProvider.cs" />
+    <Compile Include="Applications\IPropertyDeleteService.cs" />
     <Compile Include="Applications\IPropertyQueryService.cs" />
-    <Compile Include="Applications\IPropertyQueryServiceProvider.cs" />
-    <Compile Include="Applications\IPropertyService.cs" />
+    <Compile Include="Applications\IPropertyAddService.cs" />
+    <Compile Include="Applications\PropertyDeleteService.cs" />
     <Compile Include="Applications\PropertyQueryService.cs" />
-    <Compile Include="Applications\PropertyQueryServiceProvider.cs" />
-    <Compile Include="Applications\PropertyService.cs" />
+    <Compile Include="Applications\PropertyAddService.cs" />
     <Compile Include="Domain\AccessDbContext.cs" />
     <Compile Include="Domain\Entities\AddEntityContext.cs" />
     <Compile Include="Domain\Properties\AddPropertyContext.cs" />
@@ -118,31 +118,23 @@
     <Compile Include="Repositories\Entities\IEntityAddRepositoryProvider.cs" />
     <Compile Include="Repositories\Entities\IEntityQueryRepository.cs" />
     <Compile Include="Repositories\Entities\IEntityQueryRepositoryProvider.cs" />
+    <Compile Include="Repositories\IRepositoryProvider.cs" />
+    <Compile Include="Repositories\IRepositoryProviderProvider.cs" />
     <Compile Include="Repositories\Properties\IPropertyDeleteRepository.cs" />
-    <Compile Include="Repositories\Properties\IPropertyDeleteRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\IPropertyQueryRepository.cs" />
-    <Compile Include="Repositories\Properties\IPropertyQueryRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\IPropertyAddRepository.cs" />
-    <Compile Include="Repositories\Properties\IPropertyAddRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\IPropertyValueDeleteRepository.cs" />
-    <Compile Include="Repositories\Properties\IPropertyValueDeleteRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\IPropertyValueQueryRepository.cs" />
-    <Compile Include="Repositories\Properties\IPropertyValueQueryRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\IPropertyValueSetRepository.cs" />
-    <Compile Include="Repositories\Properties\IPropertyValueSetRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\PropertyDeleteRepository.cs" />
-    <Compile Include="Repositories\Properties\PropertyDeleteRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\PropertyQueryRepository.cs" />
-    <Compile Include="Repositories\Properties\PropertyQueryRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\PropertyAddRepository.cs" />
-    <Compile Include="Repositories\Properties\PropertyAddRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\PropertyValueDeleteRepository.cs" />
-    <Compile Include="Repositories\Properties\PropertyValueDeleteRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\PropertyValueQueryRepository.cs" />
-    <Compile Include="Repositories\Properties\PropertyValueQueryRepositoryProvider.cs" />
     <Compile Include="Repositories\Properties\PropertyValueSetRepository.cs" />
-    <Compile Include="Repositories\Properties\PropertyValueSetRepositoryProvider.cs" />
     <Compile Include="Repositories\RepositoryHandler.cs" />
+    <Compile Include="Repositories\RepositoryProvider.cs" />
+    <Compile Include="Repositories\RepositoryProviderProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

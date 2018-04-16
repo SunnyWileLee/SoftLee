@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Applications
 {
-    public interface IPropertyQueryServiceProvider
+    public interface IPropertyDeleteService<TPropertyEntity, TPropertyValueEntity>
+        where TPropertyEntity : PropertyEntity
+        where TPropertyValueEntity : PropertyValueEntity
     {
-        IPropertyQueryService<TPropertyEntity> Provide<TPropertyEntity>() where TPropertyEntity : PropertyEntity;
+        void Delete(Guid id);
     }
 }

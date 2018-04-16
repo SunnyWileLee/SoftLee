@@ -20,17 +20,17 @@ namespace DataKeeper.Framework.Applications
     {
         private readonly IEntityAddRepositoryProvider _entityAddRepositoryProvider;
         private readonly IDbContextProvider _contextProvider;
-        private readonly IPropertyValueSetRepositoryProvider _propertyValueRepositoryProvider;
+        private readonly IRepositoryProviderProvider _repositoryProviderProvider;
         private readonly IPropertyValueKeyProviderSelector _propertyValueKeyProviderSelector;
 
         public EntityAddService(IEntityAddRepositoryProvider entityAddRepositoryProvider,
                                 IDbContextProvider contextProvider,
-                                IPropertyValueSetRepositoryProvider propertyValueRepositoryProvider,
+                                IRepositoryProviderProvider repositoryProviderProvider,
                                 IPropertyValueKeyProviderSelector propertyValueKeyProviderSelector)
         {
             _entityAddRepositoryProvider = entityAddRepositoryProvider;
             _contextProvider = contextProvider;
-            _propertyValueRepositoryProvider = propertyValueRepositoryProvider;
+            _repositoryProviderProvider = repositoryProviderProvider;
             _propertyValueKeyProviderSelector = propertyValueKeyProviderSelector;
         }
 
@@ -76,7 +76,7 @@ namespace DataKeeper.Framework.Applications
                 UserId = context.UserId,
                 PropertyValues = values
             };
-            _propertyValueRepositoryProvider.Provide().SetValues(valueContext);
+            _repositoryProviderProvider.Provide<IPropertyValueSetRepository>().Provide().SetValues(valueContext);
         }
     }
 }

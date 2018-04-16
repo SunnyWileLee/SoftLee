@@ -15,17 +15,17 @@ namespace DataKeeper.Crm.Customer.Applications
 {
     class CustomerService : ICustomerService
     {
-        private readonly IEntityAddServiceProvider _entityAddServiceProvider;
+        private readonly IGenericServiceProvider _serviceProvider;
 
-        public CustomerService(IEntityAddServiceProvider entityAddServiceProvider)
+        public CustomerService(IGenericServiceProvider serviceProvider)
         {
-            _entityAddServiceProvider = entityAddServiceProvider;
+            _serviceProvider = serviceProvider;
         }
 
         public Guid Add(CustomerModel model)
         {
-            var entityAdder = _entityAddServiceProvider.Provide<CustomerEntity, CustomerPropertyValueEntity>();
-            return entityAdder.Add(model);
+            var service = _serviceProvider.Provide<IEntityAddService<CustomerEntity, CustomerPropertyValueEntity>>();
+            return service.Add(model);
         }
     }
 }
