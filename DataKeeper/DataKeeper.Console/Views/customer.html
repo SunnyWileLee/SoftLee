@@ -1,0 +1,52 @@
+﻿<div class="panel panel-info" id="app">
+    <div class="panel-heading">Panel heading</div>
+    <div class="panel-body">
+        <p>...</p>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="s in customers.List">
+                <td>{{s.Name}}</td>
+                <td>{{s.Phone}}</td>
+                <td>
+                    <button class="btn btn-primary" v-on:click="editUser(u)">编辑</button>
+                    <button class="btn btn-danger" v-on:click="deleteUser(u)">删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            customers: {},
+        },
+        methods: {
+            getCustomers: function () {
+                var that = this;
+                var url = "/Customer/Page";
+                get(url, that.getCustomersSuccess, that.getCustomersError)
+            },
+            getCustomersSuccess: function (data) {
+                customers = data;
+            },
+            getCustomersError: function (data) {
+
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        vm.getCustomers();
+    })
+
+</script>
