@@ -1,7 +1,13 @@
 ﻿<div class="panel panel-info" id="app">
-    <div class="panel-heading">Panel heading</div>
+    <div class="panel-heading">客户管理</div>
     <div class="panel-body">
-        <p>...</p>
+        <form class="form-inline">
+            <div class="form-group">
+                <label>关键字</label>
+                <input id="Keyword" class="form-control" />
+            </div>
+            <button type="button" class="btn btn-primary" onclick="querySubmit()">查询</button>
+        </form>
     </div>
     <table class="table table-bordered">
         <thead>
