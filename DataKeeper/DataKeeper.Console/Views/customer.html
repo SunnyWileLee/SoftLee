@@ -7,24 +7,28 @@
                 <input id="Keyword" class="form-control" />
             </div>
             <button type="button" class="btn btn-primary" onclick="querySubmit()">查询</button>
+            <button type="button" class="btn btn-success" onabort="">新增</button>
+            <a class="btn btn-info btn-url" data-url="/views/customerPropety.html">属性管理</a>
         </form>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-condensed">
         <thead>
             <tr>
+                <th>操作</th>
                 <th>姓名</th>
                 <th>电话</th>
-                <th>操作</th>
+                <th v-for="p in properties">{{p.Name}}</th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="s in customers.List">
-                <td>{{s.Name}}</td>
-                <td>{{s.Phone}}</td>
+            <tr v-for="customer in customers.List">
                 <td>
                     <button class="btn btn-primary" v-on:click="editUser(u)">编辑</button>
                     <button class="btn btn-danger" v-on:click="deleteUser(u)">删除</button>
                 </td>
+                <td>{{customer.Name}}</td>
+                <td>{{customer.Phone}}</td>
+                <td v-for="p in properties">{{getPropertyValue(p,customer.Properties)}}</td>
             </tr>
         </tbody>
     </table>
@@ -35,18 +39,39 @@
         el: '#app',
         data: {
             customers: {},
+            properties: []
         },
         methods: {
             getCustomers: function () {
-                var that = this;
                 var url = "/Customer/Page";
-                get(url, that.getCustomersSuccess, that.getCustomersError)
+                get(url, this.getCustomersSuccess, this.getCustomersError)
             },
             getCustomersSuccess: function (data) {
                 this.customers = data;
             },
             getCustomersError: function (data) {
 
+            },
+            getProperties: function () {
+                var url = "/CustomerProperty/List";
+                get(url, this.getPropertiesSuccess, this.getPropertiesError)
+            },
+            getPropertiesSuccess: function (data) {
+                console.log(data);
+                this.properties = data;
+            },
+            getPropertiesError: function (data) {
+
+            },
+            getPropertyValue(property, values) {
+                values.forEach(function (value, index, array) {
+                    if (value.PropertyId == property.Id) {
+                        return value.Value;
+                    }
+                    else {
+                        return '';
+                    }
+                });
             }
         }
     });
@@ -55,4 +80,7 @@
         vm.getCustomers();
     })
 
+    $(document).ready(function () {
+        vm.getProperties();
+    })
 </script>

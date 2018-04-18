@@ -1,5 +1,5 @@
 ﻿function post(url, data, success, error) {
-    var host = 'http://localhost:60747/';
+    var host = 'http://localhost:1030/';
     $.ajax({
         url: host + url,
         type: "POST",
@@ -24,7 +24,7 @@
 }
 
 function get(url, success, error) {
-    var host = 'http://localhost:60747/';
+    var host = 'http://localhost:1030/';
     $.ajax({
         url: host + url,
         type: "GET",
@@ -45,3 +45,21 @@ function get(url, success, error) {
         }
     });
 }
+
+$(document).ready(function () {
+    $('.btn-url').click(function (e) {
+
+        console.log(1);
+        var btn = $(this);
+        var url = btn.attr('data-url');
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (html) {
+                $('#html-container').html(html);
+            }
+        });
+
+    });
+});

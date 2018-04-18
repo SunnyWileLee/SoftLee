@@ -48,6 +48,10 @@ namespace DataKeeper.Framework.Applications
             var context = CreatePageQueryContext(pageQueryParas);
             var entities = repository.Page(context);
             var models = Mapper.Map<List<TModel>>(entities.List);
+            if (typeof(TModel).IsSubclassOf(typeof(PropertyOwnerModel))
+            {
+
+            }
             return new PageCollection<TModel>
             {
                 PageSize = entities.PageSize,

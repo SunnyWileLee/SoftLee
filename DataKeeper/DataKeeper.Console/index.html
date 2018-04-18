@@ -21,7 +21,7 @@
                         <a class="btn-url" data-url="/views/customer.html">客户管理</a>
                     </li>
                     <li>
-                        <a class="btn-url" data-url="/views/customer">供应商管理</a>
+                        <a class="btn-url" data-url="/views/supplier.html">供应商管理</a>
                     </li>
                 </ul>
             </li>
@@ -35,19 +35,7 @@
 </html>
 
 <script type="text/javascript">
-    $('.btn-url').click(function (e) {
-        var btn = $(this);
-        var url = btn.attr('data-url');
-
-        $.ajax({
-            type: "GET",
-            url: url,
-            success: function (html) {
-                $('#html-container').html(html);
-            }
-        });
-
-    });
+    
 </script>
 
 
