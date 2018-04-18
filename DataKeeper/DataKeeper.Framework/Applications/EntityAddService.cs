@@ -59,6 +59,10 @@ namespace DataKeeper.Framework.Applications
             {
                 return;
             }
+            if (context.Values == null || !context.Values.Any())
+            {
+                return;
+            }
             var values = context.Values.ToList();
             values.ForEach(value =>
             {

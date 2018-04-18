@@ -37,7 +37,7 @@
                 get(url, that.getCustomersSuccess, that.getCustomersError)
             },
             getCustomersSuccess: function (data) {
-                customers = data;
+                this.customers = data;
             },
             getCustomersError: function (data) {
 
