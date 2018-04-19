@@ -48,7 +48,7 @@ namespace DataKeeper.Framework.Domain.Properties
                 {
                     return key;
                 }
-                key = this.Provide(type);
+                key = this.ProvideMethod(type);
                 if (!string.IsNullOrEmpty(key))
                 {
                     SetCache(type, key);

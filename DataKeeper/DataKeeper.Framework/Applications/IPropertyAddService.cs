@@ -11,8 +11,7 @@ namespace DataKeeper.Framework.Applications
     public interface IPropertyAddService<TPropertyEntity>
         where TPropertyEntity : PropertyEntity
     {
-        Guid Add<TPropertyModel>(TPropertyModel model) where TPropertyModel : PropertyModel;
-        void Update<TPropertyModel>(TPropertyModel model) where TPropertyModel : PropertyModel;
-  
+        Guid Add(TPropertyEntity model);
+        //void Update(TPropertyEntity model);
     }
 }

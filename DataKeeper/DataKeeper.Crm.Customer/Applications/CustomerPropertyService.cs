@@ -25,16 +25,16 @@ namespace DataKeeper.Crm.Customer.Applications
             _genericServiceProvider = genericServiceProvider;
         }
 
-        public Guid Add(CustomerPropertyModel model)
+        public Guid Add(CustomerPropertyEntity model)
         {
             var repository = _genericServiceProvider.Provide<IPropertyAddService<CustomerPropertyEntity>>();
             return repository.Add(model);
         }
 
-        public List<CustomerPropertyModel> GetList()
+        public List<CustomerPropertyEntity> GetList()
         {
             var repository = _genericServiceProvider.Provide<IPropertyQueryService<CustomerPropertyEntity>>();
-            var properties = repository.Query<CustomerPropertyModel>();
+            var properties = repository.Query<CustomerPropertyEntity>();
             return properties;
         }
     }

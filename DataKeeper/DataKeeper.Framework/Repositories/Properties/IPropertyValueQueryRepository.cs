@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Repositories.Properties
 {
-    public interface IPropertyValueQueryRepository
+    public interface IPropertyValueQueryRepository : IBaseRepository
     {
-        IEnumerable<IGrouping<Guid, TPropertyValue>> Grouping<TPropertyValue>(GroupPropertyValueContext<TPropertyValue> context) where TPropertyValue : PropertyValueEntity;
-        IEnumerable<TPropertyValue> Query<TPropertyValue>(QueryPropertyValueContext<TPropertyValue> context) where TPropertyValue : PropertyValueEntity;
+        IEnumerable<IGrouping<Guid, TPropertyValueEntity>> Grouping<TPropertyValueEntity>(GroupPropertyValueContext<TPropertyValueEntity> context) where TPropertyValueEntity : PropertyValueEntity;
+        IEnumerable<TPropertyValueEntity> Query<TPropertyValueEntity>(QueryPropertyValueContext<TPropertyValueEntity> context) where TPropertyValueEntity : PropertyValueEntity;
     }
 }

@@ -25,8 +25,8 @@ namespace DataKeeper.Framework
                    .As(typeof(IEntityAddService<,>))
                    .InstancePerLifetimeScope();
 
-            builder.RegisterGeneric(typeof(EntityQueryService<>))
-                   .As(typeof(IEntityQueryService<>))
+            builder.RegisterGeneric(typeof(EntityQueryService<,>))
+                   .As(typeof(IEntityQueryService<,>))
                    .InstancePerLifetimeScope();
 
             builder.RegisterGeneric(typeof(PropertyQueryService<>))

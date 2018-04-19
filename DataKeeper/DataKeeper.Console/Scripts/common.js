@@ -29,7 +29,7 @@ function get(url, success, error) {
         url: host + url,
         type: "GET",
         headers: {
-            token:'8FF40BAF-CF97-445B-BD40-D00466E63C03'
+            token: '8FF40BAF-CF97-445B-BD40-D00466E63C03'
         },
         success: function (response) {
             if (success == null) {
@@ -46,20 +46,20 @@ function get(url, success, error) {
     });
 }
 
-$(document).ready(function () {
+function bindClick() {
     $('.btn-url').click(function (e) {
-
-        console.log(1);
         var btn = $(this);
         var url = btn.attr('data-url');
-
         $.ajax({
             type: "GET",
             url: url,
             success: function (html) {
                 $('#html-container').html(html);
+                $('.btn-url').off('click');
+                bindClick();
             }
         });
-
     });
-});
+}
+
+$(document).ready(bindClick);

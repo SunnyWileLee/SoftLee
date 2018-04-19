@@ -8,41 +8,41 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataKeeper.Framework.Domain
+namespace DataKeeper.Framework.Domain.Properties
 {
-    public class GroupPropertyValueContext<TPropertyValue> : AccessDbContext
-        where TPropertyValue:PropertyValueEntity
+    public class GroupPropertyValueContext<TPropertyValueEntity> : AccessDbContext
+        where TPropertyValueEntity:PropertyValueEntity
     {
         private static MethodInfo containsMethod;
         private static object containsMethodLock = new object { };
 
-        public IEnumerable<Guid> Keys { get; set; } 
-        public string KeyProperty { get; set; }
+        public IEnumerable<Guid> Keys { get; set; }
+        public IPropertyValueKeyProvider PropertyValueKeyProvider { get; set; }
 
-        public Expression<Func<TPropertyValue, bool>> CreatePredicate()
+        public Expression<Func<TPropertyValueEntity, bool>> CreatePredicate()
         {
             var contains = GetContainsMethod();
 
-            var type = typeof(TPropertyValue);
+            var type = typeof(TPropertyValueEntity);
             var parameter = Expression.Parameter(type, "value");
-            var key = Expression.Property(parameter, KeyProperty);
+            var key = Expression.Property(parameter, PropertyValueKeyProvider.Provide<TPropertyValueEntity>());
 
             var arguments = new List<Expression> {
                 Expression.Constant(Keys),
                 key
             };
             var call = Expression.Call(contains, arguments);
-            var predicate = Expression.Lambda<Func<TPropertyValue, bool>>(call, parameter);
+            var predicate = Expression.Lambda<Func<TPropertyValueEntity, bool>>(call, parameter);
             return predicate;
         }
 
-        public Expression<Func<TPropertyValue, Guid>> GroupKey()
+        public Expression<Func<TPropertyValueEntity, Guid>> GroupKey()
         {
-            var type = typeof(TPropertyValue);
+            var type = typeof(TPropertyValueEntity);
             var parameter = Expression.Parameter(type, "value");
-            var key = Expression.Property(parameter, KeyProperty);
+            var key = Expression.Property(parameter, PropertyValueKeyProvider.Provide<TPropertyValueEntity>());
 
-            var keySelector = Expression.Lambda<Func<TPropertyValue, Guid>>(key, parameter);
+            var keySelector = Expression.Lambda<Func<TPropertyValueEntity, Guid>>(key, parameter);
             return keySelector;
         }
 

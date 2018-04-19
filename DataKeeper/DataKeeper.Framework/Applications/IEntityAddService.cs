@@ -12,6 +12,6 @@ namespace DataKeeper.Framework.Applications
         where TEntity : UserEntity
         where TPropertyValueEntity : PropertyValueEntity
     {
-        Guid Add<TModel>(TModel model) where TModel : PropertyOwnerModel;
+        Guid Add<TModel>(TModel model) where TModel : PropertyOwnerModel<TPropertyValueEntity>;
     }
 }

@@ -1,4 +1,5 @@
-﻿using DataKeeper.Crm.Customer.Models;
+﻿using DataKeeper.Crm.Customer.Entities;
+using DataKeeper.Crm.Customer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace DataKeeper.Crm.Customer.Applications
 {
     public interface ICustomerPropertyService
     {
-        Guid Add(CustomerPropertyModel model);
-        List<CustomerPropertyModel> GetList();
+        Guid Add(CustomerPropertyEntity model);
+        List<CustomerPropertyEntity> GetList();
     }
 }

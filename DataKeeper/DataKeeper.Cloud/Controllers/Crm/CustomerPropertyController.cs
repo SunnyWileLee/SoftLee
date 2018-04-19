@@ -1,4 +1,5 @@
 ﻿using DataKeeper.Crm.Customer.Applications;
+using DataKeeper.Crm.Customer.Entities;
 using DataKeeper.Crm.Customer.Models;
 using System;
 using System.Collections.Generic;
@@ -19,13 +20,13 @@ namespace DataKeeper.Cloud.Controllers.Crm
         }
 
         [HttpGet]
-        public List<CustomerPropertyModel> List()
+        public List<CustomerPropertyEntity> List()
         {
             return _customerPropertyService.GetList();
         }
 
         [HttpPost]
-        public Guid Add(CustomerPropertyModel model)
+        public Guid Add(CustomerPropertyEntity model)
         {
             return _customerPropertyService.Add(model);
         }

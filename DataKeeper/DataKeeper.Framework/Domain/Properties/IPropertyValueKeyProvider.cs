@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataKeeper.Framework.Domain
+namespace DataKeeper.Framework.Domain.Properties
 {
     public interface IPropertyValueKeyProvider
     {

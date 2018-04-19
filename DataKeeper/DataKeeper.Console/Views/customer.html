@@ -8,7 +8,7 @@
             </div>
             <button type="button" class="btn btn-primary" onclick="querySubmit()">查询</button>
             <button type="button" class="btn btn-success" onabort="">新增</button>
-            <a class="btn btn-info btn-url" data-url="/views/customerPropety.html">属性管理</a>
+            <a class="btn btn-info btn-url" data-url="/views/customerProperty.html">属性管理</a>
         </form>
     </div>
     <table class="table table-bordered table-condensed">
@@ -28,7 +28,7 @@
                 </td>
                 <td>{{customer.Name}}</td>
                 <td>{{customer.Phone}}</td>
-                <td v-for="p in properties">{{getPropertyValue(p,customer.Properties)}}</td>
+                <td v-for="p in properties">{{ parseValue(customer.Properties, p.Id)}}</td>
             </tr>
         </tbody>
     </table>
@@ -41,7 +41,24 @@
             customers: {},
             properties: []
         },
+        computed:// computed是计算方法，不能接受参数的，
+        {
+        },
         methods: {
+            parseValue: function (list, id) {
+                var dict = this.makeDict(list);
+                if (id) {
+                    return dict[id] && dict[id].Value
+                }
+            },
+            makeDict: function (values) {
+                return (values || []).reduce(
+                    function (obj, item) {
+                        obj[item.PropertyId] = item
+                        return obj;
+                    }, {}
+                );
+            },
             getCustomers: function () {
                 var url = "/Customer/Page";
                 get(url, this.getCustomersSuccess, this.getCustomersError)
@@ -57,22 +74,11 @@
                 get(url, this.getPropertiesSuccess, this.getPropertiesError)
             },
             getPropertiesSuccess: function (data) {
-                console.log(data);
                 this.properties = data;
             },
             getPropertiesError: function (data) {
 
             },
-            getPropertyValue(property, values) {
-                values.forEach(function (value, index, array) {
-                    if (value.PropertyId == property.Id) {
-                        return value.Value;
-                    }
-                    else {
-                        return '';
-                    }
-                });
-            }
         }
     });
 

@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Framework.Domain.Properties
 {
-    public class QueryPropertyValueContext<TPropertyValue> : AccessDbContext
-        where TPropertyValue:PropertyValueEntity
+    public class QueryPropertyValueContext<TPropertyValueEntity> : AccessDbContext
+        where TPropertyValueEntity : PropertyValueEntity
     {
-        public Guid Key { get; set; }       
-        public string KeyProperty { get; set; }
+        public Guid Key { get; set; }
+        public IPropertyValueKeyProvider PropertyValueKeyProvider { get; set; }
 
-        public Expression<Func<TPropertyValue, bool>> CreatePredicate()
+        public Expression<Func<TPropertyValueEntity, bool>> CreatePredicate()
         {
-            var type = typeof(TPropertyValue);
+            var type = typeof(TPropertyValueEntity);
             var parameter = Expression.Parameter(type, "value");
-            var key = Expression.Property(parameter, KeyProperty);
+            var key = Expression.Property(parameter, PropertyValueKeyProvider.Provide<TPropertyValueEntity>());
             var value = Expression.Constant(Key);
             var body = Expression.Equal(key, value);
-            var predicate = Expression.Lambda<Func<TPropertyValue, bool>>(body, parameter);
+            var predicate = Expression.Lambda<Func<TPropertyValueEntity, bool>>(body, parameter);
             return predicate;
         }
     }

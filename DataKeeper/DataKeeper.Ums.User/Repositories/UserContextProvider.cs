@@ -9,7 +9,7 @@ namespace DataKeeper.Ums.User.Repositories
 {
     class UserContextProvider : IUserContextProvider
     {
-        public string Scope => throw new NotImplementedException();
+        public string Scope => "UmsUser";
 
         public DbContext Provide()
         {

@@ -71,8 +71,8 @@
     <Compile Include="Domain\Entities\AddEntityContext.cs" />
     <Compile Include="Domain\Properties\AddPropertyContext.cs" />
     <Compile Include="Domain\Properties\AddPropertyOwnerContext.cs" />
-    <Compile Include="Domain\IPropertyValueKeyProvider.cs" />
-    <Compile Include="Domain\IPropertyValueKeyProviderSelector.cs" />
+    <Compile Include="Domain\Properties\IPropertyValueKeyProvider.cs" />
+    <Compile Include="Domain\Properties\IPropertyValueKeyProviderSelector.cs" />
     <Compile Include="Domain\ObjectContainers.cs" />
     <Compile Include="Domain\Properties\DeletePropertyContext.cs" />
     <Compile Include="Domain\Properties\DeletePropertyValueContext.cs" />
@@ -84,7 +84,7 @@
     <Compile Include="Domain\Properties\PropertyValueKeyProviderSelector.cs" />
     <Compile Include="Domain\Entities\QueryEntityContext.cs" />
     <Compile Include="Domain\Entities\QueryEntityPageContext.cs" />
-    <Compile Include="Domain\GroupPropertyValueContext.cs" />
+    <Compile Include="Domain\Properties\GroupPropertyValueContext.cs" />
     <Compile Include="Domain\DataKeeperIdentity.cs" />
     <Compile Include="Domain\DataKeeperPrincipal.cs" />
     <Compile Include="Domain\Properties\QueryPropertyContext.cs" />
@@ -104,9 +104,7 @@
     <Compile Include="Models\MapperProfileProvider.cs" />
     <Compile Include="Models\PageCollection.cs" />
     <Compile Include="Models\PageQueryParameter.cs" />
-    <Compile Include="Models\PropertyModel.cs" />
     <Compile Include="Models\PropertyOwnerModel.cs" />
-    <Compile Include="Models\PropertyValueModel.cs" />
     <Compile Include="Models\QueryParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />

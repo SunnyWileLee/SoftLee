@@ -28,7 +28,7 @@ namespace DataKeeper.Framework.Applications
             _contextProvider = dbContextProviderSelector.Select<TPropertyEntity>();
         }
 
-        public Guid Add<TPropertyModel>(TPropertyModel model) where TPropertyModel : PropertyModel
+        public Guid Add(TPropertyEntity model) 
         {
             var repository = _repositoryProviderProvider.Provide<IPropertyAddRepository>().Provide();
             var property = Mapper.Map<TPropertyEntity>(model);
@@ -39,13 +39,6 @@ namespace DataKeeper.Framework.Applications
                 UserId = UserContext.Current.UserId
             };
             return repository.Add(context);
-        }
-
-   
-
-        public void Update<TPropertyModel>(TPropertyModel model) where TPropertyModel : PropertyModel
-        {
-            throw new NotImplementedException();
         }
     }
 }

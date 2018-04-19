@@ -31,7 +31,7 @@ namespace DataKeeper.Framework.Applications
             _propertyValueKeyProviderSelector = propertyValueKeyProviderSelector;
         }
 
-        public Guid Add<TModel>(TModel model) where TModel : PropertyOwnerModel
+        public Guid Add<TModel>(TModel model) where TModel : PropertyOwnerModel<TPropertyValueEntity>
         {
             var entity = Mapper.Map<TEntity>(model);
             var values = Mapper.Map<List<TPropertyValueEntity>>(model.Properties.ToList());

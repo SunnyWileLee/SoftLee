@@ -16,10 +16,6 @@ namespace DataKeeper.Crm.Customer.Models
             CreateMap<CustomerEntity, CustomerModel>();
             CreateMap<CustomerModel, CustomerEntity>();
             CreateMap<CustomerEntity, CustomerNaiveModel>();
-            CreateMap<CustomerPropertyEntity, CustomerPropertyModel>();
-            CreateMap<CustomerPropertyModel, CustomerPropertyEntity>();
-            CreateMap<CustomerPropertyValueEntity, CustomerPropertyValueModel>();
-            CreateMap<CustomerPropertyValueModel, CustomerPropertyValueEntity>();
         }
 
         public Profile GetProfile()

@@ -10,7 +10,7 @@ using DataKeeper.Framework.Entities;
 
 namespace DataKeeper.Framework.Repositories.Properties
 {
-    public class PropertyValueQueryRepository : IPropertyValueQueryRepository
+    public class PropertyValueQueryRepository : BaseRepository, IPropertyValueQueryRepository
     {
         public IEnumerable<IGrouping<Guid, TPropertyValue>> Grouping<TPropertyValue>(GroupPropertyValueContext<TPropertyValue> context) where TPropertyValue : PropertyValueEntity
         {
