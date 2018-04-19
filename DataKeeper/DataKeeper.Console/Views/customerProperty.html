@@ -1,1 +1,46 @@
-﻿<p>ddd</p>
+﻿<div class="panel panel-info" id="app">
+    <div class="panel-heading">客户属性管理</div>
+    <div class="panel-body">
+
+    </div>
+    <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>属性</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="p in properties">
+                <td>{{p.Name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            properties: []
+        },
+        computed:// computed是计算方法，不能接受参数的，
+        {
+        },
+        methods: {
+            getProperties: function () {
+                var url = "/CustomerProperty/List";
+                get(url, this.getPropertiesSuccess, this.getPropertiesError)
+            },
+            getPropertiesSuccess: function (data) {
+                this.properties = data;
+            },
+            getPropertiesError: function (data) {
+
+            },
+        }
+    });
+
+    $(document).ready(function () {
+        vm.getProperties();
+    })
+</script>
