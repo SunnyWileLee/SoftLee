@@ -25,7 +25,7 @@ namespace DataKeeper.Cloud.Controllers.Crm
         [HttpGet]
         public PageCollection<CustomerModel> Page([FromUri]CustomerQueryParameter parameter)
         {
-            var data = _customerQueryService.Page<CustomerModel>(parameter);
+            var data = _customerQueryService.Page(parameter);
             return data;
         }
 

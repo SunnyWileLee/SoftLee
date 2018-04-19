@@ -21,11 +21,11 @@ namespace DataKeeper.Framework.Applications
 
         public PropertyDeleteService(IRepositoryProviderProvider repositoryProviderProvider,
                                      IPropertyValueKeyProviderSelector propertyValueKeyProviderSelector,
-                                     IDbContextProvider contextProvider)
+                                     IDbContextProviderSelector dbContextProviderSelector)
         {
             _repositoryProviderProvider = repositoryProviderProvider;
             _propertyValueKeyProviderSelector = propertyValueKeyProviderSelector;
-            _contextProvider = contextProvider;
+            _contextProvider = dbContextProviderSelector.Select<TPropertyEntity>();
         }
 
         public void Delete(Guid id)

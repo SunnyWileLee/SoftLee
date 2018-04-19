@@ -57,6 +57,7 @@
     <Compile Include="Applications\ICustomerPropertyService.cs" />
     <Compile Include="Applications\ICustomerQueryService.cs" />
     <Compile Include="Applications\ICustomerService.cs" />
+    <Compile Include="Domain\CrmCustomerScoper.cs" />
     <Compile Include="Entities\CustomerEntity.cs" />
     <Compile Include="Entities\CustomerPropertyEntity.cs" />
     <Compile Include="Entities\CustomerPropertyValueEntity.cs" />
@@ -72,15 +73,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CustomerContext.cs" />
     <Compile Include="Repositories\CustomerContextProvider.cs" />
-    <Compile Include="Repositories\ICustomerContextProvider.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Domain\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DataKeeper.Framework\DataKeeper.Framework.csproj">
       <Project>{464a5e96-6d83-46dd-a118-becccfd74366}</Project>
       <Name>DataKeeper.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataKeeper.Infrustructure\DataKeeper.Infrustructure.csproj">
+      <Project>{436E21EC-04E3-47B1-A9E4-45B211A59675}</Project>
+      <Name>DataKeeper.Infrustructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

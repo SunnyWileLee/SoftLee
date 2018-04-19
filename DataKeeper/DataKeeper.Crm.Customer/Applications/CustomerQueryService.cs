@@ -15,13 +15,25 @@ using DataKeeper.Framework.Repositories.Entities;
 
 namespace DataKeeper.Crm.Customer.Applications
 {
-    class CustomerQueryService : EntityQueryService<CustomerEntity>, ICustomerQueryService
+    class CustomerQueryService : ICustomerQueryService
     {
-        public CustomerQueryService(IRepositoryProviderProvider repositoryProviderProvider,
-                                    ICustomerContextProvider contextProvider)
-            : base(repositoryProviderProvider, contextProvider)
-        {
+        private readonly IGenericServiceProvider _genericServiceProvider;
 
+        public CustomerQueryService(IGenericServiceProvider genericServiceProvider)
+        {
+            _genericServiceProvider = genericServiceProvider;
+        }
+
+        public PageCollection<CustomerModel> Page(PageQueryParameter<CustomerEntity> parameter)
+        {
+            var repository = _genericServiceProvider.Provide<IEntityQueryService<CustomerEntity>>();
+            return repository.Page<CustomerModel>(parameter);
+        }
+
+        public List<CustomerModel> Query(QueryParameter<CustomerEntity> parameter)
+        {
+            var repository = _genericServiceProvider.Provide<IEntityQueryService<CustomerEntity>>();
+            return repository.Query<CustomerModel>(parameter);
         }
     }
 }

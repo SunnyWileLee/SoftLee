@@ -110,12 +110,14 @@
     <Compile Include="Models\QueryParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\DbContextProviderSelector.cs" />
     <Compile Include="Repositories\Entities\EntityAddRepository.cs" />
     <Compile Include="Repositories\Entities\EntityQueryRepository.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
     <Compile Include="Repositories\IDbContextProvider.cs" />
     <Compile Include="Repositories\Entities\IEntityAddRepository.cs" />
     <Compile Include="Repositories\Entities\IEntityQueryRepository.cs" />
+    <Compile Include="Repositories\IDbContextProviderSelector.cs" />
     <Compile Include="Repositories\IRepositoryProvider.cs" />
     <Compile Include="Repositories\IRepositoryProviderProvider.cs" />
     <Compile Include="Repositories\Properties\IPropertyDeleteRepository.cs" />
@@ -138,6 +140,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DataKeeper.Infrustructure\DataKeeper.Infrustructure.csproj">
+      <Project>{436E21EC-04E3-47B1-A9E4-45B211A59675}</Project>
+      <Name>DataKeeper.Infrustructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

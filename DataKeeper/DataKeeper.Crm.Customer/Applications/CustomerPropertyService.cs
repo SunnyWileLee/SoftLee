@@ -7,6 +7,7 @@ using AutoMapper;
 using DataKeeper.Crm.Customer.Entities;
 using DataKeeper.Crm.Customer.Models;
 using DataKeeper.Crm.Customer.Repositories;
+using DataKeeper.Framework.Applications;
 using DataKeeper.Framework.Domain;
 using DataKeeper.Framework.Domain.Properties;
 using DataKeeper.Framework.Repositories;
@@ -17,40 +18,24 @@ namespace DataKeeper.Crm.Customer.Applications
 {
     class CustomerPropertyService : ICustomerPropertyService
     {
-        private readonly ICustomerContextProvider _customerContextProvider;
-        private readonly IRepositoryProviderProvider _repositoryProviderProvider;
+        private readonly IGenericServiceProvider _genericServiceProvider;
 
-        public CustomerPropertyService(ICustomerContextProvider customerContextProvider,
-                                       IRepositoryProviderProvider repositoryProviderProvider)
+        public CustomerPropertyService(IGenericServiceProvider genericServiceProvider)
         {
-            _customerContextProvider = customerContextProvider;
-            _repositoryProviderProvider = repositoryProviderProvider;
+            _genericServiceProvider = genericServiceProvider;
         }
 
         public Guid Add(CustomerPropertyModel model)
         {
-            var property = Mapper.Map<CustomerPropertyEntity>(model);
-            var context = new AddPropertyContext<CustomerPropertyEntity>
-            {
-                Property = property,
-                ContextProvider = _customerContextProvider,
-                UserId = UserContext.Current.UserId
-            };
-            var repository = _repositoryProviderProvider.Provide<IPropertyAddRepository>().Provide();
-            return repository.Add(context);
+            var repository = _genericServiceProvider.Provide<IPropertyAddService<CustomerPropertyEntity>>();
+            return repository.Add(model);
         }
 
         public List<CustomerPropertyModel> GetList()
         {
-            var repository = _repositoryProviderProvider.Provide<IPropertyQueryRepository>().Provide();
-            var context = new QueryPropertyContext<CustomerPropertyEntity>
-            {
-                ContextProvider = _customerContextProvider,
-                Predicate = s => true,
-                UserId = UserContext.Current.UserId
-            };
-            var properties = repository.Query<CustomerPropertyEntity>(context);
-            return Mapper.Map<List<CustomerPropertyModel>>(properties);
+            var repository = _genericServiceProvider.Provide<IPropertyQueryService<CustomerPropertyEntity>>();
+            var properties = repository.Query<CustomerPropertyModel>();
+            return properties;
         }
     }
 }

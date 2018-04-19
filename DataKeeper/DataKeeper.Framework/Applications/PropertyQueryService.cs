@@ -20,10 +20,10 @@ namespace DataKeeper.Framework.Applications
         private readonly IDbContextProvider _contextProvider;
 
         public PropertyQueryService(IRepositoryProviderProvider repositoryProviderProvider,
-                                    IDbContextProvider contextProvider)
+                                    IDbContextProviderSelector dbContextProviderSelector)
         {
             _repositoryProviderProvider = repositoryProviderProvider;
-            _contextProvider = contextProvider;
+            _contextProvider = dbContextProviderSelector.Select<TPropertyEntity>();
         }
 
         public TPropertyModel First<TPropertyModel>(Guid id)

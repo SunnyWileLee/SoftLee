@@ -1,6 +1,8 @@
-﻿using DataKeeper.Framework.Domain;
+﻿using DataKeeper.Crm.Customer.Domain;
+using DataKeeper.Framework.Domain;
 using DataKeeper.Framework.Domain.Properties;
 using DataKeeper.Framework.Entities;
+using DataKeeper.Infrustructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Crm.Customer.Entities
 {
-    [Table("CustomerPropertyValue")]
+    [Table("CustomerPropertyValue"), ScopeEntity(CrmCustomerScoper.ScopeValue)]
     [PropertyValueDescription("CustomerId")]
     public class CustomerPropertyValueEntity : PropertyValueEntity
     {

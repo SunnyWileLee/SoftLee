@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Crm.Customer.Applications
 {
-    public interface ICustomerQueryService : IEntityQueryService<CustomerEntity>
+    public interface ICustomerQueryService
     {
-
+        PageCollection<CustomerModel> Page(PageQueryParameter<CustomerEntity> parameter);
+        List<CustomerModel> Query(QueryParameter<CustomerEntity> parameter);
     }
 }

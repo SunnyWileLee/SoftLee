@@ -23,11 +23,11 @@ namespace DataKeeper.Framework.Applications
         private readonly IPropertyValueKeyProviderSelector _propertyValueKeyProviderSelector;
 
         public EntityAddService(IRepositoryProviderProvider repositoryProviderProvider,
-                                IDbContextProvider contextProvider,
+                                IDbContextProviderSelector dbContextProviderSelector,
                                 IPropertyValueKeyProviderSelector propertyValueKeyProviderSelector)
         {
             _repositoryProviderProvider = repositoryProviderProvider;
-            _contextProvider = contextProvider;
+            _contextProvider = dbContextProviderSelector.Select<TEntity>();
             _propertyValueKeyProviderSelector = propertyValueKeyProviderSelector;
         }
 
@@ -38,7 +38,7 @@ namespace DataKeeper.Framework.Applications
             var userId = UserContext.Current.UserId;
             var context = new AddPropertyOwnerContext<TEntity, TPropertyValueEntity>
             {
-                ContextProvider = this._contextProvider,
+                ContextProvider = _contextProvider,
                 Entity = entity,
                 UserId = userId,
                 Values = values

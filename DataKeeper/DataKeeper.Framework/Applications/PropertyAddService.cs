@@ -21,11 +21,11 @@ namespace DataKeeper.Framework.Applications
         private readonly IRepositoryProviderProvider _repositoryProviderProvider;       
         private readonly IDbContextProvider _contextProvider;
 
-        public PropertyAddService(IRepositoryProviderProvider repositoryProviderProvider, 
-                               IDbContextProvider contextProvider)
+        public PropertyAddService(IRepositoryProviderProvider repositoryProviderProvider,
+                                  IDbContextProviderSelector dbContextProviderSelector)
         {
             _repositoryProviderProvider = repositoryProviderProvider;
-            _contextProvider = contextProvider;
+            _contextProvider = dbContextProviderSelector.Select<TPropertyEntity>();
         }
 
         public Guid Add<TPropertyModel>(TPropertyModel model) where TPropertyModel : PropertyModel
