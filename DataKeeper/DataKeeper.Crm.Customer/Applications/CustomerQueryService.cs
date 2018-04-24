@@ -26,14 +26,14 @@ namespace DataKeeper.Crm.Customer.Applications
 
         public PageCollection<CustomerModel> Page(PageQueryParameter<CustomerEntity> parameter)
         {
-            var repository = _genericServiceProvider.Provide<IEntityQueryService<CustomerEntity, CustomerPropertyValueEntity>>();
-            return repository.Page<CustomerModel>(parameter);
+            var service = _genericServiceProvider.Provide<IEntityQueryService<CustomerEntity, CustomerPropertyValueEntity>>();
+            return service.Page<CustomerModel>(parameter);
         }
 
         public List<CustomerModel> Query(QueryParameter<CustomerEntity> parameter)
         {
-            var repository = _genericServiceProvider.Provide<IEntityQueryService<CustomerEntity, CustomerPropertyValueEntity>>();
-            return repository.Query<CustomerModel>(parameter);
+            var service = _genericServiceProvider.Provide<IEntityQueryService<CustomerEntity, CustomerPropertyValueEntity>>();
+            return service.Query<CustomerModel>(parameter);
         }
     }
 }
