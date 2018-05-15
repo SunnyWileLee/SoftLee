@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>4d5d1bc2-c959-45ab-94d3-780923c014f8</ProjectGuid>
+    <ProjectGuid>cd64b761-5bf5-4cab-82dd-35ff44777d2b</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dk.Auth</RootNamespace>
-    <AssemblyName>Dk.Auth</AssemblyName>
+    <RootNamespace>Dkms.Auth</RootNamespace>
+    <AssemblyName>Dkms.Auth</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

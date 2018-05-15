@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>780c880c-b9b3-420b-acca-5e0bfa6a626c</ProjectGuid>
+    <ProjectGuid>491a477b-048b-4224-a62a-46d051ce35fe</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dk.Gateway</RootNamespace>
-    <AssemblyName>Dk.Gateway</AssemblyName>
+    <RootNamespace>Dkms.Gateway</RootNamespace>
+    <AssemblyName>Dkms.Gateway</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

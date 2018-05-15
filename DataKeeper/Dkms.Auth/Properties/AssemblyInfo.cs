@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Dk.Gateway")]
+[assembly: AssemblyTitle("Dkms.Auth")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Dk.Gateway")]
+[assembly: AssemblyProduct("Dkms.Auth")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("780c880c-b9b3-420b-acca-5e0bfa6a626c")]
+[assembly: Guid("cd64b761-5bf5-4cab-82dd-35ff44777d2b")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

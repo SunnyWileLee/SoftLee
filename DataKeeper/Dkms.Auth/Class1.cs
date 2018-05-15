@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dk.Auth
+namespace Dkms.Auth
 {
     public class Class1
     {
