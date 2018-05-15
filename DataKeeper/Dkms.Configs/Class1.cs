@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dkms.Gateway
+namespace Dkms.Configs
 {
     public class Class1
     {

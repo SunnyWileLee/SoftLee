@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{491A477B-048B-4224-A62A-46D051CE35FE}</ProjectGuid>
+    <ProjectGuid>{757D53C8-91CE-4D69-BB3F-CB70325EC5DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dkms.Gateway</RootNamespace>
-    <AssemblyName>Dkms.Gateway</AssemblyName>
+    <RootNamespace>Dkms.Repository</RootNamespace>
+    <AssemblyName>Dkms.Repository</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,20 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DkmsGateway.cs" />
-    <Compile Include="DkmsGatewayDbContext.cs" />
-    <Compile Include="IDkmsGateway.cs" />
+    <Compile Include="DkmsDbContext.cs" />
+    <Compile Include="DkmsEntity.cs" />
+    <Compile Include="DkmsRepository.cs" />
+    <Compile Include="DkmsRepositoryHandler.cs" />
+    <Compile Include="IDbContextProvider.cs" />
+    <Compile Include="IDkmsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dkms.Repository\Dkms.Repository.csproj">
-      <Project>{757D53C8-91CE-4D69-BB3F-CB70325EC5DE}</Project>
-      <Name>Dkms.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dkms.Route\Dkms.Route.csproj">
-      <Project>{5EE8D0EC-3D7E-4733-A852-351247EC5D1A}</Project>
-      <Name>Dkms.Route</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
