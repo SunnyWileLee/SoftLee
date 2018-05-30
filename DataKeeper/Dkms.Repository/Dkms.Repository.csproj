@@ -47,12 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DkmsDbContext.cs" />
+    <Compile Include="DbContextProvider.cs" />
     <Compile Include="DkmsEntity.cs" />
     <Compile Include="DkmsRepository.cs" />
-    <Compile Include="DkmsRepositoryHandler.cs" />
+    <Compile Include="EfConnectionStringProvider.cs" />
     <Compile Include="IDbContextProvider.cs" />
     <Compile Include="IDkmsRepository.cs" />
+    <Compile Include="IEfConnectionStringProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

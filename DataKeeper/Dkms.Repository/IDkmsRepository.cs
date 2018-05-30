@@ -8,8 +8,6 @@ namespace Dkms.Repository
 {
     public interface IDkmsRepository
     {
-        event DkmsRepositoryHandler SuccessEvent;
-        event DkmsRepositoryHandler FailEvent;
-        event DkmsRepositoryHandler BeforeEvent;
+
     }
 }

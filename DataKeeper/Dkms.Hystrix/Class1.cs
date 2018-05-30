@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dkms.Eureka
+namespace Dkms.Hystrix
 {
-    public interface IServiceDiscovery
+    public class Class1
     {
+        
     }
 }

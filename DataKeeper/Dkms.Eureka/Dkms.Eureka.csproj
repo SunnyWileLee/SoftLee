@@ -47,10 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DkmsServiceEntity.cs" />
-    <Compile Include="IServiceDiscovery.cs" />
-    <Compile Include="IServiceRegistry.cs" />
+    <Compile Include="Domain\ServiceRegistry.cs" />
+    <Compile Include="Entities\DkmsServiceEntity.cs" />
+    <Compile Include="Domain\IServiceDiscovery.cs" />
+    <Compile Include="Domain\IServiceRegistry.cs" />
+    <Compile Include="Models\ServiceCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EurekaDbContext.cs" />
+    <Compile Include="Repositories\IServiceQueryRepository.cs" />
+    <Compile Include="Repositories\IServiceRepository.cs" />
+    <Compile Include="Repositories\ServiceQueryRepository.cs" />
+    <Compile Include="Repositories\ServiceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -62,5 +69,6 @@
       <Name>Dkms.Repository</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

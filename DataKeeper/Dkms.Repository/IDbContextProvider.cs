@@ -9,6 +9,7 @@ namespace Dkms.Repository
 {
     public interface IDbContextProvider
     {
-        DbContext Provide();
+        TDbContext Provide<TDbContext>() where TDbContext : DbContext;
+        string DbConnection { get; set; }
     }
 }

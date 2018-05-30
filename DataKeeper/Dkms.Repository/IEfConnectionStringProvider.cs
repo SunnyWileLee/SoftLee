@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dkms.Logs
+namespace Dkms.Repository
 {
-    public class Class1
+    public interface IEfConnectionStringProvider
     {
+        string Provide();
     }
 }

@@ -8,10 +8,6 @@ namespace Dkms.Repository
 {
     public abstract class DkmsRepository : IDkmsRepository
     {
-        public event DkmsRepositoryHandler SuccessEvent;
-        public event DkmsRepositoryHandler FailEvent;
-        public event DkmsRepositoryHandler BeforeEvent;
-
         private readonly IDbContextProvider _dbContextProvider;
 
         protected DkmsRepository(IDbContextProvider dbContextProvider)
@@ -19,27 +15,12 @@ namespace Dkms.Repository
             _dbContextProvider = dbContextProvider;
         }
 
-        protected virtual TResult Invoke<TResult>(Func<TResult> func, Func<TResult, bool> predicate)
+        public IDbContextProvider ContextProvider
         {
-            BeforeEvent?.Invoke(this, CreateEventArgs());
-            var result = func.Invoke();
-            if (predicate.Invoke(result))
+            get
             {
-                SuccessEvent?.Invoke(this, CreateEventArgs());
+                return _dbContextProvider;
             }
-            else
-            {
-                FailEvent?.Invoke(this, CreateEventArgs());
-            }
-            return result;
-        }
-
-        protected virtual DkmsRepositoryEventArgs CreateEventArgs()
-        {
-            return new DkmsRepositoryEventArgs
-            {
-                ContextProvider = _dbContextProvider
-            };
         }
     }
 }

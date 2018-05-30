@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dkms.Eureka
+namespace Dkms.Eureka.Entities
 {
     [Table("DkmsService")]
     public class DkmsServiceEntity : DkmsEntity
