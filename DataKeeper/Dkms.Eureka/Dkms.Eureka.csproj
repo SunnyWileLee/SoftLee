@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\ServiceDiscovery.cs" />
     <Compile Include="Domain\ServiceRegistry.cs" />
     <Compile Include="Entities\DkmsServiceEntity.cs" />
     <Compile Include="Domain\IServiceDiscovery.cs" />

@@ -1,6 +1,4 @@
-﻿using DataKeeper.Crm.Customer.Domain;
-using DataKeeper.Framework.Entities;
-using DataKeeper.Infrustructure;
+﻿using DataKeeper.Framework.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataKeeper.Crm.Customer.Entities
 {
-    [Table("Customer"), ScopeEntity(CrmCustomerScoper.ScopeValue)]
+    [Table("Customer")]
     public class CustomerEntity : UserEntity
     {
         public string Name { get; set; }

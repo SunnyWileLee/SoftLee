@@ -23,5 +23,14 @@ namespace Dkms.Eureka.Repositories
                 context.SaveChanges();
             }
         }
+
+        public void Delete(IEnumerable<DkmsServiceEntity> services)
+        {
+            using (var context = ContextProvider.Provide<EurekaDbContext>())
+            {
+                context.Services.RemoveRange(services);
+                context.SaveChanges();
+            }
+        }
     }
 }

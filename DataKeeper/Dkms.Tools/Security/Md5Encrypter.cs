@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataKeeper.Infrustructure.Utilities
+namespace Dkms.Tools.Security
 {
     class Md5Encrypter : IMd5Encrypter
     {
@@ -15,8 +15,8 @@ namespace DataKeeper.Infrustructure.Utilities
             {
                 byte[] result = Encoding.Default.GetBytes(input);
                 byte[] output = md5.ComputeHash(result);
-                return  BitConverter.ToString(output).Replace("-", "");
-            }    
+                return BitConverter.ToString(output).Replace("-", "");
+            }
         }
     }
 }

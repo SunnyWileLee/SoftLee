@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataKeeper.Infrustructure
+namespace Dkms.Business.Base.Entity
 {
-    public interface IAutofacInfrustructure
+    public interface IUserEntityRepository
     {
+
     }
 }

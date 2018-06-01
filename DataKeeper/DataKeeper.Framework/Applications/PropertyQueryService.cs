@@ -5,6 +5,7 @@ using DataKeeper.Framework.Entities;
 using DataKeeper.Framework.Repositories;
 using DataKeeper.Framework.Repositories.Entities;
 using DataKeeper.Framework.Repositories.Properties;
+using Dkms.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,10 @@ namespace DataKeeper.Framework.Applications
         private readonly IDbContextProvider _contextProvider;
 
         public PropertyQueryService(IRepositoryProviderProvider repositoryProviderProvider,
-                                    IDbContextProviderSelector dbContextProviderSelector)
+                                    IDbContextProvider contextProvider)
         {
             _repositoryProviderProvider = repositoryProviderProvider;
-            _contextProvider = dbContextProviderSelector.Select<TPropertyEntity>();
+            _contextProvider = contextProvider;
         }
 
         public TPropertyModel First<TPropertyModel>(Guid id)

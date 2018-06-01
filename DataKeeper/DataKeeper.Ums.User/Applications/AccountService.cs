@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using DataKeeper.Infrustructure.Utilities;
 using DataKeeper.Ums.User.Entities;
 using DataKeeper.Ums.User.Models;
 using DataKeeper.Ums.User.Repositories;
+using Dkms.Tools.Security;
 
 namespace DataKeeper.Ums.User.Applications
 {

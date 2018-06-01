@@ -2,9 +2,9 @@
 using DataKeeper.Framework;
 using DataKeeper.Framework.Models;
 using DataKeeper.Framework.Webapi;
-using DataKeeper.Infrustructure;
 using DataKeeper.Ums.User;
 using DataKeeper.Ums.User.Applications;
+using Dkms.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +34,7 @@ namespace DataKeeper.Cloud
                                           new List<Assembly>
                                           {
                                               typeof(IAutofacFramework).Assembly,
-                                              typeof(IAutofacInfrustructure).Assembly,
+                                              typeof(IAutofacScanDkmsTools).Assembly,
                                               typeof(IAutofacUmsUser).Assembly,
                                               typeof(IAutofacCrmCustomer).Assembly
                                           });

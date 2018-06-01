@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Manager", "DataK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Framework", "DataKeeper.Framework\DataKeeper.Framework.csproj", "{464A5E96-6D83-46DD-A118-BECCCFD74366}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Infrustructure", "DataKeeper.Infrustructure\DataKeeper.Infrustructure.csproj", "{436E21EC-04E3-47B1-A9E4-45B211A59675}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Crm.Customer", "DataKeeper.Crm.Customer\DataKeeper.Crm.Customer.csproj", "{BE9295D1-93F7-4336-A30A-F8A864141678}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKeeper.Oms.Order", "DataKeeper.Oms.Order\DataKeeper.Oms.Order.csproj", "{F7A55D15-6ADC-44F8-A940-47034451437E}"
@@ -37,6 +35,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dkms.Eureka", "Dkms.Eureka\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dkms.Hystrix", "Dkms.Hystrix\Dkms.Hystrix.csproj", "{4B12BF02-3325-4D96-8ED8-A2075A552D17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dkms.Gateway.Api", "Dkms.Gateway.Api\Dkms.Gateway.Api.csproj", "{92670A46-4DAB-4BDD-A44F-0648489F978F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dkms.Tools", "Dkms.Tools\Dkms.Tools.csproj", "{A499C59F-36FE-4D09-BA0B-CE562B1F59B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dkms.Business.Base", "Dkms.Business.Base\Dkms.Business.Base.csproj", "{2E3C0D9D-3B6D-43B1-A1A0-447D81507B1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,10 +63,6 @@ Global
 		{464A5E96-6D83-46DD-A118-BECCCFD74366}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{464A5E96-6D83-46DD-A118-BECCCFD74366}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{464A5E96-6D83-46DD-A118-BECCCFD74366}.Release|Any CPU.Build.0 = Release|Any CPU
-		{436E21EC-04E3-47B1-A9E4-45B211A59675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{436E21EC-04E3-47B1-A9E4-45B211A59675}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{436E21EC-04E3-47B1-A9E4-45B211A59675}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{436E21EC-04E3-47B1-A9E4-45B211A59675}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE9295D1-93F7-4336-A30A-F8A864141678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE9295D1-93F7-4336-A30A-F8A864141678}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE9295D1-93F7-4336-A30A-F8A864141678}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -111,6 +111,18 @@ Global
 		{4B12BF02-3325-4D96-8ED8-A2075A552D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B12BF02-3325-4D96-8ED8-A2075A552D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B12BF02-3325-4D96-8ED8-A2075A552D17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92670A46-4DAB-4BDD-A44F-0648489F978F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92670A46-4DAB-4BDD-A44F-0648489F978F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92670A46-4DAB-4BDD-A44F-0648489F978F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92670A46-4DAB-4BDD-A44F-0648489F978F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A499C59F-36FE-4D09-BA0B-CE562B1F59B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A499C59F-36FE-4D09-BA0B-CE562B1F59B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A499C59F-36FE-4D09-BA0B-CE562B1F59B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A499C59F-36FE-4D09-BA0B-CE562B1F59B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E3C0D9D-3B6D-43B1-A1A0-447D81507B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E3C0D9D-3B6D-43B1-A1A0-447D81507B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E3C0D9D-3B6D-43B1-A1A0-447D81507B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E3C0D9D-3B6D-43B1-A1A0-447D81507B1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

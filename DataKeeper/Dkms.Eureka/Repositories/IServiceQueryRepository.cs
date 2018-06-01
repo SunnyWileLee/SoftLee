@@ -5,6 +5,7 @@ namespace Dkms.Eureka.Repositories
 {
     public interface IServiceQueryRepository
     {
-        IEnumerable<DkmsServiceEntity> Query(string host);
+        List<DkmsServiceEntity> QueryByHost(string host);
+        List<DkmsServiceEntity> QueryByService(string service);
     }
 }

@@ -108,14 +108,11 @@
     <Compile Include="Models\QueryParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
-    <Compile Include="Repositories\DbContextProviderSelector.cs" />
     <Compile Include="Repositories\Entities\EntityAddRepository.cs" />
     <Compile Include="Repositories\Entities\EntityQueryRepository.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
-    <Compile Include="Repositories\IDbContextProvider.cs" />
     <Compile Include="Repositories\Entities\IEntityAddRepository.cs" />
     <Compile Include="Repositories\Entities\IEntityQueryRepository.cs" />
-    <Compile Include="Repositories\IDbContextProviderSelector.cs" />
     <Compile Include="Repositories\IRepositoryProvider.cs" />
     <Compile Include="Repositories\IRepositoryProviderProvider.cs" />
     <Compile Include="Repositories\Properties\IPropertyDeleteRepository.cs" />
@@ -139,9 +136,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataKeeper.Infrustructure\DataKeeper.Infrustructure.csproj">
-      <Project>{436E21EC-04E3-47B1-A9E4-45B211A59675}</Project>
-      <Name>DataKeeper.Infrustructure</Name>
+    <ProjectReference Include="..\Dkms.Repository\Dkms.Repository.csproj">
+      <Project>{757D53C8-91CE-4D69-BB3F-CB70325EC5DE}</Project>
+      <Name>Dkms.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

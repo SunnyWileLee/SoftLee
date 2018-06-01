@@ -14,6 +14,13 @@ namespace Dkms.Eureka.Domain
         private readonly IServiceQueryRepository _serviceQueryRepository;
         private readonly IServiceRepository _serviceRepository;
 
+        public ServiceRegistry(IServiceQueryRepository serviceQueryRepository, 
+                               IServiceRepository serviceRepository)
+        {
+            _serviceQueryRepository = serviceQueryRepository;
+            _serviceRepository = serviceRepository;
+        }
+
         public void Register(ServiceCollection services)
         {
             var list = services.Services
@@ -22,8 +29,11 @@ namespace Dkms.Eureka.Domain
                                    Host = services.Host,
                                    Service = s
                                }).ToList();
-            var currents = _serviceQueryRepository.Query(services.Host);
+            var currents = _serviceQueryRepository.QueryByHost(services.Host);
             var news = list.Where(s => !currents.Any(x => s.Service == s.Service));
+            _serviceRepository.Add(news);
+            var removes = currents.Where(s => !news.Any(x => s.Service == s.Service));
+            _serviceRepository.Delete(removes);
         }
     }
 }

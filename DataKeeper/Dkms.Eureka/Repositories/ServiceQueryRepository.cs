@@ -15,11 +15,19 @@ namespace Dkms.Eureka.Repositories
         {
         }
 
-        public IEnumerable<DkmsServiceEntity> Query(string host)
+        public List<DkmsServiceEntity> QueryByHost(string host)
         {
             using (var context = ContextProvider.Provide<EurekaDbContext>())
             {
                 return context.Services.Where(s => s.Host == host).ToList();
+            }
+        }
+
+        public List<DkmsServiceEntity> QueryByService(string service)
+        {
+            using (var context = ContextProvider.Provide<EurekaDbContext>())
+            {
+                return context.Services.Where(s => s.Service == service).ToList();
             }
         }
     }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataKeeper.Infrustructure
+namespace Dkms.Tools.Security
 {
-    public interface IScoper
+    public interface IMd5Encrypter
     {
-        string Scope { get; }
+        string Encrypt(string input);
     }
 }

@@ -3,6 +3,7 @@ using DataKeeper.Framework.Domain.Properties;
 using DataKeeper.Framework.Entities;
 using DataKeeper.Framework.Repositories;
 using DataKeeper.Framework.Repositories.Properties;
+using Dkms.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,11 @@ namespace DataKeeper.Framework.Applications
 
         public PropertyDeleteService(IRepositoryProviderProvider repositoryProviderProvider,
                                      IPropertyValueKeyProviderSelector propertyValueKeyProviderSelector,
-                                     IDbContextProviderSelector dbContextProviderSelector)
+                                     IDbContextProvider contextProvider)
         {
             _repositoryProviderProvider = repositoryProviderProvider;
             _propertyValueKeyProviderSelector = propertyValueKeyProviderSelector;
-            _contextProvider = dbContextProviderSelector.Select<TPropertyEntity>();
+            _contextProvider = contextProvider;
         }
 
         public void Delete(Guid id)

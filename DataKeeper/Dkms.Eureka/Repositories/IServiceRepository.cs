@@ -6,5 +6,6 @@ namespace Dkms.Eureka.Repositories
     public interface IServiceRepository
     {
         void Add(IEnumerable<DkmsServiceEntity> services);
+        void Delete(IEnumerable<DkmsServiceEntity> services);
     }
 }

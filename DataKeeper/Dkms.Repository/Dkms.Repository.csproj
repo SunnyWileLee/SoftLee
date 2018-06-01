@@ -51,6 +51,7 @@
     <Compile Include="DkmsEntity.cs" />
     <Compile Include="DkmsRepository.cs" />
     <Compile Include="EfConnectionStringProvider.cs" />
+    <Compile Include="EntityPage.cs" />
     <Compile Include="IDbContextProvider.cs" />
     <Compile Include="IDkmsRepository.cs" />
     <Compile Include="IEfConnectionStringProvider.cs" />

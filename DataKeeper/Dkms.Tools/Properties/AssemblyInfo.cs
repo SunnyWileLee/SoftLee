@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("DataKeeper.Infrustructure")]
+[assembly: AssemblyTitle("Dkms.Tools")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DataKeeper.Infrustructure")]
+[assembly: AssemblyProduct("Dkms.Tools")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("436e21ec-04e3-47b1-a9e4-45b211a59675")]
+[assembly: Guid("a499c59f-36fe-4d09-ba0b-ce562b1f59b3")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

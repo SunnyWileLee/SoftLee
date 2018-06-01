@@ -6,21 +6,22 @@ using System.Text;
 using System.Threading.Tasks;
 using DataKeeper.Framework.Models;
 using DataKeeper.Ums.User.Entities;
+using Dkms.Repository;
 
 namespace DataKeeper.Ums.User.Repositories
 {
     class AccountQueryRepository : IAccountQueryRepository
     {
-        private readonly IUserContextProvider _userContextProvider;
+        private readonly IDbContextProvider _contextProvider;
 
-        public AccountQueryRepository(IUserContextProvider userContextProvider)
+        public AccountQueryRepository(IDbContextProvider contextProvider)
         {
-            _userContextProvider = userContextProvider;
+            _contextProvider = contextProvider;
         }
 
         public AccountEntity GetById(Guid id)
         {
-            using (var context = _userContextProvider.Provide())
+            using (var context = _contextProvider.Provide<UserDbContext>())
             {
                 var users = context.Set<AccountEntity>();
                 return users.FirstOrDefault(s => s.Id == id);

@@ -67,10 +67,8 @@
     <Compile Include="Repositories\IAccountRepository.cs" />
     <Compile Include="Repositories\IAccountQueryRepository.cs" />
     <Compile Include="Repositories\ITokenRepository.cs" />
-    <Compile Include="Repositories\IUserContextProvider.cs" />
     <Compile Include="Repositories\TokenRepository.cs" />
-    <Compile Include="Repositories\UserContext.cs" />
-    <Compile Include="Repositories\UserContextProvider.cs" />
+    <Compile Include="Repositories\UserDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -80,9 +78,13 @@
       <Project>{464a5e96-6d83-46dd-a118-becccfd74366}</Project>
       <Name>DataKeeper.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataKeeper.Infrustructure\DataKeeper.Infrustructure.csproj">
-      <Project>{436E21EC-04E3-47B1-A9E4-45B211A59675}</Project>
-      <Name>DataKeeper.Infrustructure</Name>
+    <ProjectReference Include="..\Dkms.Repository\Dkms.Repository.csproj">
+      <Project>{757D53C8-91CE-4D69-BB3F-CB70325EC5DE}</Project>
+      <Name>Dkms.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dkms.Tools\Dkms.Tools.csproj">
+      <Project>{A499C59F-36FE-4D09-BA0B-CE562B1F59B3}</Project>
+      <Name>Dkms.Tools</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

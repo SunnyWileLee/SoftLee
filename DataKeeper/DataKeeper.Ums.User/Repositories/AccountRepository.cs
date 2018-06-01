@@ -4,21 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataKeeper.Ums.User.Entities;
+using Dkms.Repository;
 
 namespace DataKeeper.Ums.User.Repositories
 {
     class AccountRepository : IAccountRepository
     {
-        private readonly IUserContextProvider _userContextProvider;
+        private readonly IDbContextProvider _contextProvider;
 
-        public AccountRepository(IUserContextProvider userContextProvider)
+        public AccountRepository(IDbContextProvider contextProvider)
         {
-            _userContextProvider = userContextProvider;
+            _contextProvider = contextProvider;
         }
 
         public Guid AddAccount(AccountEntity account)
         {
-            using (var context = _userContextProvider.Provide())
+            using (var context = _contextProvider.Provide<UserDbContext>())
             {
                 var accounts = context.Set<AccountEntity>();
                 accounts.Add(account);

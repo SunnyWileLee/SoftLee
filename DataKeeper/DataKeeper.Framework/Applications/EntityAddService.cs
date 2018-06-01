@@ -6,6 +6,7 @@ using DataKeeper.Framework.Models;
 using DataKeeper.Framework.Repositories;
 using DataKeeper.Framework.Repositories.Entities;
 using DataKeeper.Framework.Repositories.Properties;
+using Dkms.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +24,11 @@ namespace DataKeeper.Framework.Applications
         private readonly IPropertyValueKeyProviderSelector _propertyValueKeyProviderSelector;
 
         public EntityAddService(IRepositoryProviderProvider repositoryProviderProvider,
-                                IDbContextProviderSelector dbContextProviderSelector,
+                                IDbContextProvider contextProvider,
                                 IPropertyValueKeyProviderSelector propertyValueKeyProviderSelector)
         {
             _repositoryProviderProvider = repositoryProviderProvider;
-            _contextProvider = dbContextProviderSelector.Select<TEntity>();
+            _contextProvider = contextProvider;
             _propertyValueKeyProviderSelector = propertyValueKeyProviderSelector;
         }
 

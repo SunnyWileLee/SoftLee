@@ -1,4 +1,5 @@
-﻿using Dkms.Route;
+﻿using Dkms.Eureka.Domain;
+using Dkms.Route;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,13 @@ namespace Dkms.Gateway
     class DkmsGateway : IDkmsGateway
     {
         private readonly IDkmsRouter _dkmsRouter;
+        private readonly IServiceDiscovery _serviceDiscovery;
 
         public HttpResponseMessage Invoke(HttpRequestMessage request)
         {
             var route = _dkmsRouter.Route(request);
-            throw new NotImplementedException();
+            var services = _serviceDiscovery.Discovery(route.Service);
+            throw new NotImplementedException { };
         }
     }
 }

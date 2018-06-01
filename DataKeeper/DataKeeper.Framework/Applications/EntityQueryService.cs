@@ -12,6 +12,7 @@ using DataKeeper.Framework.Models;
 using DataKeeper.Framework.Repositories;
 using DataKeeper.Framework.Repositories.Entities;
 using DataKeeper.Framework.Repositories.Properties;
+using Dkms.Repository;
 
 namespace DataKeeper.Framework.Applications
 {
@@ -25,10 +26,10 @@ namespace DataKeeper.Framework.Applications
 
         public EntityQueryService(IRepositoryProviderProvider repositoryProviderProvider,
                                   IPropertyValueKeyProviderSelector propertyValueKeyProviderSelector,
-                                  IDbContextProviderSelector dbContextProviderSelector)
+                                  IDbContextProvider contextProvider)
         {
             _repositoryProviderProvider = repositoryProviderProvider;
-            _contextProvider = dbContextProviderSelector.Select<TEntity>();
+            _contextProvider = contextProvider;
             _propertyValueKeyProviderSelector = propertyValueKeyProviderSelector;
         }
 

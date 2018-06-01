@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataKeeper.Infrustructure.Utilities
+namespace Dkms.Tools
 {
-    public interface IMd5Encrypter
+    public interface IAutofacScanDkmsTools
     {
-        string Encrypt(string input);
     }
 }

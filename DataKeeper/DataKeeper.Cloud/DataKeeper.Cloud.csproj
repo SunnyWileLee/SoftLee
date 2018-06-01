@@ -147,13 +147,13 @@
       <Project>{464A5E96-6D83-46DD-A118-BECCCFD74366}</Project>
       <Name>DataKeeper.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataKeeper.Infrustructure\DataKeeper.Infrustructure.csproj">
-      <Project>{436E21EC-04E3-47B1-A9E4-45B211A59675}</Project>
-      <Name>DataKeeper.Infrustructure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataKeeper.Ums.User\DataKeeper.Ums.User.csproj">
       <Project>{7f284815-56cb-4593-a965-94410befe367}</Project>
       <Name>DataKeeper.Ums.User</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dkms.Tools\Dkms.Tools.csproj">
+      <Project>{A499C59F-36FE-4D09-BA0B-CE562B1F59B3}</Project>
+      <Name>Dkms.Tools</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
