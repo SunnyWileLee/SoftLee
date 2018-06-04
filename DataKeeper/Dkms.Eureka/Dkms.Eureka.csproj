@@ -52,6 +52,7 @@
     <Compile Include="Entities\DkmsServiceEntity.cs" />
     <Compile Include="Domain\IServiceDiscovery.cs" />
     <Compile Include="Domain\IServiceRegistry.cs" />
+    <Compile Include="IAutofacScanDkmsEureka.cs" />
     <Compile Include="Models\ServiceCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EurekaDbContext.cs" />

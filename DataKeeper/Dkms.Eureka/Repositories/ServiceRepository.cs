@@ -2,6 +2,7 @@
 using Dkms.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,11 @@ namespace Dkms.Eureka.Repositories
                 context.Services.RemoveRange(services);
                 context.SaveChanges();
             }
+        }
+
+        protected override DbContext CreateContext()
+        {
+            throw new NotImplementedException();
         }
     }
 }

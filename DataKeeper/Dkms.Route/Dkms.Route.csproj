@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DkmsRouter.cs" />
+    <Compile Include="IAutofacScanDkmsRoute.cs" />
     <Compile Include="IDkmsRouter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteContext.cs" />

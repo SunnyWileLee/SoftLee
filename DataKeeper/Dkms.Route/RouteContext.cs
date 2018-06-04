@@ -10,6 +10,7 @@ namespace Dkms.Route
     public class RouteContext
     {
         public HttpRequestMessage Request { get; set; }
+        public string QueryString { get; set; }
         public string Service { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Dkms.Business.Base.Property
     {
         protected PropertyRepository(IDbContextProvider dbContextProvider) : base(dbContextProvider)
         {
+            
         }
-
     }
 }

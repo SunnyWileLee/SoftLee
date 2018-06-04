@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dkms.Hystrix
 {
-    public class Class1
+    public interface IAutofacScanDkmsHystrix
     {
-        
+
     }
 }

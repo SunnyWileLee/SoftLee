@@ -11,7 +11,12 @@ namespace Dkms.Route
     {
         public RouteContext Route(HttpRequestMessage request)
         {
-            return new RouteContext { };
+            var service = request.RequestUri.AbsolutePath;
+            var queryString = request.RequestUri.Query;
+            return new RouteContext
+            {
+                Service = service
+            };
         }
     }
 }

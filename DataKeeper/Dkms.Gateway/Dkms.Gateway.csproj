@@ -36,9 +36,21 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,7 +61,14 @@
   <ItemGroup>
     <Compile Include="DkmsGateway.cs" />
     <Compile Include="DkmsGatewayDbContext.cs" />
+    <Compile Include="IAutofacScanDkmsGateway.cs" />
     <Compile Include="IDkmsGateway.cs" />
+    <Compile Include="IMessageTransfer.cs" />
+    <Compile Include="IMessageTransferProxy.cs" />
+    <Compile Include="MessageGetTransfer.cs" />
+    <Compile Include="MessagePostTransfer.cs" />
+    <Compile Include="MessageTransfer.cs" />
+    <Compile Include="MessageTransferProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +83,10 @@
     <ProjectReference Include="..\Dkms.Route\Dkms.Route.csproj">
       <Project>{5EE8D0EC-3D7E-4733-A852-351247EC5D1A}</Project>
       <Name>Dkms.Route</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dkms.Tools\Dkms.Tools.csproj">
+      <Project>{A499C59F-36FE-4D09-BA0B-CE562B1F59B3}</Project>
+      <Name>Dkms.Tools</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

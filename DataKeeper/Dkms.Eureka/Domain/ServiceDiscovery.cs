@@ -19,7 +19,13 @@ namespace Dkms.Eureka.Domain
 
         public List<DkmsServiceEntity> Discovery(string service)
         {
-            return _serviceQueryRepository.QueryByService(service);
+            return new List<DkmsServiceEntity> {
+                new DkmsServiceEntity{
+                    Host="localhost:4099",
+                    Service=service
+                }
+            };
+            //return _serviceQueryRepository.QueryByService(service);
         }
     }
 }

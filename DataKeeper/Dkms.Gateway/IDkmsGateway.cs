@@ -10,5 +10,6 @@ namespace Dkms.Gateway
     public interface IDkmsGateway
     {
         HttpResponseMessage Invoke(HttpRequestMessage request);
+        Task<HttpResponseMessage> InvokeAsync(HttpRequestMessage request);
     }
 }

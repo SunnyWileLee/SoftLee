@@ -2,6 +2,7 @@
 using Dkms.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,11 @@ namespace Dkms.Eureka.Repositories
             {
                 return context.Services.Where(s => s.Service == service).ToList();
             }
+        }
+
+        protected override DbContext CreateContext()
+        {
+            throw new NotImplementedException();
         }
     }
 }
