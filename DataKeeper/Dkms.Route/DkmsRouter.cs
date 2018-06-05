@@ -15,6 +15,8 @@ namespace Dkms.Route
             var queryString = request.RequestUri.Query;
             return new RouteContext
             {
+                QueryString = queryString,
+                Request = request,
                 Service = service
             };
         }

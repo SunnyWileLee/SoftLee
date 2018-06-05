@@ -11,7 +11,7 @@ namespace Dkms.Gateway.Api.Frameworks
     public class TransferMessageHandler : DelegatingHandler
     {
         private IDkmsGateway _dkmsGateway;
-        public readonly object GatewayLock = new object();
+        public readonly static object GatewayLock = new object();
 
         protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
