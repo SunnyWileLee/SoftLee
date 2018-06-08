@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace DkmsCore.Gateway.Api
+namespace DkmsCore.Crm.Customer
 {
     public class Program
     {

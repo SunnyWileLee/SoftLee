@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DkmsCore.Gateway.Api.Controllers
+namespace DkmsCore.Crm.Customer.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
@@ -27,7 +27,6 @@ namespace DkmsCore.Gateway.Api.Controllers
         [HttpPost]
         public void Post([FromBody]string value)
         {
-
         }
 
         // PUT api/values/5
