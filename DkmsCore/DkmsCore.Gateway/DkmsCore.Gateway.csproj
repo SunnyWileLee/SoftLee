@@ -17,10 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DkmsCore.Avengers\DkmsCore.Avengers.csproj" />
     <ProjectReference Include="..\DkmsCore.Eureka.Core\DkmsCore.Eureka.Core.csproj" />
-    <ProjectReference Include="..\DkmsCore.Repository\DkmsCore.Repository.csproj" />
-    <ProjectReference Include="..\DkmsCore.Route\DkmsCore.Route.csproj" />
-    <ProjectReference Include="..\DkmsCore.Tools\DkmsCore.Tools.csproj" />
+    <ProjectReference Include="..\DkmsCore.StarLord\DkmsCore.StarLord.csproj" />
   </ItemGroup>
 
   <ItemGroup>

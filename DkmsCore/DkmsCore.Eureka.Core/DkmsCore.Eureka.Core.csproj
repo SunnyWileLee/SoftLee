@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DkmsCore.Repository\DkmsCore.Repository.csproj" />
-    <ProjectReference Include="..\DkmsCore.Route\DkmsCore.Route.csproj" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\DkmsCore.StarLord\DkmsCore.StarLord.csproj" />
+    <ProjectReference Include="..\DkmsCore.Thor\DkmsCore.Thor.csproj" />
   </ItemGroup>
 
 </Project>

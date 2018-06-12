@@ -1,4 +1,5 @@
-﻿using DkmsCore.Repository;
+﻿
+using DkmsCore.Thor;
 using System;
 
 namespace DkmsCore.Eureka.Core.Entities

@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DkmsCore.Eureka.Controllers
+namespace DkmsCore.Hulk.Controllers
 {
     [Route("api/[controller]")]
-    public class ServiceController : Controller
+    public class LogController : Controller
     {
-        
-    }
 
+    }
 }
