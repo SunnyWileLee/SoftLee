@@ -11,5 +11,7 @@ namespace DkmsCore.Avengers.Configs
         public string AppSecret => throw new NotImplementedException();
 
         public string Setting => throw new NotImplementedException();
+
+        public string GatewayHost => throw new NotImplementedException();
     }
 }

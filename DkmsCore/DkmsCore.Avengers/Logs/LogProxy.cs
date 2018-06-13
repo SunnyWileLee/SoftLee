@@ -10,8 +10,6 @@ namespace DkmsCore.Avengers.Logs
     {
         private readonly IHttpExecuter _httpExecuter;
 
-        private string 
-
         public async Task Exception(Exception exception)
         {
             throw new NotImplementedException();

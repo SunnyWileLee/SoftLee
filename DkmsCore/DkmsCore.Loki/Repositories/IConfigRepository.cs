@@ -7,6 +7,6 @@ namespace DkmsCore.Loki.Repositories
 {
     interface IConfigRepository
     {
-
+        
     }
 }

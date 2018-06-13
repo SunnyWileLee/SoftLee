@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DkmsCore.Tools.Net;
 using Microsoft.AspNetCore.Http;
 
-namespace DkmsCore.Gateway
+namespace DkmsCore.Thanos.Core
 {
-    public class RequestPostTransfer : RequestTransfer
+    public class RequestGetTransfer : RequestTransfer
     {
-        private readonly IHttpExecuter _httpExecuter;
-
-        public override string Method => "POST";
+        public override string Method => "GET";
 
         public override Task Transfer(HttpContext context)
         {

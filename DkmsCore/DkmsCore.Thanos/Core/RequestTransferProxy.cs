@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using DkmsCore.Avengers.Net;
 using Microsoft.AspNetCore.Http;
 
-namespace DkmsCore.Gateway
+namespace DkmsCore.Thanos.Core
 {
     class RequestTransferProxy : IRequestTransferProxy
     {
+        private readonly IRequestTransfer _transfers;
         private readonly IHttpExecuter _httpExecuter;
 
         public async Task Transfer(HttpContext context)

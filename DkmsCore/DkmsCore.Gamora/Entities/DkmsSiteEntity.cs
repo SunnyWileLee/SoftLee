@@ -2,7 +2,7 @@
 using DkmsCore.Thor;
 using System;
 
-namespace DkmsCore.Eureka.Core.Entities
+namespace DkmsCore.Gamora.Entities
 {
     public class DkmsSiteEntity : DkmsEntity
     {

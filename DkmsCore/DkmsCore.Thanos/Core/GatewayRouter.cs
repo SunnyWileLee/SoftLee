@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DkmsCore.Gateway
+namespace DkmsCore.Thanos.Core
 {
     public class GatewayRouter : IRouter
     {
@@ -17,7 +17,7 @@ namespace DkmsCore.Gateway
         public Task RouteAsync(RouteContext context)
         {
             context.RouteData = new RouteData { };
-            context.Handler = new RequestDelegate((new RequestTransferProxy { }).Invoke);
+            context.Handler = new RequestDelegate((new RequestTransferProxy { }).Transfer);
             return Task.CompletedTask;
         }
     }

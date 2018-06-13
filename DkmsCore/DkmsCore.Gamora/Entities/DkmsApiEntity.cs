@@ -1,9 +1,9 @@
-﻿using DkmsCore.Repository;
+﻿using DkmsCore.Thor;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DkmsCore.Eureka.Core.Entities
+namespace DkmsCore.Gamora.Entities
 {
     public class DkmsApiEntity : DkmsEntity
     {

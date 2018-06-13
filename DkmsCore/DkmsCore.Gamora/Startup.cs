@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace DkmsCore.Eureka
+namespace DkmsCore.Gamora
 {
     public class Startup
     {
