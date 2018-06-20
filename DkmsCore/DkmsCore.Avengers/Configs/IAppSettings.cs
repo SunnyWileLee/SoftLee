@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DkmsCore.Avengers.Configs
 {
@@ -9,6 +10,6 @@ namespace DkmsCore.Avengers.Configs
         string AppId { get; }
         string AppSecret { get; }
         string GatewayHost { get; }
-        string Setting { get; }
+        Task<string> Setting(string key);
     }
 }

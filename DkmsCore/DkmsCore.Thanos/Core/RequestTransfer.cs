@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Threading.Tasks;
+using DkmsCore.Avengers;
 using DkmsCore.Avengers.Configs;
 using DkmsCore.Avengers.Net;
 using DkmsCore.Stark;
@@ -20,7 +23,26 @@ namespace DkmsCore.Thanos.Core
         private readonly IBalancer _balancer;
         private readonly IHttpExecuter _httpExecuter;
 
+        protected RequestTransfer(IDkmsRouter dkmsRouter,
+                                  IAppSettings appSettings,
+                                  IBalancer balancer,
+                                  IHttpExecuter httpExecuter)
+        {
+            _dkmsRouter = dkmsRouter;
+            _appSettings = appSettings;
+            _balancer = balancer;
+            _httpExecuter = httpExecuter;
+        }
+
         public abstract string Method { get; }
+
+        public IHttpExecuter HttpExecuter
+        {
+            get
+            {
+                return _httpExecuter;
+            }
+        }
 
         public async virtual Task Transfer(HttpContext context)
         {
@@ -29,20 +51,36 @@ namespace DkmsCore.Thanos.Core
             var api = _balancer.Balance(apis);
             var url = api.BuildUrl(context.Request.QueryString.ToString());
             var headers = context.Request.Headers.ToDictionary(key => key.Key, value => value.Value.ToString());
+            await TransferMethodAsync(context, url, headers);
         }
+
+        protected abstract Task TransferMethodAsync(HttpContext context, string url, Dictionary<string, string> headers);
 
         private async Task<List<DkmsApi>> FindServiceAsync(DkmsRoute route)
         {
-            var gamoras = FindGamora();
+            var gamoras = await FindGamora();
             var gamora = _balancer.Balance(gamoras);
             var url = gamora.BuildUrl($"?service={route.Service}");
             var data = await _httpExecuter.GetAsync(url);
             return JsonConvert.DeserializeObject<List<DkmsApi>>(data);
         }
 
-        private List<DkmsApi> FindGamora()
+        private async Task<List<DkmsApi>> FindGamora()
         {
-            return new List<DkmsApi> { };
+            var gamoras = await _appSettings.Setting("Gamoras");
+            return JsonConvert.DeserializeObject<List<DkmsApi>>(gamoras);
+        }
+
+        protected virtual async Task HandleWebException(HttpContext context, WebException ex)
+        {
+            var response = ex.Response as HttpWebResponse;
+            var result = ApiResult.Fail(response.StatusCode.GetHashCode(), ex.Message);
+            await context.Response.WriteAsync(JsonConvert.SerializeObject(result), Encoding.UTF8);
+        }
+
+        protected virtual async Task HandleException(HttpContext context, Exception ex)
+        {
+            await context.Response.WriteAsync(JsonConvert.SerializeObject(ApiResult.Fail(message: ex.Message)), Encoding.UTF8);
         }
     }
 }
