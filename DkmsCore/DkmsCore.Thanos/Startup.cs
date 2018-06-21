@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using DkmsCore.Avengers;
+using DkmsCore.Stark;
+using DkmsCore.StarLord;
+using DkmsCore.Thanos.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,9 +27,19 @@ namespace DkmsCore.Thanos
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            // Add Autofac
+            var containerBuilder = new ContainerBuilder();
+            containerBuilder.RegisterAssemblyTypes(typeof(IAutofacStarLord).Assembly).AsImplementedInterfaces();
+            containerBuilder.RegisterAssemblyTypes(typeof(IAutofacThanos).Assembly).AsImplementedInterfaces();
+            containerBuilder.RegisterAssemblyTypes(typeof(IAutofacAvengers).Assembly).AsImplementedInterfaces();
+            containerBuilder.RegisterAssemblyTypes(typeof(IAutofacStark).Assembly).AsImplementedInterfaces();
+            containerBuilder.Populate(services);
+            var container = containerBuilder.Build();
+            return new AutofacServiceProvider(container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,8 +49,10 @@ namespace DkmsCore.Thanos
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseMvc();
+            var gateway = app.ApplicationServices.GetService<IGatewayRouter>();
+            app.UseRouter(gateway);
+            app.UseCors("AllowAllOrigin");
         }
     }
 }

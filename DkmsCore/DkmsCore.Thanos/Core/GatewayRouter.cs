@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace DkmsCore.Thanos.Core
 {
-    public class GatewayRouter : IRouter
+    public class GatewayRouter : IGatewayRouter
     {
+        private readonly IRequestTransferProxy _requestTransferProxy;
+
+        public GatewayRouter(IRequestTransferProxy requestTransferProxy)
+        {
+            _requestTransferProxy = requestTransferProxy;
+        }
+
         public VirtualPathData GetVirtualPath(VirtualPathContext context)
         {
             return new VirtualPathData(this, string.Empty) { };
@@ -17,7 +24,7 @@ namespace DkmsCore.Thanos.Core
         public Task RouteAsync(RouteContext context)
         {
             context.RouteData = new RouteData { };
-            context.Handler = new RequestDelegate((new RequestTransferProxy { }).Transfer);
+            context.Handler = new RequestDelegate(_requestTransferProxy.Transfer);
             return Task.CompletedTask;
         }
     }
