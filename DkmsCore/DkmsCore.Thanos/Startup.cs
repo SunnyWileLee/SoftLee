@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using DkmsCore.Avengers;
+using DkmsCore.Avengers.Configs;
 using DkmsCore.Stark;
 using DkmsCore.StarLord;
 using DkmsCore.Thanos.Core;
@@ -30,6 +31,7 @@ namespace DkmsCore.Thanos
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddOptions().Configure<AppSettingOptions>(Configuration.GetSection(nameof(AppSettingOptions)));
 
             // Add Autofac
             var containerBuilder = new ContainerBuilder();
@@ -39,12 +41,19 @@ namespace DkmsCore.Thanos
             containerBuilder.RegisterAssemblyTypes(typeof(IAutofacStark).Assembly).AsImplementedInterfaces();
             containerBuilder.Populate(services);
             var container = containerBuilder.Build();
+
             return new AutofacServiceProvider(container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            var builder = new ConfigurationBuilder()
+                          .SetBasePath(env.ContentRootPath)
+                          .AddJsonFile("appsetting.json", optional: true, reloadOnChange: true)
+                          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                          .AddEnvironmentVariables();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

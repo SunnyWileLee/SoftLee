@@ -1,4 +1,5 @@
 ﻿using DkmsCore.Avengers.Configs;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +8,9 @@ namespace DkmsCore.Avengers.Net
 {
     public abstract class HttpProxy
     {
-        private readonly IAppSettings _appSettings;
+        private readonly IOptionsSnapshot<AppSettingOptions> _appSettings;
 
-        protected HttpProxy(IAppSettings appSettings)
+        protected HttpProxy(IOptionsSnapshot<AppSettingOptions> appSettings)
         {
             _appSettings = appSettings;
         }
@@ -26,7 +27,7 @@ namespace DkmsCore.Avengers.Net
 
         protected virtual string BuildUrl(string action, string query)
         {
-            return $"http://{_appSettings.GatewayHost}/{action}?{query}";
+            return $"http://{_appSettings.Value.GatewayHost}/{action}?{query}";
         }
     }
 }

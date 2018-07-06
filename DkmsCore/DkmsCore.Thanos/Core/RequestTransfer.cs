@@ -12,6 +12,7 @@ using DkmsCore.Stark.Applications;
 using DkmsCore.Stark.Models;
 using DkmsCore.StarLord;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace DkmsCore.Thanos.Core
@@ -19,12 +20,12 @@ namespace DkmsCore.Thanos.Core
     public abstract class RequestTransfer : IRequestTransfer
     {
         private readonly IDkmsRouter _dkmsRouter;
-        private readonly IAppSettings _appSettings;
+        private readonly IOptions<AppSettingOptions> _appSettings;
         private readonly IBalancer _balancer;
         private readonly IHttpExecuter _httpExecuter;
 
         protected RequestTransfer(IDkmsRouter dkmsRouter,
-                                  IAppSettings appSettings,
+                                  IOptions<AppSettingOptions> appSettings,
                                   IBalancer balancer,
                                   IHttpExecuter httpExecuter)
         {
@@ -58,16 +59,16 @@ namespace DkmsCore.Thanos.Core
 
         private async Task<List<DkmsApi>> FindServiceAsync(DkmsRoute route)
         {
-            var gamoras = await FindGamora();
+            var gamoras =  FindGamora();
             var gamora = _balancer.Balance(gamoras);
             var url = gamora.BuildUrl($"?service={route.Service}");
             var data = await _httpExecuter.GetAsync(url);
             return JsonConvert.DeserializeObject<List<DkmsApi>>(data);
         }
 
-        private async Task<List<DkmsApi>> FindGamora()
+        private List<DkmsApi> FindGamora()
         {
-            var gamoras = await _appSettings.Setting("Gamoras");
+            var gamoras =  _appSettings.Value.GatewayHost;
             return JsonConvert.DeserializeObject<List<DkmsApi>>(gamoras);
         }
 

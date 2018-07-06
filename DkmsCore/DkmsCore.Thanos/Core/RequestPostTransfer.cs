@@ -11,13 +11,14 @@ using DkmsCore.Avengers.Net;
 using DkmsCore.Stark.Applications;
 using DkmsCore.StarLord;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace DkmsCore.Thanos.Core
 {
     public class RequestPostTransfer : RequestTransfer
     {
-        public RequestPostTransfer(IDkmsRouter dkmsRouter, IAppSettings appSettings, IBalancer balancer, IHttpExecuter httpExecuter) 
+        public RequestPostTransfer(IDkmsRouter dkmsRouter, IOptions<AppSettingOptions> appSettings, IBalancer balancer, IHttpExecuter httpExecuter) 
             : base(dkmsRouter, appSettings, balancer, httpExecuter)
         {
         }
