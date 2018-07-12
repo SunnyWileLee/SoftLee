@@ -40,18 +40,26 @@ namespace DkmsCore.Thanos.Core
             {
                 await NotSupport(context);
             }
-            var route = _dkmsRouter.Route(context);
-            var apis = await FindServiceAsync(route);
-            var api = _balancer.Balance(apis);
-
-            var transferContext = new TransferContext
+            else
             {
-                DkmsApi = api,
-                DkmsRoute = route,
-                HttpContext = context
-            };
-
-            await transfer.Transfer(transferContext);
+                var route = _dkmsRouter.Route(context);
+                var apis = await FindServiceAsync(route);
+                if (!apis.Any())
+                {
+                    await NotFound(context);
+                }
+                else
+                {
+                    var api = _balancer.Balance(apis);
+                    var transferContext = new TransferContext
+                    {
+                        DkmsApi = api,
+                        DkmsRoute = route,
+                        HttpContext = context
+                    };
+                    await transfer.Transfer(transferContext);
+                }
+            }        
         }
 
         private async Task<List<DkmsApi>> FindServiceAsync(DkmsRoute route)
@@ -65,7 +73,13 @@ namespace DkmsCore.Thanos.Core
 
         private async Task NotSupport(HttpContext context)
         {
-            var result = ApiResult.Fail(message: $"{context.Request.Method}不被支持");
+            var result = ApiResult.Fail(405, message: $"{context.Request.Method}不被支持");
+            await context.Response.WriteAsync(JsonConvert.SerializeObject(result), Encoding.UTF8);
+        }
+
+        private async Task NotFound(HttpContext context)
+        {
+            var result = ApiResult.Fail(404, message: $"未找到接口");
             await context.Response.WriteAsync(JsonConvert.SerializeObject(result), Encoding.UTF8);
         }
     }

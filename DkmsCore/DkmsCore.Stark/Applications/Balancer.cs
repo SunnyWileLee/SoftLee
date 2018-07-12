@@ -10,7 +10,7 @@ namespace DkmsCore.Stark.Applications
     {
         public DkmsApi Balance(List<DkmsApi> apis)
         {
-            if (apis == null || apis.Any())
+            if (apis == null || !apis.Any())
             {
                 throw new NullReferenceException("apis");
             }
