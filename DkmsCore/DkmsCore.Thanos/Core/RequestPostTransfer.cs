@@ -18,8 +18,7 @@ namespace DkmsCore.Thanos.Core
 {
     public class RequestPostTransfer : RequestTransfer
     {
-        public RequestPostTransfer(IDkmsRouter dkmsRouter, IOptions<AppSettingOptions> appSettings, IBalancer balancer, IHttpExecuter httpExecuter) 
-            : base(dkmsRouter, appSettings, balancer, httpExecuter)
+        public RequestPostTransfer(IHttpExecuter httpExecuter) : base(httpExecuter)
         {
         }
 

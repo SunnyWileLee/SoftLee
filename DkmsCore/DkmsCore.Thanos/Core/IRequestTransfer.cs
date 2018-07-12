@@ -9,6 +9,6 @@ namespace DkmsCore.Thanos.Core
     public interface IRequestTransfer
     {
         string Method { get; }
-        Task Transfer(HttpContext context);
+        Task Transfer(TransferContext context);
     }
 }

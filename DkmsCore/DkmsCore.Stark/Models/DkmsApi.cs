@@ -10,7 +10,7 @@ namespace DkmsCore.Stark.Models
 
         public string BuildUrl(string query)
         {
-            return $"http://{Host}:{Port}{Service}{query}";
+            return $"http://{Host}/{Service}{query}";
         }
     }
 }

@@ -9,6 +9,7 @@ using DkmsCore.Avengers.Configs;
 using DkmsCore.Stark;
 using DkmsCore.StarLord;
 using DkmsCore.Thanos.Core;
+using DkmsCore.Thanos.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,7 +32,7 @@ namespace DkmsCore.Thanos
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddOptions().Configure<AppSettingOptions>(Configuration.GetSection(nameof(AppSettingOptions)));
+            services.AddOptions().Configure<ThanosAppSettings>(Configuration.GetSection(nameof(ThanosAppSettings)));
 
             // Add Autofac
             var containerBuilder = new ContainerBuilder();

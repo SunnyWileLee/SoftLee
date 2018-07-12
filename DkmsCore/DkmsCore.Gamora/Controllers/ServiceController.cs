@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DkmsCore.Gamora.Models;
+using DkmsCore.Gamora.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DkmsCore.Gamora.Controllers
@@ -9,36 +11,18 @@ namespace DkmsCore.Gamora.Controllers
     [Route("api/[controller]")]
     public class ServiceController : Controller
     {
-        // GET api/values
+        private readonly IDkmsApiRepository _dkmsApiRepository;
+
+        public ServiceController(IDkmsApiRepository dkmsApiRepository)
+        {
+            _dkmsApiRepository = dkmsApiRepository;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<List<DkmsApiModel>> Get(string service)
         {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var apis = await _dkmsApiRepository.GetList(service);
+            return apis;
         }
     }
 }

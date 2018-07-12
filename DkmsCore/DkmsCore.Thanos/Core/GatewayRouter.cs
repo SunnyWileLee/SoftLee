@@ -1,4 +1,5 @@
 ﻿using DkmsCore.Avengers.Configs;
+using DkmsCore.Thanos.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Options;
@@ -12,12 +13,10 @@ namespace DkmsCore.Thanos.Core
     public class GatewayRouter : IGatewayRouter
     {
         private readonly IRequestTransferProxy _requestTransferProxy;
-        private readonly IOptions<AppSettingOptions> _appSettingsOption;
 
-        public GatewayRouter(IRequestTransferProxy requestTransferProxy, IOptions<AppSettingOptions> appSettingsOption)
+        public GatewayRouter(IRequestTransferProxy requestTransferProxy)
         {
             _requestTransferProxy = requestTransferProxy;
-            _appSettingsOption = appSettingsOption;
         }
 
         public VirtualPathData GetVirtualPath(VirtualPathContext context)
@@ -27,7 +26,6 @@ namespace DkmsCore.Thanos.Core
 
         public Task RouteAsync(RouteContext context)
         {
-            var values = _appSettingsOption.Value;
             context.RouteData = new RouteData { };
             context.Handler = new RequestDelegate(_requestTransferProxy.Transfer);
             return Task.CompletedTask;
