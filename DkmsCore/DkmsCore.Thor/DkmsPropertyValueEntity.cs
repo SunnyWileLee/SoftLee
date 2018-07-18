@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace DkmsCore.Data.Base.Repositories
+namespace DkmsCore.Thor
 {
-    public abstract class BasePropertyValueEntity : BaseUserEntity
+    public abstract class DkmsPropertyValueEntity : DkmsUserEntity
     {
         public Guid PropertyId { get; set; }
         [MaxLength(500)]

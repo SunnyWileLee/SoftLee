@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace DkmsCore.Data.Base.Repositories
+namespace DkmsCore.Thor
 {
-    public abstract class BasePropertyEntity : BaseUserEntity
+    public abstract class DkmsPropertyEntity : DkmsUserEntity
     {
         [MaxLength(20)]
         public string Name { get; set; }

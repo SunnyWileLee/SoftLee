@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DkmsCore.Gamora", "DkmsCore
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DkmsCore.Stark", "DkmsCore.Stark\DkmsCore.Stark.csproj", "{59C16AA9-0194-4620-BAB9-B5F3AC4E2AC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DkmsCore.Data.Base", "DkmsCore.Data.Base\DkmsCore.Data.Base.csproj", "{2E64D7C5-9681-4277-8E1B-9875A6399873}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,10 +63,6 @@ Global
 		{59C16AA9-0194-4620-BAB9-B5F3AC4E2AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59C16AA9-0194-4620-BAB9-B5F3AC4E2AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59C16AA9-0194-4620-BAB9-B5F3AC4E2AC4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2E64D7C5-9681-4277-8E1B-9875A6399873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2E64D7C5-9681-4277-8E1B-9875A6399873}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2E64D7C5-9681-4277-8E1B-9875A6399873}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2E64D7C5-9681-4277-8E1B-9875A6399873}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

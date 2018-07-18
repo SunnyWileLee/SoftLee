@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DkmsCore.Data.Base.Repositories
+namespace DkmsCore.Thor
 {
-    public abstract class BaseUserEntity: BaseDataEntity
+    public abstract class DkmsUserEntity: DkmsEntity
     {
         public virtual Guid UserId { get; set; }
     }
