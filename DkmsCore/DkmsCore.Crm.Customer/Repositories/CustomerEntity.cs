@@ -1,4 +1,4 @@
-﻿using DkmsCore.Data.Base.Repositories;
+﻿using DkmsCore.Thor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DkmsCore.Crm.Customer.Repositories
 {
     [Table("Customer")]
-    public class CustomerEntity : BaseUserEntity
+    public class CustomerEntity : DkmsUserEntity
     {
         [MaxLength(50)]
         public string Name { get; set; }

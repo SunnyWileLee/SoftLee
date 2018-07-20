@@ -1,11 +1,14 @@
-﻿using System;
+﻿using DkmsCore.Thor;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace DkmsCore.Crm.Customer.Repositories
 {
-    public class CustomerPropertyValueEntity
+    [Table("CustomerPropertyValue")]
+    public class CustomerPropertyValueEntity: DkmsPropertyValueEntity
     {
 
     }

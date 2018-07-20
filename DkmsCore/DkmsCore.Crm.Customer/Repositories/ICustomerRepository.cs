@@ -7,6 +7,6 @@ namespace DkmsCore.Crm.Customer.Repositories
 {
     public interface ICustomerRepository
     {
-        Guid AddCustomer(CustomerEntity customer);
+        Task<Guid> AddCustomer(CustomerEntity customer);
     }
 }
