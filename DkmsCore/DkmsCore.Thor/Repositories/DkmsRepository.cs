@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace DkmsCore.Thor.Repositories
 {
-    public abstract class DkmsRepository : IDkmsRepository
+    public class DkmsRepository : IDkmsRepository
     {
         private readonly DbContext _dbContext;
 
-        protected DkmsRepository(DbContext dbContext)
+        public DkmsRepository(DbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -27,7 +27,7 @@ namespace DkmsCore.Thor.Repositories
 
         public virtual async Task<Guid> AddEntity<TEntity>(TEntity entity) where TEntity : DkmsEntity
         {
-            _dbContext.Set<TEntity>().Add(entity);
+            await _dbContext.Set<TEntity>().AddAsync(entity);
             await _dbContext.SaveChangesAsync();
             return entity.Id;
         }
