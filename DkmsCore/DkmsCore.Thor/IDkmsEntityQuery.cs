@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DkmsCore.Thor
 {
-    public interface IEntityQuery
+    public interface IDkmsEntityQuery
     {
 
     }

@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 namespace DkmsCore.Crm.Customer.Repositories
 {
     [Table("CustomerPropertyValue")]
-    public class CustomerPropertyValueEntity: DkmsPropertyValueEntity
+    public class CustomerPropertyValueEntity : DkmsPropertyValueEntity
     {
-
+        [Column("CustomerId")]
+        public override Guid InstanceId { get; set; }
     }
 }

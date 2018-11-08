@@ -4,12 +4,12 @@ using System.Text;
 
 namespace DkmsCore.Thor
 {
-    public class EntityPageQuery : EntityQuery
+    public class DkmsEntityPageQuery : DkmsEntityQuery
     {
         public const int DefaultPageIndex = 1;
         public const int DefaultPageSize = 20;
 
-        public EntityPageQuery()
+        public DkmsEntityPageQuery()
         {
             PageIndex = DefaultPageIndex;
             PageSize = DefaultPageSize;

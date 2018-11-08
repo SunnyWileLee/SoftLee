@@ -7,8 +7,10 @@ namespace DkmsCore.Thor
 {
     public abstract class DkmsPropertyValueEntity : DkmsUserEntity
     {
-        public Guid PropertyId { get; set; }
+        public virtual Guid InstanceId { get; set; }
+
+        public virtual Guid PropertyId { get; set; }
         [MaxLength(500)]
-        public string Value { get; set; }
+        public virtual string Value { get; set; }
     }
 }

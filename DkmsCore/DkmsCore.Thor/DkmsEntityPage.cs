@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DkmsCore.Thor
 {
-    public class EntityPage<TEntity> where TEntity : class
+    public class DkmsEntityPage<TEntity> where TEntity : class
     {
         public List<TEntity> List { get; set; }
         public int Count { get; set; }

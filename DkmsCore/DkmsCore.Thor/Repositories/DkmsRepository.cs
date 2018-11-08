@@ -8,53 +8,45 @@ using System.Threading.Tasks;
 
 namespace DkmsCore.Thor.Repositories
 {
-    public class DkmsRepository : IDkmsRepository
+    public abstract class DkmsRepository : IDkmsRepository
     {
-        private readonly DbContext _dbContext;
-
         public DkmsRepository(DbContext dbContext)
         {
-            _dbContext = dbContext;
+            DbContext = dbContext;
         }
 
-        public DbContext DbContext
-        {
-            get
-            {
-                return _dbContext;
-            }
-        }
+        public DbContext DbContext { get; }
 
         public virtual async Task<Guid> AddEntity<TEntity>(TEntity entity) where TEntity : DkmsEntity
         {
-            await _dbContext.Set<TEntity>().AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
+            await DbContext.Set<TEntity>().AddAsync(entity);
+            await DbContext.SaveChangesAsync();
             return entity.Id;
         }
 
         public virtual async Task<int> Delete<TEntity>(Guid id) where TEntity : DkmsEntity
         {
-            var entity = await _dbContext.Set<TEntity>().FirstOrDefaultAsync(s => s.Id == id);
+            var entity = await DbContext.Set<TEntity>().FirstOrDefaultAsync(s => s.Id == id);
             if (entity == null)
             {
                 return 0;
             }
-            _dbContext.Set<TEntity>().Remove(entity);
-            var count = await _dbContext.SaveChangesAsync();
+            DbContext.Set<TEntity>().Remove(entity);
+            var count = await DbContext.SaveChangesAsync();
             return count;
         }
 
         public virtual async Task<List<TEntity>> GetList<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : DkmsEntity
         {
-            var list = _dbContext.Set<TEntity>().Where(predicate);
+            var list = DbContext.Set<TEntity>().Where(predicate);
             return await list.ToListAsync();
         }
 
-        public virtual async Task<EntityPage<TEntity>> GetPage<TEntity>(Expression<Func<TEntity, bool>> predicate, EntityPageQuery query) where TEntity : DkmsEntity
+        public virtual async Task<DkmsEntityPage<TEntity>> GetPage<TEntity>(Expression<Func<TEntity, bool>> predicate, DkmsEntityPageQuery query) where TEntity : DkmsEntity
         {
-            var page = await _dbContext.Set<TEntity>().Where(predicate).OrderByDescending(s => s.CreateTime).Skip(query.Skip).Take(query.Take).ToListAsync();
-            var count = await _dbContext.Set<TEntity>().CountAsync();
-            return new EntityPage<TEntity>
+            var page = await DbContext.Set<TEntity>().Where(predicate).OrderByDescending(s => s.CreateTime).Skip(query.Skip).Take(query.Take).ToListAsync();
+            var count = await DbContext.Set<TEntity>().CountAsync();
+            return new DkmsEntityPage<TEntity>
             {
                 PageSize = query.PageSize,
                 Count = count,
