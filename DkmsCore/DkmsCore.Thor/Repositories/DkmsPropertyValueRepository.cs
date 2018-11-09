@@ -32,14 +32,12 @@ namespace DkmsCore.Thor.Repositories
 
         public virtual async Task<List<TPropertyValueEntity>> GetList<TPropertyValueEntity>(Guid userId, Guid instanceId) where TPropertyValueEntity : DkmsPropertyValueEntity
         {
-            var list = DbContext.Set<TPropertyValueEntity>().Where(s => s.UserId == userId).Where(s => s.InstanceId == instanceId);
-            return await list.ToListAsync();
+            return await GetList<TPropertyValueEntity>(s => s.UserId == userId && s.InstanceId == instanceId);
         }
 
         public virtual async Task<List<TPropertyValueEntity>> GetList<TPropertyValueEntity>(Guid userId, IEnumerable<Guid> instanceIds) where TPropertyValueEntity : DkmsPropertyValueEntity
         {
-            var list = DbContext.Set<TPropertyValueEntity>().Where(s => s.UserId == userId).Where(s => instanceIds.Contains(s.InstanceId));
-            return await list.ToListAsync();
+            return await GetList<TPropertyValueEntity>(s => s.UserId == userId && instanceIds.Contains(s.InstanceId));
         }
     }
 }

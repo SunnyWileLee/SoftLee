@@ -24,6 +24,12 @@ namespace DkmsCore.Thor.Repositories
             return entity.Id;
         }
 
+        public virtual async Task<int> Count<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : DkmsEntity
+        {
+            var count = await DbContext.Set<TEntity>().CountAsync();
+            return count;
+        }
+
         public virtual async Task<int> Delete<TEntity>(Guid id) where TEntity : DkmsEntity
         {
             var entity = await DbContext.Set<TEntity>().FirstOrDefaultAsync(s => s.Id == id);
@@ -44,8 +50,13 @@ namespace DkmsCore.Thor.Repositories
 
         public virtual async Task<DkmsEntityPage<TEntity>> GetPage<TEntity>(Expression<Func<TEntity, bool>> predicate, DkmsEntityPageQuery query) where TEntity : DkmsEntity
         {
-            var page = await DbContext.Set<TEntity>().Where(predicate).OrderByDescending(s => s.CreateTime).Skip(query.Skip).Take(query.Take).ToListAsync();
-            var count = await DbContext.Set<TEntity>().CountAsync();
+            return await GetPage(predicate, s => s.CreateTime, query);
+        }
+
+        public virtual async Task<DkmsEntityPage<TEntity>> GetPage<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> order, DkmsEntityPageQuery query) where TEntity : DkmsEntity
+        {
+            var page = await DbContext.Set<TEntity>().Where(predicate).OrderByDescending(order).Skip(query.Skip).Take(query.Take).ToListAsync();
+            var count = await Count(predicate);
             return new DkmsEntityPage<TEntity>
             {
                 PageSize = query.PageSize,

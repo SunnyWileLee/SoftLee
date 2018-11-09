@@ -12,5 +12,7 @@ namespace DkmsCore.Thor.Repositories
         Task<int> Delete<TEntity>(Guid id) where TEntity : DkmsEntity;
         Task<List<TEntity>> GetList<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : DkmsEntity;
         Task<DkmsEntityPage<TEntity>> GetPage<TEntity>(Expression<Func<TEntity, bool>> predicate, DkmsEntityPageQuery query) where TEntity : DkmsEntity;
+        Task<DkmsEntityPage<TEntity>> GetPage<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> order, DkmsEntityPageQuery query) where TEntity : DkmsEntity;
+        Task<int> Count<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : DkmsEntity;
     }
 }

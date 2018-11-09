@@ -11,5 +11,6 @@ namespace DkmsCore.Crm.Customer.Repositories
     {
         Task<Guid> AddCustomer(CustomerEntity customer);
         Task<DkmsEntityPage<CustomerEntity>> GetPage(Expression<Func<CustomerEntity, bool>> predicate, DkmsEntityPageQuery query);
+        Task<DkmsEntityPage<CustomerEntity>> GetPage(Guid userId, DkmsEntityPageQuery query);
     }
 }
