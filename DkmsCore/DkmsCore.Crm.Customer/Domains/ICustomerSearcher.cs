@@ -7,6 +7,6 @@ namespace DkmsCore.Crm.Customer.Domains
 {
     public interface ICustomerSearcher
     {
-
+        
     }
 }

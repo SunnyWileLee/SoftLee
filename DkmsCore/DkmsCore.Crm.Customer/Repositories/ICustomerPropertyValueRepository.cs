@@ -1,4 +1,4 @@
-﻿using DkmsCore.Thor.Repositories;
+﻿using DkmsCore.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

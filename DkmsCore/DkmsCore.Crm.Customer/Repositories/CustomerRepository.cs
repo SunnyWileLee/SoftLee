@@ -1,9 +1,6 @@
-﻿using DkmsCore.Thor;
-using DkmsCore.Thor.Repositories;
-using Microsoft.EntityFrameworkCore;
+﻿using DkmsCore.Persistence;
+using DkmsCore.Persistence.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 

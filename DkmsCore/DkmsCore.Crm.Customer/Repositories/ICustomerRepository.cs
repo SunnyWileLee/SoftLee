@@ -1,4 +1,4 @@
-﻿using DkmsCore.Thor;
+﻿using DkmsCore.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
