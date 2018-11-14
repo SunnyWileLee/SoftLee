@@ -4,12 +4,12 @@ using System.Text;
 
 namespace DkmsCore.Persistence
 {
-    public class DkmsEntityPageQuery : DkmsEntityQuery
+    public class DkmsPageQuery : DkmsQuery
     {
         public const int DefaultPageIndex = 1;
         public const int DefaultPageSize = 20;
 
-        public DkmsEntityPageQuery()
+        public DkmsPageQuery()
         {
             PageIndex = DefaultPageIndex;
             PageSize = DefaultPageSize;

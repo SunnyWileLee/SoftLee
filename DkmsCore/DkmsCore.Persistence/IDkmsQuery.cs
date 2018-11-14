@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DkmsCore.Persistence
 {
-    public interface IDkmsEntityQuery
+    public interface IDkmsQuery
     {
 
     }

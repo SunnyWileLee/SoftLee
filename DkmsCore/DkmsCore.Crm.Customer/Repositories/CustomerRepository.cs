@@ -18,12 +18,12 @@ namespace DkmsCore.Crm.Customer.Repositories
             return await base.AddEntity(customer);
         }
 
-        public async Task<DkmsEntityPage<CustomerEntity>> GetPage(Expression<Func<CustomerEntity, bool>> predicate, DkmsEntityPageQuery query)
+        public async Task<DkmsPage<CustomerEntity>> GetPage(Expression<Func<CustomerEntity, bool>> predicate, DkmsPageQuery query)
         {
             return await base.GetPage(predicate, query);
         }
 
-        public async Task<DkmsEntityPage<CustomerEntity>> GetPage(Guid userId, DkmsEntityPageQuery query)
+        public async Task<DkmsPage<CustomerEntity>> GetPage(Guid userId, DkmsPageQuery query)
         {
             return await base.GetPage<CustomerEntity>(s => s.UserId == userId, query);
         }

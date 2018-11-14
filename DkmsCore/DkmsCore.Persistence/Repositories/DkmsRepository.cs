@@ -48,16 +48,16 @@ namespace DkmsCore.Persistence.Repositories
             return await list.ToListAsync();
         }
 
-        public virtual async Task<DkmsEntityPage<TEntity>> GetPage<TEntity>(Expression<Func<TEntity, bool>> predicate, DkmsEntityPageQuery query) where TEntity : DkmsEntity
+        public virtual async Task<DkmsPage<TEntity>> GetPage<TEntity>(Expression<Func<TEntity, bool>> predicate, DkmsPageQuery query) where TEntity : DkmsEntity
         {
             return await GetPage(predicate, s => s.CreateTime, query);
         }
 
-        public virtual async Task<DkmsEntityPage<TEntity>> GetPage<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> order, DkmsEntityPageQuery query) where TEntity : DkmsEntity
+        public virtual async Task<DkmsPage<TEntity>> GetPage<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> order, DkmsPageQuery query) where TEntity : DkmsEntity
         {
             var page = await DbContext.Set<TEntity>().Where(predicate).OrderByDescending(order).Skip(query.Skip).Take(query.Take).ToListAsync();
             var count = await Count(predicate);
-            return new DkmsEntityPage<TEntity>
+            return new DkmsPage<TEntity>
             {
                 PageSize = query.PageSize,
                 Count = count,

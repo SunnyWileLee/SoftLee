@@ -11,8 +11,8 @@ namespace DkmsCore.Persistence.Repositories
         Task<Guid> AddEntity<TEntity>(TEntity entity) where TEntity : DkmsEntity;
         Task<int> Delete<TEntity>(Guid id) where TEntity : DkmsEntity;
         Task<List<TEntity>> GetList<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : DkmsEntity;
-        Task<DkmsEntityPage<TEntity>> GetPage<TEntity>(Expression<Func<TEntity, bool>> predicate, DkmsEntityPageQuery query) where TEntity : DkmsEntity;
-        Task<DkmsEntityPage<TEntity>> GetPage<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> order, DkmsEntityPageQuery query) where TEntity : DkmsEntity;
+        Task<DkmsPage<TEntity>> GetPage<TEntity>(Expression<Func<TEntity, bool>> predicate, DkmsPageQuery query) where TEntity : DkmsEntity;
+        Task<DkmsPage<TEntity>> GetPage<TEntity, TKey>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TKey>> order, DkmsPageQuery query) where TEntity : DkmsEntity;
         Task<int> Count<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : DkmsEntity;
     }
 }
