@@ -9,6 +9,6 @@ namespace DkmsCore.Crm.Customer.Models
     public class CustomerModel
     {
         public CustomerEntity Customer { get; set; }
-        public List<CustomerPropertyValueEntity> Values { get; set; }
+        public List<CustomerPropertyValueEntity> Values { get; set; } = new List<CustomerPropertyValueEntity> { };
     }
 }

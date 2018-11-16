@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DkmsCore.Crm.Customer.Domains;
 using DkmsCore.Crm.Customer.Models;
 using DkmsCore.Persistence;
 using Microsoft.AspNetCore.Mvc;
@@ -11,11 +12,25 @@ namespace DkmsCore.Crm.Customer.Controllers
     [Route("api/[controller]")]
     public class CustomerController : Controller
     {
-        [HttpGet, Route("GetPage")]
-        public DkmsPage<CustomerModel> GetPage()
+        private readonly ICustomerSearcher _customerSearcher;
+        private readonly ICustomerKeeper _customerKeeper;
+
+        public CustomerController(ICustomerSearcher customerSearcher, ICustomerKeeper customerKeeper)
         {
-            return new DkmsPage<CustomerModel> { Count = 100 };
+            _customerSearcher = customerSearcher;
+            _customerKeeper = customerKeeper;
         }
 
+        [HttpGet, Route("GetPage")]
+        public async Task<DkmsPage<CustomerModel>> GetPage([FromQuery]CustomerPageQuery query)
+        {
+            return await _customerSearcher.GetPage(query);
+        }
+
+        [HttpPost, Route("Add")]
+        public async Task<Guid> Add([FromBody]CustomerModel model)
+        {
+            return await _customerKeeper.Add(model);
+        }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DkmsCore.Persistence.Repositories
 {
-    public abstract class DkmsPropertyValueRepository : IDkmsPropertyValueRepository
+    public class DkmsPropertyValueRepository : IDkmsPropertyValueRepository
     {
         public DkmsPropertyValueRepository(DbContext dbContext)
         {

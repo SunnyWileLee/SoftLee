@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DkmsCore.Persistence
@@ -27,6 +28,20 @@ namespace DkmsCore.Persistence
         public bool Any()
         {
             return List?.Any() ?? false;
+        }
+
+        public IEnumerable<TKey> GetKeys<TKey>(Func<TEntity,TKey> keySelector)
+        {
+            return List.Select(keySelector);
+        }
+
+        public static DkmsPage<TEntity> Empty(DkmsPageQuery query)
+        {
+            return new DkmsPage<TEntity>
+            {
+                PageIndex = query.PageIndex,
+                PageSize = query.PageSize
+            };
         }
     }
 }

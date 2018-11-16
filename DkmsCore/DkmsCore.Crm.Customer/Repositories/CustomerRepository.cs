@@ -13,8 +13,9 @@ namespace DkmsCore.Crm.Customer.Repositories
 
         }
 
-        public async Task<Guid> AddCustomer(CustomerEntity customer)
+        public async Task<Guid> AddCustomer(Guid userId, CustomerEntity customer)
         {
+            customer.UserId = userId;
             return await base.AddEntity(customer);
         }
 
@@ -27,7 +28,5 @@ namespace DkmsCore.Crm.Customer.Repositories
         {
             return await base.GetPage<CustomerEntity>(s => s.UserId == userId, query);
         }
-
-
     }
 }

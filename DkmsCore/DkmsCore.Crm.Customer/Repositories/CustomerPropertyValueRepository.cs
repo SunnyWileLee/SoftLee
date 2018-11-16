@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace DkmsCore.Crm.Customer.Repositories
 {
-    public class CustomerPropertyValueRepository : DkmsPropertyValueRepository, ICustomerPropertyValueRepository
+    public class CustomerPropertyValueRepository : ICustomerPropertyValueRepository
     {
-        public CustomerPropertyValueRepository(CrmCustomerDbContext dbContext) : base(dbContext)
-        {
+        private readonly IDkmsPropertyValueRepository _dkmsPropertyValueRepository;
 
+        public async Task<Guid> AddPropertyValueEntity(Guid userId, CustomerPropertyValueEntity entity)
+        {
+            entity.UserId = userId;
+            return await _dkmsPropertyValueRepository.AddPropertyValueEntity(entity);
+        }
+
+        public async Task<List<CustomerPropertyValueEntity>> GetList(Guid userId, IEnumerable<Guid> customerIds)
+        {
+            return await _dkmsPropertyValueRepository.GetList<CustomerPropertyValueEntity>(userId, customerIds);
         }
     }
 }
