@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DkmsCore.Infrustructure
+namespace DkmsCore.Infrustructure.Webs
 {
     public class DkmsResult
     {
@@ -48,7 +48,7 @@ namespace DkmsCore.Infrustructure
         /// <param name="code">错误code</param>
         /// <param name="message">错误信息</param>
         /// <returns></returns>
-        public static DkmsResult Fail(int code = 0, string message = "")
+        public static DkmsResult Failure(int code = 0, string message = "")
         {
             return new DkmsResult { Code = code, Message = message };
         }

@@ -43,7 +43,6 @@ namespace DkmsCore.Infrustructure.Caches
                         {
                             options.Password = password;
                         }
-                        var size = options.WriteBuffer;
                         options.ConnectTimeout = 20000;
                         options.SyncTimeout = 20000;
                         connectionMultiplexer = ConnectionMultiplexer.Connect(options);

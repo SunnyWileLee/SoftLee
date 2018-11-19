@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DkmsCore.Infrustructure.Webs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,9 +22,9 @@ namespace DkmsCore.Crm.Customer
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            var serviceProvider = DkmsStartups.ConfigureServices(services, typeof(Startup).Assembly);
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
@@ -33,6 +34,7 @@ namespace DkmsCore.Crm.Customer
                     Description = "crm.customer"
                 });
             });
+            return serviceProvider;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

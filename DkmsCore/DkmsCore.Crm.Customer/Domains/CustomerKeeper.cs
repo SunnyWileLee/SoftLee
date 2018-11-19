@@ -13,6 +13,12 @@ namespace DkmsCore.Crm.Customer.Domains
         private readonly ICustomerRepository _customerRepository;
         private readonly ICustomerPropertyValueRepository _customerPropertyValueRepository;
 
+        public CustomerKeeper(ICustomerRepository customerRepository, ICustomerPropertyValueRepository customerPropertyValueRepository)
+        {
+            _customerRepository = customerRepository;
+            _customerPropertyValueRepository = customerPropertyValueRepository;
+        }
+
         public async Task<Guid> Add(CustomerModel model)
         {
             var userId = DkmsUserContext.UserIdDefaultEmpty;
