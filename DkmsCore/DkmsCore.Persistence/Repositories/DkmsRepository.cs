@@ -42,6 +42,11 @@ namespace DkmsCore.Persistence.Repositories
             return count;
         }
 
+        public async Task<TEntity> Get<TEntity>(Guid id) where TEntity : DkmsEntity
+        {
+            return await DbContext.Set<TEntity>().FirstOrDefaultAsync(s => s.Id == id);
+        }
+
         public virtual async Task<List<TEntity>> GetList<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : DkmsEntity
         {
             var list = DbContext.Set<TEntity>().Where(predicate);

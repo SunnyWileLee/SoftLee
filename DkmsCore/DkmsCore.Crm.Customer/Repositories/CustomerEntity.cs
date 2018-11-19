@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DkmsCore.Crm.Customer.Repositories
 {
     [Table("Customer")]
-    public class CustomerEntity : DkmsUserEntity
+    public class CustomerEntity : DkmsStateableEntity
     {
         [MaxLength(50)]
         public string Name { get; set; }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DkmsCore.Persistence
 {
-    public class DkmsEntity
+    public abstract class DkmsEntity
     {
         public DkmsEntity()
         {

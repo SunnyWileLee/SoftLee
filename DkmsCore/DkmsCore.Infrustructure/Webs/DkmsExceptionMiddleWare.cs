@@ -29,7 +29,7 @@ namespace DkmsCore.Infrustructure.Webs
             }
         }
 
-        private static async Task HandleExceptionAsync(HttpContext context, Exception exception)
+        private async Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             if (exception == null)
             {
@@ -38,7 +38,7 @@ namespace DkmsCore.Infrustructure.Webs
             await WriteExceptionAsync(context, exception).ConfigureAwait(false);
         }
 
-        private static async Task WriteExceptionAsync(HttpContext context, Exception exception)
+        private async Task WriteExceptionAsync(HttpContext context, Exception exception)
         {
             var response = context.Response;
             response.StatusCode = (int)HttpStatusCode.OK;

@@ -8,6 +8,6 @@ namespace DkmsCore.Persistence
     public abstract class DkmsPropertyEntity : DkmsUserEntity
     {
         [MaxLength(20)]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
     }
 }

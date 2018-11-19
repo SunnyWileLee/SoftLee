@@ -7,7 +7,7 @@ namespace DkmsCore.Persistence
 {
     public abstract class DkmsPropertyValueEntity : DkmsUserEntity
     {
-        public virtual Guid InstanceId { get; set; }
+        public abstract Guid InstanceId { get; set; }
 
         public virtual Guid PropertyId { get; set; }
         [MaxLength(500)]
