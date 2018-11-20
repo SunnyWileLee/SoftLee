@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DkmsCore.Crm.Customer.Repositories;
 using DkmsCore.Infrustructure.Webs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -24,7 +26,7 @@ namespace DkmsCore.Crm.Customer
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            var serviceProvider = DkmsStartups.ConfigureServices(services, typeof(Startup).Assembly);
+            services.AddDbContext<CrmCustomerDbContext>(options => options.UseSqlServer("connectionString"));
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
@@ -34,6 +36,7 @@ namespace DkmsCore.Crm.Customer
                     Description = "crm.customer"
                 });
             });
+            var serviceProvider = DkmsStartups.ConfigureServices(services, typeof(Startup).Assembly);
             return serviceProvider;
         }
 

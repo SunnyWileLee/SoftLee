@@ -9,34 +9,28 @@ namespace DkmsCore.Persistence.Repositories
 {
     public class DkmsPropertyRepository : IDkmsPropertyRepository
     {
-        public DkmsPropertyRepository(DbContext dbContext)
+        private readonly IDkmsRepository _dkmsRepository;
+
+        public async Task<Guid> AddAsync<TProperty>(Guid userId, TProperty property) where TProperty : DkmsPropertyEntity
         {
-            DbContext = dbContext;
+            property.UserId = userId;
+            return await _dkmsRepository.AddAsync(property);
         }
 
-        public DbContext DbContext { get; }
-
-        public async Task<Guid> AddProperty<TProperty>(TProperty property) where TProperty : DkmsPropertyEntity
+        public async Task<int> DeleteAsync<TProperty>(Guid userId, Guid id) where TProperty : DkmsPropertyEntity
         {
-            await DbContext.Set<TProperty>().AddAsync(property);
-            await DbContext.SaveChangesAsync();
-            return property.Id;
-        }
-
-        public async Task<int> Delete<TProperty>(Guid userId, Guid id) where TProperty : DkmsPropertyEntity
-        {
-            var property = await DbContext.Set<TProperty>().FirstOrDefaultAsync(s => s.UserId == userId && s.Id == id);
+            var property = await _dkmsRepository.FirstAsync<TProperty>(s => s.UserId == userId && s.Id == id);
             if (property == null)
             {
                 return 0;
             }
-            DbContext.Set<TProperty>().Remove(property);
-            return await DbContext.SaveChangesAsync();
+            _dkmsRepository.DbContext.Set<TProperty>().Remove(property);
+            return await _dkmsRepository.DbContext.SaveChangesAsync();
         }
 
-        public async Task<List<TProperty>> GetList<TProperty>(Guid userId) where TProperty : DkmsPropertyEntity
+        public async Task<List<TProperty>> GetListAsync<TProperty>(Guid userId) where TProperty : DkmsPropertyEntity
         {
-            var list = await DbContext.Set<TProperty>().Where(s => s.UserId == userId).ToListAsync();
+            var list = await _dkmsRepository.GetListAsync<TProperty>(s => s.UserId == userId);
             return list;
         }
     }

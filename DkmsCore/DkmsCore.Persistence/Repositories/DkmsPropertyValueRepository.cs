@@ -10,34 +10,27 @@ namespace DkmsCore.Persistence.Repositories
 {
     public class DkmsPropertyValueRepository : IDkmsPropertyValueRepository
     {
-        public DkmsPropertyValueRepository(DbContext dbContext)
+        private readonly IDkmsRepository _dkmsRepository;
+
+        public virtual async Task<Guid> AddAsync<TPropertyValueEntity>(TPropertyValueEntity entity) where TPropertyValueEntity : DkmsPropertyValueEntity
         {
-            DbContext = dbContext;
+            return await _dkmsRepository.AddAsync(entity);
         }
 
-        public DbContext DbContext { get; }
-
-        public virtual async Task<Guid> AddPropertyValueEntity<TPropertyValueEntity>(TPropertyValueEntity entity) where TPropertyValueEntity : DkmsPropertyValueEntity
+        public virtual async Task<List<TPropertyValueEntity>> GetListAsync<TPropertyValueEntity>(Expression<Func<TPropertyValueEntity, bool>> predicate) where TPropertyValueEntity : DkmsPropertyValueEntity
         {
-            await DbContext.Set<TPropertyValueEntity>().AddAsync(entity);
-            await DbContext.SaveChangesAsync();
-            return entity.Id;
+            var list = await _dkmsRepository.GetListAsync(predicate);
+            return list;
         }
 
-        public virtual async Task<List<TPropertyValueEntity>> GetList<TPropertyValueEntity>(Expression<Func<TPropertyValueEntity, bool>> predicate) where TPropertyValueEntity : DkmsPropertyValueEntity
+        public virtual async Task<List<TPropertyValueEntity>> GetListAsync<TPropertyValueEntity>(Guid userId, Guid instanceId) where TPropertyValueEntity : DkmsPropertyValueEntity
         {
-            var list = DbContext.Set<TPropertyValueEntity>().Where(predicate);
-            return await list.ToListAsync();
+            return await GetListAsync<TPropertyValueEntity>(s => s.UserId == userId && s.InstanceId == instanceId);
         }
 
-        public virtual async Task<List<TPropertyValueEntity>> GetList<TPropertyValueEntity>(Guid userId, Guid instanceId) where TPropertyValueEntity : DkmsPropertyValueEntity
+        public virtual async Task<List<TPropertyValueEntity>> GetListAsync<TPropertyValueEntity>(Guid userId, IEnumerable<Guid> instanceIds) where TPropertyValueEntity : DkmsPropertyValueEntity
         {
-            return await GetList<TPropertyValueEntity>(s => s.UserId == userId && s.InstanceId == instanceId);
-        }
-
-        public virtual async Task<List<TPropertyValueEntity>> GetList<TPropertyValueEntity>(Guid userId, IEnumerable<Guid> instanceIds) where TPropertyValueEntity : DkmsPropertyValueEntity
-        {
-            return await GetList<TPropertyValueEntity>(s => s.UserId == userId && instanceIds.Contains(s.InstanceId));
+            return await GetListAsync<TPropertyValueEntity>(s => s.UserId == userId && instanceIds.Contains(s.InstanceId));
         }
     }
 }

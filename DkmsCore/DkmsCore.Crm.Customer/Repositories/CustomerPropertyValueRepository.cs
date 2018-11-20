@@ -13,12 +13,12 @@ namespace DkmsCore.Crm.Customer.Repositories
         public async Task<Guid> AddPropertyValueEntity(Guid userId, CustomerPropertyValueEntity entity)
         {
             entity.UserId = userId;
-            return await _dkmsPropertyValueRepository.AddPropertyValueEntity(entity);
+            return await _dkmsPropertyValueRepository.AddAsync(entity);
         }
 
         public async Task<List<CustomerPropertyValueEntity>> GetList(Guid userId, IEnumerable<Guid> customerIds)
         {
-            return await _dkmsPropertyValueRepository.GetList<CustomerPropertyValueEntity>(userId, customerIds);
+            return await _dkmsPropertyValueRepository.GetListAsync<CustomerPropertyValueEntity>(userId, customerIds);
         }
     }
 }

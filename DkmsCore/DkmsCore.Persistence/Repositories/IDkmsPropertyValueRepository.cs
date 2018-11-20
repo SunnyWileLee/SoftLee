@@ -8,9 +8,9 @@ namespace DkmsCore.Persistence.Repositories
 {
     public interface IDkmsPropertyValueRepository
     {
-        Task<Guid> AddPropertyValueEntity<TPropertyValueEntity>(TPropertyValueEntity entity) where TPropertyValueEntity : DkmsPropertyValueEntity;
-        Task<List<TPropertyValueEntity>> GetList<TPropertyValueEntity>(Expression<Func<TPropertyValueEntity, bool>> predicate) where TPropertyValueEntity : DkmsPropertyValueEntity;
-        Task<List<TPropertyValueEntity>> GetList<TPropertyValueEntity>(Guid userId, Guid instanceId) where TPropertyValueEntity : DkmsPropertyValueEntity;
-        Task<List<TPropertyValueEntity>> GetList<TPropertyValueEntity>(Guid userId, IEnumerable<Guid> instanceIds) where TPropertyValueEntity : DkmsPropertyValueEntity;
+        Task<Guid> AddAsync<TPropertyValueEntity>(TPropertyValueEntity entity) where TPropertyValueEntity : DkmsPropertyValueEntity;
+        Task<List<TPropertyValueEntity>> GetListAsync<TPropertyValueEntity>(Expression<Func<TPropertyValueEntity, bool>> predicate) where TPropertyValueEntity : DkmsPropertyValueEntity;
+        Task<List<TPropertyValueEntity>> GetListAsync<TPropertyValueEntity>(Guid userId, Guid instanceId) where TPropertyValueEntity : DkmsPropertyValueEntity;
+        Task<List<TPropertyValueEntity>> GetListAsync<TPropertyValueEntity>(Guid userId, IEnumerable<Guid> instanceIds) where TPropertyValueEntity : DkmsPropertyValueEntity;
     }
 }

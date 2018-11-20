@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using DkmsCore.Persistence;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace DkmsCore.Infrustructure.Webs
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterAssemblyTypes(assemblies).AsImplementedInterfaces();
             containerBuilder.RegisterAssemblyTypes(typeof(IDkmsCoreInfrustructureAutofac).Assembly).AsImplementedInterfaces();
+            containerBuilder.RegisterAssemblyTypes(typeof(IDkmsCorePersisteceAutofac).Assembly).AsImplementedInterfaces();
             containerBuilder.Populate(services);
             var container = containerBuilder.Build();
             return new AutofacServiceProvider(container);
