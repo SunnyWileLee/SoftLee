@@ -20,7 +20,7 @@ namespace DkmsCore.Crm.Customer.Domains
             _dkmsPropertyValueRepository = dkmsPropertyValueRepository;
         }
 
-        public async Task<Guid> Add(CustomerModel model)
+        public async Task<Guid> AddAsync(CustomerModel model)
         {
             var userId = DkmsUserContext.UserIdDefaultEmpty;
             var customerId = await _customerRepository.AddAsync(userId, model.Customer);

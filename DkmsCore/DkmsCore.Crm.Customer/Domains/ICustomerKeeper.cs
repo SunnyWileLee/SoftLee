@@ -8,6 +8,6 @@ namespace DkmsCore.Crm.Customer.Domains
 {
     public interface ICustomerKeeper
     {
-        Task<Guid> Add(CustomerModel model);
+        Task<Guid> AddAsync(CustomerModel model);
     }
 }

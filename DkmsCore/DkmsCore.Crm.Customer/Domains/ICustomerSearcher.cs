@@ -9,6 +9,6 @@ namespace DkmsCore.Crm.Customer.Domains
 {
     public interface ICustomerSearcher
     {
-        Task<DkmsPage<CustomerModel>> GetPage(CustomerPageQuery query);
+        Task<DkmsPage<CustomerModel>> GetPageAsync(CustomerPageQuery query);
     }
 }

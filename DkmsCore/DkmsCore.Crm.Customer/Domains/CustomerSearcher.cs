@@ -21,7 +21,7 @@ namespace DkmsCore.Crm.Customer.Domains
             _dkmsPropertyValueRepository = dkmsPropertyValueRepository;
         }
 
-        public async Task<DkmsPage<CustomerModel>> GetPage(CustomerPageQuery query)
+        public async Task<DkmsPage<CustomerModel>> GetPageAsync(CustomerPageQuery query)
         {
             var page = await _customerRepository.GetPageAsync(s => s.UserId == DkmsUserContext.UserIdDefaultEmpty, query);
             if (!page.Any())

@@ -24,13 +24,13 @@ namespace DkmsCore.Crm.Customer.Controllers
         [HttpGet, Route("GetPage")]
         public async Task<DkmsPage<CustomerModel>> GetPage([FromQuery]CustomerPageQuery query)
         {
-            return await _customerSearcher.GetPage(query);
+            return await _customerSearcher.GetPageAsync(query);
         }
 
         [HttpPost, Route("Add")]
         public async Task<Guid> Add([FromBody]CustomerModel model)
         {
-            return await _customerKeeper.Add(model);
+            return await _customerKeeper.AddAsync(model);
         }
     }
 }
