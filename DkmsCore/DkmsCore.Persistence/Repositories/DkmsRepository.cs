@@ -10,9 +10,12 @@ namespace DkmsCore.Persistence.Repositories
 {
     public class DkmsRepository : IDkmsRepository
     {
-        public DkmsRepository(DbContext dbContext)
+        private readonly IDbContextProvider _dbContextProvider;
+
+        public DkmsRepository(IDbContextProvider dbContextProvider)
         {
-            DbContext = dbContext;
+            _dbContextProvider = dbContextProvider;
+            DbContext = dbContextProvider.Provide();
         }
 
         public DbContext DbContext { get; }
@@ -42,12 +45,12 @@ namespace DkmsCore.Persistence.Repositories
             return count;
         }
 
-        public async Task<TEntity> FirstAsync<TEntity>(Guid id) where TEntity : DkmsEntity
+        public virtual async Task<TEntity> FirstAsync<TEntity>(Guid id) where TEntity : DkmsEntity
         {
             return await FirstAsync<TEntity>(s => s.Id == id);
         }
 
-        public async Task<TEntity> FirstAsync<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : DkmsEntity
+        public virtual async Task<TEntity> FirstAsync<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : DkmsEntity
         {
             return await DbContext.Set<TEntity>().FirstOrDefaultAsync(predicate);
         }

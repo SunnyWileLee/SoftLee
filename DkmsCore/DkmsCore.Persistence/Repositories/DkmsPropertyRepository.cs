@@ -11,6 +11,11 @@ namespace DkmsCore.Persistence.Repositories
     {
         private readonly IDkmsRepository _dkmsRepository;
 
+        public DkmsPropertyRepository(IDkmsRepository dkmsRepository)
+        {
+            _dkmsRepository = dkmsRepository;
+        }
+
         public async Task<Guid> AddAsync<TProperty>(Guid userId, TProperty property) where TProperty : DkmsPropertyEntity
         {
             property.UserId = userId;

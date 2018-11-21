@@ -12,6 +12,11 @@ namespace DkmsCore.Persistence.Repositories
     {
         private readonly IDkmsRepository _dkmsRepository;
 
+        public DkmsPropertyValueRepository(IDkmsRepository dkmsRepository)
+        {
+            _dkmsRepository = dkmsRepository;
+        }
+
         public virtual async Task<Guid> AddAsync<TPropertyValueEntity>(TPropertyValueEntity entity) where TPropertyValueEntity : DkmsPropertyValueEntity
         {
             return await _dkmsRepository.AddAsync(entity);
