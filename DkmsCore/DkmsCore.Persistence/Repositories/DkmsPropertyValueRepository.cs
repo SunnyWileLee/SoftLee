@@ -22,6 +22,12 @@ namespace DkmsCore.Persistence.Repositories
             return await _dkmsRepository.AddAsync(entity);
         }
 
+        public virtual async Task<Guid> AddAsync<TPropertyValueEntity>(Guid userId, TPropertyValueEntity entity) where TPropertyValueEntity : DkmsPropertyValueEntity
+        {
+            entity.UserId = userId;
+            return await AddAsync(entity);
+        }
+
         public virtual async Task<List<TPropertyValueEntity>> GetListAsync<TPropertyValueEntity>(Expression<Func<TPropertyValueEntity, bool>> predicate) where TPropertyValueEntity : DkmsPropertyValueEntity
         {
             var list = await _dkmsRepository.GetListAsync(predicate);

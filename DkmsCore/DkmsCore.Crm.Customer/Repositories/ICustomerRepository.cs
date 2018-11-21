@@ -9,8 +9,8 @@ namespace DkmsCore.Crm.Customer.Repositories
 {
     public interface ICustomerRepository
     {
-        Task<Guid> AddCustomer(Guid userId,CustomerEntity customer);
-        Task<DkmsPage<CustomerEntity>> GetPage(Expression<Func<CustomerEntity, bool>> predicate, DkmsPageQuery query);
-        Task<DkmsPage<CustomerEntity>> GetPage(Guid userId, DkmsPageQuery query);
+        Task<Guid> AddAsync(Guid userId,CustomerEntity customer);
+        Task<DkmsPage<CustomerEntity>> GetPageAsync(Expression<Func<CustomerEntity, bool>> predicate, DkmsPageQuery query);
+        Task<DkmsPage<CustomerEntity>> GetPageAsync(Guid userId, DkmsPageQuery query);
     }
 }

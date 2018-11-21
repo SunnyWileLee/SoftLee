@@ -5,30 +5,31 @@ using System.Threading.Tasks;
 using DkmsCore.Crm.Customer.Models;
 using DkmsCore.Crm.Customer.Repositories;
 using DkmsCore.Infrustructure.Securitys;
+using DkmsCore.Persistence.Repositories;
 
 namespace DkmsCore.Crm.Customer.Domains
 {
     public class CustomerKeeper : ICustomerKeeper
     {
         private readonly ICustomerRepository _customerRepository;
-        private readonly ICustomerPropertyValueRepository _customerPropertyValueRepository;
+        private readonly IDkmsPropertyValueRepository _dkmsPropertyValueRepository;
 
-        public CustomerKeeper(ICustomerRepository customerRepository, ICustomerPropertyValueRepository customerPropertyValueRepository)
+        public CustomerKeeper(ICustomerRepository customerRepository, IDkmsPropertyValueRepository dkmsPropertyValueRepository)
         {
             _customerRepository = customerRepository;
-            _customerPropertyValueRepository = customerPropertyValueRepository;
+            _dkmsPropertyValueRepository = dkmsPropertyValueRepository;
         }
 
         public async Task<Guid> Add(CustomerModel model)
         {
             var userId = DkmsUserContext.UserIdDefaultEmpty;
-            var customerId = await _customerRepository.AddCustomer(userId, model.Customer);
+            var customerId = await _customerRepository.AddAsync(userId, model.Customer);
             if (model.Values.Any())
             {
                 foreach (var value in model.Values)
                 {
                     value.InstanceId = customerId;
-                    await _customerPropertyValueRepository.AddPropertyValueEntity(userId, value);
+                    await _dkmsPropertyValueRepository.AddAsync(userId, value);
                 }
             }
             return customerId;
