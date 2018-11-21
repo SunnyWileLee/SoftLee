@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DkmsCore.Crm.Customer.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("crm/[controller]")]
     public class CustomerController : Controller
     {
         private readonly ICustomerSearcher _customerSearcher;
