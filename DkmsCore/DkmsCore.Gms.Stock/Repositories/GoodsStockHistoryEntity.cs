@@ -15,5 +15,6 @@ namespace DkmsCore.Gms.Stock.Repositories
         public decimal Stock { get; set; }
         [MaxLength(500)]
         public string Memo { get; set; }
+        public Guid StockReasonId { get; set; }
     }
 }
