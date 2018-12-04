@@ -7,6 +7,7 @@ namespace DkmsCore.Gms.Stock.Repositories
 {
     interface IGoodsStockReasonRepository
     {
-        Task<List<GoodsStockReasonEntity>> GetListAsync(string userId);
+        Task<List<GoodsStockReasonEntity>> GetListAsync(Guid userId);
+        Task<Guid> AddAsync(Guid userId, GoodsStockReasonEntity entity);
     }
 }
