@@ -26,7 +26,8 @@ namespace DkmsCore.Crm.Customer
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CrmCustomerDbContext>(options => options.UseSqlServer("connectionString"));
+            var connection = Configuration.GetConnectionString("MysqlConnection");
+            services.AddDbContext<CrmCustomerDbContext>(options => options.UseMySql(connection));
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
