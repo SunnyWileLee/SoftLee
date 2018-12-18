@@ -13,4 +13,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DkmsCore.Domains.Abstract\DkmsCore.Domains.Abstract.csproj" />
+    <ProjectReference Include="..\DkmsCore.Infrustructure\DkmsCore.Infrustructure.csproj" />
+    <ProjectReference Include="..\DkmsCore.Persistence\DkmsCore.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

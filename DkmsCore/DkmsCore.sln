@@ -9,13 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DkmsCore.Infrustructure", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DkmsCore.Crm.Customer", "DkmsCore.Crm.Customer\DkmsCore.Crm.Customer.csproj", "{97CDC075-45F1-447C-BB04-DD79B9B07856}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DkmsCore.Gms.Goods", "DkmsCore.Gms.Goods\DkmsCore.Gms.Goods.csproj", "{4BE15460-460E-478B-B206-529D48808267}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DkmsCore.Gms.Goods", "DkmsCore.Gms.Goods\DkmsCore.Gms.Goods.csproj", "{4BE15460-460E-478B-B206-529D48808267}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DkmsCore.Oms.Order", "DkmsCore.Oms.Order\DkmsCore.Oms.Order.csproj", "{8F405802-9F23-4FA9-94A8-20FC9E8E4846}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DkmsCore.Oms.Order", "DkmsCore.Oms.Order\DkmsCore.Oms.Order.csproj", "{8F405802-9F23-4FA9-94A8-20FC9E8E4846}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DkmsCore.Crm.Sdk", "DkmsCore.Crm.Sdk\DkmsCore.Crm.Sdk.csproj", "{486C9032-A565-4113-B313-8D638E27898B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DkmsCore.Crm.Sdk", "DkmsCore.Crm.Sdk\DkmsCore.Crm.Sdk.csproj", "{486C9032-A565-4113-B313-8D638E27898B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DkmsCore.Gms.Stock", "DkmsCore.Gms.Stock\DkmsCore.Gms.Stock.csproj", "{C4ABBD8B-3E8B-4D32-BAB2-1BE45CBA7A49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DkmsCore.Gms.Stock", "DkmsCore.Gms.Stock\DkmsCore.Gms.Stock.csproj", "{C4ABBD8B-3E8B-4D32-BAB2-1BE45CBA7A49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DkmsCore.Domains.Abstract", "DkmsCore.Domains.Abstract\DkmsCore.Domains.Abstract.csproj", "{BB09408C-D3D6-483C-8762-860A391BD457}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{C4ABBD8B-3E8B-4D32-BAB2-1BE45CBA7A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4ABBD8B-3E8B-4D32-BAB2-1BE45CBA7A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4ABBD8B-3E8B-4D32-BAB2-1BE45CBA7A49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB09408C-D3D6-483C-8762-860A391BD457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB09408C-D3D6-483C-8762-860A391BD457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB09408C-D3D6-483C-8762-860A391BD457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB09408C-D3D6-483C-8762-860A391BD457}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

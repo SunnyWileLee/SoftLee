@@ -12,18 +12,18 @@ namespace DkmsCore.Crm.Customer.Domains
 {
     public class CustomerSearcher : ICustomerSearcher
     {
-        private readonly ICustomerRepository _customerRepository;
+        private readonly IDkmsUserRepository _dkmsUserRepository;
         private readonly IDkmsPropertyValueRepository _dkmsPropertyValueRepository;
 
-        public CustomerSearcher(ICustomerRepository customerRepository, IDkmsPropertyValueRepository dkmsPropertyValueRepository)
+        public CustomerSearcher(IDkmsUserRepository dkmsUserRepository, IDkmsPropertyValueRepository dkmsPropertyValueRepository)
         {
-            _customerRepository = customerRepository;
+            _dkmsUserRepository = dkmsUserRepository;
             _dkmsPropertyValueRepository = dkmsPropertyValueRepository;
         }
 
         public async Task<DkmsPage<CustomerModel>> GetPageAsync(CustomerPageQuery query)
         {
-            var page = await _customerRepository.GetPageAsync(s => s.UserId == DkmsUserContext.UserIdDefaultEmpty, query);
+            var page = await _dkmsUserRepository.GetPageAsync<CustomerEntity>(DkmsUserContext.UserIdDefaultEmpty, query);
             if (!page.Any())
             {
                 return DkmsPage<CustomerModel>.Empty(query);

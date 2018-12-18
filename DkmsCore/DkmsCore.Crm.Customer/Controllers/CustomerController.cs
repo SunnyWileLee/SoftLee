@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DkmsCore.Crm.Customer.Controllers
 {
     [Route("crm/[controller]")]
-    public class CustomerController : Controller
+    public class CustomerController : ControllerBase
     {
         private readonly ICustomerSearcher _customerSearcher;
         private readonly ICustomerKeeper _customerKeeper;

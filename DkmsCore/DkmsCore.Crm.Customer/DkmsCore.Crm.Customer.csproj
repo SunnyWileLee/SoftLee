@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DkmsCore.Domains.Abstract\DkmsCore.Domains.Abstract.csproj" />
     <ProjectReference Include="..\DkmsCore.Infrustructure\DkmsCore.Infrustructure.csproj" />
     <ProjectReference Include="..\DkmsCore.Persistence\DkmsCore.Persistence.csproj" />
   </ItemGroup>
