@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,5 +14,6 @@ namespace DkmsCore.Persistence.Repositories
 
         Task<Guid> AddAsync<TEntity>(Guid userId, TEntity entity) where TEntity : DkmsUserEntity;
         Task<DkmsPage<TEntity>> GetPageAsync<TEntity>(Guid userId, DkmsPageQuery query) where TEntity : DkmsUserEntity;
+        Task<List<TEntity>> GetListAsync<TEntity>(Guid userId) where TEntity : DkmsUserEntity;
     }
 }

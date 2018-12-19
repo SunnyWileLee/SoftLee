@@ -23,6 +23,11 @@ namespace DkmsCore.Persistence.Repositories
             return await DkmsRepository.AddAsync(entity);
         }
 
+        public async Task<List<TEntity>> GetListAsync<TEntity>(Guid userId) where TEntity : DkmsUserEntity
+        {
+            return await DkmsRepository.GetListAsync<TEntity>(s => s.UserId == userId);
+        }
+
         public async Task<DkmsPage<TEntity>> GetPageAsync<TEntity>(Guid userId, DkmsPageQuery query) where TEntity : DkmsUserEntity
         {
             return await DkmsRepository.GetPageAsync<TEntity>(s => s.UserId == userId, query);

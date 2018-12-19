@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DkmsCore.Domains.Abstract.DomainAdders;
+using DkmsCore.Infrustructure.Domains.DomainAdders;
 using DkmsCore.Infrustructure.Securitys;
 using DkmsCore.Oms.Order.Models;
 using DkmsCore.Persistence;

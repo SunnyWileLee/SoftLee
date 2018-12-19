@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DkmsCore.Crm.Customer.Models;
 using DkmsCore.Crm.Customer.Repositories;
-using DkmsCore.Domains.Abstract.DomainAdders;
+using DkmsCore.Infrustructure.Domains.DomainAdders;
 using DkmsCore.Infrustructure.Securitys;
 using DkmsCore.Persistence;
 using DkmsCore.Persistence.Repositories;

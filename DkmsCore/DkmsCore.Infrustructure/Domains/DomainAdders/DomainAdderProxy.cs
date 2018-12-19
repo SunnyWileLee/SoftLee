@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DkmsCore.Domains.Abstract.DomainAdders
+namespace DkmsCore.Infrustructure.Domains.DomainAdders
 {
     class DomainAdderProxy : IDomainAdderProxy
     {

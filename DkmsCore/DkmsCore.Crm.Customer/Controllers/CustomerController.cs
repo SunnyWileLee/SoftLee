@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DkmsCore.Crm.Customer.Controllers
 {
-    [Route("crm/[controller]")]
+    [Route("crm/customer")]
+    [ApiController]
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerSearcher _customerSearcher;
@@ -22,13 +23,13 @@ namespace DkmsCore.Crm.Customer.Controllers
         }
 
         [HttpGet, Route("GetPage")]
-        public async Task<DkmsPage<CustomerModel>> GetPage([FromQuery]CustomerPageQuery query)
+        public async Task<DkmsPage<CustomerModel>> GetPageAsync([FromQuery]CustomerPageQuery query)
         {
             return await _customerSearcher.GetPageAsync(query);
         }
 
         [HttpPost, Route("Add")]
-        public async Task<Guid> Add([FromBody]CustomerModel model)
+        public async Task<Guid> AddAsync([FromBody]CustomerModel model)
         {
             return await _customerKeeper.AddAsync(model);
         }

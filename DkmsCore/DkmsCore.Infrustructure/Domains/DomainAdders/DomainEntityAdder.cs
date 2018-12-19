@@ -6,7 +6,7 @@ using DkmsCore.Infrustructure.Securitys;
 using DkmsCore.Persistence;
 using DkmsCore.Persistence.Repositories;
 
-namespace DkmsCore.Domains.Abstract.DomainAdders
+namespace DkmsCore.Infrustructure.Domains.DomainAdders
 {
     class DomainEntityAdder : IDomainAdder
     {

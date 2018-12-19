@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DkmsCore.Domains.Abstract.DomainAdders
+namespace DkmsCore.Infrustructure.Domains.DomainAdders
 {
     public class DomainAdderContext
     {
